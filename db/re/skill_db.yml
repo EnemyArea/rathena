@@ -1790,25 +1790,25 @@ Body:
     SplashArea: 3
     Duration1:
       - Level: 1
-        Time: 60000
+        Time: 3600000
       - Level: 2
-        Time: 80000
+        Time: 3600000
       - Level: 3
-        Time: 100000
+        Time: 3600000
       - Level: 4
-        Time: 120000
+        Time: 3600000
       - Level: 5
-        Time: 140000
+        Time: 3600000
       - Level: 6
-        Time: 160000
+        Time: 3600000
       - Level: 7
-        Time: 180000
+        Time: 3600000
       - Level: 8
-        Time: 200000
+        Time: 3600000
       - Level: 9
-        Time: 220000
+        Time: 3600000
       - Level: 10
-        Time: 240000
+        Time: 3600000
     Requires:
       SpCost:
         - Level: 1
@@ -10362,7 +10362,7 @@ Body:
       NoDamage: true
     Hit: Single
     HitCount: 1
-    Duration1: 30000
+    Duration1: 3600000
     Requires:
       SpCost:
         - Level: 1
@@ -10486,25 +10486,25 @@ Body:
     AfterCastActDelay: 2000
     Duration1:
       - Level: 1
-        Time: 130000
+        Time: 3600000
       - Level: 2
-        Time: 160000
+        Time: 3600000
       - Level: 3
-        Time: 190000
+        Time: 3600000
       - Level: 4
-        Time: 220000
+        Time: 3600000
       - Level: 5
-        Time: 250000
+        Time: 3600000
       - Level: 6
-        Time: 280000
+        Time: 3600000
       - Level: 7
-        Time: 310000
+        Time: 3600000
       - Level: 8
-        Time: 340000
+        Time: 3600000
       - Level: 9
-        Time: 370000
+        Time: 3600000
       - Level: 10
-        Time: 400000
+        Time: 3600000
     FixedCastTime:
       - Level: 1
         Time: 500
@@ -11240,7 +11240,6 @@ Body:
     DamageFlags:
       NoDamage: true
     Hit: Single
-    AfterCastActDelay: 5000
     Requires:
       SpCost: 50
   - Id: 408
@@ -21654,15 +21653,15 @@ Body:
     HitCount: 1
     Duration1:
       - Level: 1
-        Time: 60000
+        Time: 3600000
       - Level: 2
-        Time: 90000
+        Time: 3600000
       - Level: 3
-        Time: 120000
+        Time: 3600000
       - Level: 4
-        Time: 150000
+        Time: 3600000
       - Level: 5
-        Time: 180000
+        Time: 3600000
     FixedCastTime: 2000
     CastTimeFlags:
       IgnoreDex: true
@@ -32740,8 +32739,7 @@ Body:
     Hit: Single
     HitCount: 1
     AfterCastActDelay: 500
-    Duration1: 150000
-    Cooldown: 300000
+    Duration1: 3600000
     FixedCastTime: 1000
     Requires:
       SpCost:
