@@ -811,7 +811,29 @@ Body:
     Hit: Single
     HitCount: 1
     Element: Fire
-    SplashArea: 2
+    SplashArea:
+      - Level: 1
+        Area: 2
+      - Level: 2
+        Area: 2
+      - Level: 3
+        Area: 2
+      - Level: 4
+        Area: 2
+      - Level: 5
+        Area: 2
+      - Level: 6
+        Area: 2
+      - Level: 7
+        Area: 2
+      - Level: 8
+        Area: 2
+      - Level: 9
+        Area: 2
+      - Level: 10
+        Area: 2
+      - Level: 11
+        Area: 3
     CopyFlags:
       Skill:
         Plagiarism: true
@@ -3093,7 +3115,7 @@ Body:
       - Level: 10
         Area: 3
       - Level: 11
-        Area: 14
+        Area: 16
     CopyFlags:
       Skill:
         Plagiarism: true
@@ -3141,6 +3163,8 @@ Body:
         Time: 6000
       - Level: 10
         Time: 7000
+      - Level: 11
+        Time: 10000
     Duration2: 4500
     Cooldown: 7000
     FixedCastTime:
@@ -11587,7 +11611,7 @@ Body:
     Description: Flying Kick
     MaxLevel: 7
     Type: Weapon
-    TargetType: Support
+    TargetType: Attack
     DamageFlags:
       NoDamage: true
     Range: 9
@@ -18469,7 +18493,7 @@ Body:
     CastTime: 800
     AfterCastActDelay: 2000
     Duration1: 10000
-    Duration2: 17000
+    Duration2: 18000
     FixedCastTime: 200
     Requires:
       SpCost: 40
@@ -33479,15 +33503,15 @@ Body:
     AfterCastActDelay: 1000
     Duration1:
       - Level: 1
-        Time: 1500
+        Time: 2100
       - Level: 2
-        Time: 2000
+        Time: 2800
       - Level: 3
-        Time: 2500
-      - Level: 4
-        Time: 3000
-      - Level: 5
         Time: 3500
+      - Level: 4
+        Time: 4200
+      - Level: 5
+        Time: 4900
     Duration2: 18000
     Cooldown: 5000
     FixedCastTime: 1500
@@ -33506,7 +33530,7 @@ Body:
     Unit:
       Id: Dummyskill
       Range: 3
-      Interval: 500
+      Interval: 700
       Target: Enemy
       Flag:
         PathCheck: true
@@ -33873,15 +33897,15 @@ Body:
     SplashArea: 3
     Duration1:
       - Level: 1
-        Time: 1500
+        Time: 2100
       - Level: 2
-        Time: 2000
+        Time: 2800
       - Level: 3
-        Time: 2500
-      - Level: 4
-        Time: 3000
-      - Level: 5
         Time: 3500
+      - Level: 4
+        Time: 4200
+      - Level: 5
+        Time: 4900
     Duration2: 20000
     Requires:
       ItemCost:
@@ -33890,7 +33914,7 @@ Body:
     Unit:
       Id: Dummyskill
       Range: 3
-      Interval: 500
+      Interval: 700
       Target: Enemy
       Flag:
         PathCheck: true
