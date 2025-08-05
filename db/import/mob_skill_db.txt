@@ -257,3 +257,13 @@
 20387,Curse-swallowed King@NPC_RAYOFGENESIS,attack,737,3,5000,2500,10000,no,self,myhpltmaxrate,10,,,,,,,
 //20387,Curse-swallowed King@NPC_VAMPIRE_GIFT,attack,679,5,10000,0,0,yes,self,skillused,CR_ACIDDEMONSTRATION,,,,,,42,
 20387,Curse-swallowed King@NPC_DARKSTRIKE,idle,340,10,10000,0,0,yes,target,rudeattacked,,,,,,,,
+
+// Old Glast Heim (Challenge Mode)
+20579,Cursed Butler@NPC_POISON,attack,176,1,7000,800,5000,no,target,always,,,,,,,,
+20579,Cursed Butler@NPC_POISON,angry,176,1,7000,800,5000,no,target,always,,,,,,,,
+20579,Cursed Butler@NPC_UNDEADATTACK,attack,347,1,8000,300,5000,yes,target,always,,,,,,,,
+20579,Cursed Butler@NPC_UNDEADATTACK,angry,347,1,8000,300,5000,yes,target,always,,,,,,,,
+20580,Cursed Servant@NPC_POISON,attack,176,3,500,800,5000,no,target,always,,,,,,,,
+20580,Cursed Servant@NPC_POISON,angry,176,3,500,800,5000,no,target,always,,,,,,,,
+20580,Cursed Servant@NPC_UNDEADATTACK,attack,347,1,8000,300,5000,yes,target,always,,,,,,,,
+20580,Cursed Servant@NPC_UNDEADATTACK,angry,347,1,8000,300,5000,yes,target,always,,,,,,,,

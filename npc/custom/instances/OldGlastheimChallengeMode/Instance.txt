@@ -1,0 +1,2191 @@
+//============================================================
+//====== start npc
+//============================================================
+glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
+	if (BaseLevel  < 185) {
+		mes "Need Min level 185"; end;
+	}
+
+	if (lvcom == 0 ) {
+		mes "Oscar";
+		mes "Glast Helm Challenger";
+		next;
+		set lvcom,1;
+		close;
+	}
+
+	if(checkquest(16900,PLAYTIME) == 2){
+		erasequest 16900;
+	}
+
+	mes "Due to the urgent situation, I want to see the status you've built yourself.","Is it a reasonable fit?","Therefore, there is no Challenger level to choose from.","But if the monster is just right,","I will find a way to bring the level up as quickly as possible.";
+	next;
+	switch(select("create","enter")){
+		case 1:
+			if(is_party_leader() == false){
+				mes "Plase, Let's me talk with your partyleader.";
+				end;
+			}
+			switch(checkquest(16900,PLAYTIME)){
+				case 0:
+				case 1:
+					mes "you are on cooldown time";
+					end;
+			}
+			set .@i_inst, instance_create(.instance_challenger$);
+			end;
+		case 2:
+			switch( checkquest(16900,PLAYTIME) ) {
+				case -1:
+						switch(instance_enter(.instance_challenger$)){
+							case IE_OTHER:
+								mes "Error, We don't hit your instance.";
+								close;
+							case IE_NOINSTANCE:
+								mes "no instance asshole";
+								end;
+							case IE_OK:
+								setquest 16900;
+								dispbottom "Please god be with you";
+						}
+						end;
+				case 0:
+				case 1:
+					mes "you are on cooldown time";
+					close;
+				case 2:
+					erasequest 16900;
+					close;
+			}
+		end;
+	}
+		onInit:
+			set .instance_challenger$, "Glast Heim Challenge";
+			waitingroom "Glast Heim Challenge",0;
+		end;
+}
+
+//==========================================================
+// Warp 
+//==========================================================
+//2@gl_k2,146,123,0	warp	#lside	2,2,2@gl_k2,132,123
+2@gl_k2,132,123,0	warp	#rside	2,2,2@gl_k2,170,101
+2@gl_k2,166,101,0	warp	#center	2,2,2@gl_k2,150,101
+2@gl_k2,150,163,0	warp	#bossroom	2,2,2@gl_k2,150,175
+
+
+//==========================================================
+// In Instance 
+//==========================================================
+
+2@gl_k2,149,31,3	script	Oscar#oghc_start	10307,{
+	'partyId = getcharid(1);
+	
+	if(is_party_leader() == false) end;
+	
+	mes "Oscar";
+	mes "......";
+	mes "..........";
+	cutin "oscar02",1;
+	next;
+	mes "Oscar";
+	mes "Please choose the level you want to challenge!";
+	cutin "oscar02",2;
+	switch (select("Level 1:Level 2:Level 3:Level 4:Level 5:Level 6:Level 7:Level 8:Level 9:Level 10") ) {
+	case 1:
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 1;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 1;
+		break;
+	case 2:
+		if (lvcom < 2 ) {
+			mes "You must have cleared Level 1.";
+				cutin "",255;
+		end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 2;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 2;
+		break;
+	case 3:
+		if (lvcom < 3 ) {
+			mes "You must have cleared Level 2 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 3;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 3;
+		break;
+	case 4:
+		if (lvcom < 4 ) {
+			mes "You must have cleared Level 3 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 4;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 4;
+		break;
+	case 5:
+		if (lvcom < 5 ) {
+			mes "You must have cleared Level 4 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 5;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 5;
+		break;
+	case 6:
+		if (lvcom < 6 ) {
+			mes "You must have cleared Level 5 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 6;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 6;
+		break;
+	case 7:
+		if (lvcom < 7 ) {
+			mes "You must have cleared Level 6 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 7;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 7;
+		break;
+	case 8:
+		if (lvcom < 8 ) {
+			mes "You must have cleared Level 7 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 8;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 8;
+		break;
+	case 9:
+		if (lvcom < 9 ) {
+			mes "You must have cleared Level 8 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 9;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 9;
+		break;
+	case 10:
+		if (lvcom < 10 ) {
+			mes "You must have cleared Level 9 first.";
+			cutin "",255;
+			end;
+		}
+		set getvariableofnpc(.lvup,instance_npcname("#leftmob")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("#rightmob")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#2")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#3")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("#Spawn_mob")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("Box#forthecircle")), 10;
+		set getvariableofnpc(.lvup,instance_npcname("Oscar#5")), 10;
+		break;
+	}
+
+	close2;
+	disablenpc instance_npcname("Oscar#oghc_start");
+	enablenpc instance_npcname("Oscar#0");
+	donpcevent instance_npcname("#oscartalk") + "::OnEnable";
+	cutin "",255;
+	end;
+}
+
+2@gl_k2,149,31,3	script	Oscar#0	10307,{ end; }
+
+
+//==========================================================	
+// Oscar Talk
+//===========================================
+
+2@gl_k2,1,1,0	script	#oscartalk	HIDDEN_WARP_NPC,{
+	OnEnable:
+		//mapannounce 'challen_map$, "Phantom Amdarais : Come on ... !!", bc_map,0xFFFF00,FW_NORMAL,18;
+		initnpctimer;
+		'npc_oscar$ = instance_npcname("Oscar#0");
+		end;
+	OnTimer1500:
+		npctalk "My name is Oscar. I am the watcher of the dimensions of time in Glast Heim.", 'npc_oscar$;
+		sleep 2000;
+		mapannounce 'challen_map$, "Phantom Amdarais : Come on ... !!", bc_map,0xFFFF00,FW_NORMAL,18;
+		end;
+	OnTimer5000:
+		npctalk "What is that? Why is there a sound from Phantom?", 'npc_oscar$;
+		end;	
+	OnTimer10000:
+		npctalk "Like this, Glast Heim is surely going to be completely destroyed.", 'npc_oscar$;
+		end;
+	OnTimer14000:
+		npctalk "All you travelers, please help us!", 'npc_oscar$;
+		end;
+	OnTimer17000:
+		npctalk "Please, we need your help.", 'npc_oscar$;
+		end;
+	OnTimer21000:
+		disablenpc instance_npcname("Oscar#0");
+		enablenpc instance_npcname("Oscar#1");
+		end;
+}
+		
+2@gl_k2,149,31,3	script	Oscar#1	10307,{ 
+	if(is_party_leader() == false) end;
+
+	mes "Oscar";
+	mes "Are you ready!?";
+	cutin "oscar02",2;
+	next;
+
+	if (select ("Not ready") == 1 ) end;
+
+	donpcevent instance_npcname("#leftmob") + "::OnStart";
+	warpparty 'challen_map$,128,123,'partyId,'challen_map$;
+	disablenpc instance_npcname("Oscar#1");
+	cutin "",255;
+	end;
+}
+
+2@gl_k2,1,1,0	script	#leftmob	HIDDEN_NPC,{
+	end;
+
+	OnStart:
+		'leftmob$ = instance_npcname("#leftmob") + "::OnMyMobDead";
+		areamonster 'challen_map$,15,164,129,21,"Mutated Raydric",20577,15,'leftmob$;
+			for(.@a = 0;.@a <= 14; .@a++){
+				'mob_raydric = $@mobid[.@a];
+				'raydric_atk = .@datamin[UMOB_ATKMIN];
+				'raydric_atkm = .@datamax[UMOB_ATKMAX];
+				'raydric_matk = .@mdatamin[UMOB_MATKMIN];
+				'raydric_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_raydric, .@datamin;
+				getunitdata 'mob_raydric, .@datamax;
+				getunitdata 'mob_raydric, .@mdatamin;
+				getunitdata 'mob_raydric, .@mdatamax;
+				setunitdata 'mob_raydric, UMOB_ATKMIN, 'raydric_atk * .lvup;
+				setunitdata 'mob_raydric, UMOB_ATKMAX, 'raydric_atkm  * .lvup;
+				setunitdata 'mob_raydric, UMOB_MATKMIN, 'raydric_matk * .lvup;
+				setunitdata 'mob_raydric, UMOB_MATKMAX, 'raydric_matkm * .lvup;
+			}
+		goto OnSpawn2;
+		end;
+		
+	OnSpawn2:
+		areamonster 'challen_map$,15,164,129,21,"Mutated White Knight",20576,13,'leftmob$;
+		for(.@a = 0;.@a <= 12; .@a++){
+				'mob_knight = $@mobid[.@a];
+				'knight_atk = .@datamin[UMOB_ATKMIN];
+				'knight_atkm = .@datamax[UMOB_ATKMAX];
+				'knight_matk = .@mdatamin[UMOB_MATKMIN];
+				'knight_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_knight, .@datamin;
+				getunitdata 'mob_knight, .@datamax;
+				getunitdata 'mob_knight, .@mdatamin;
+				getunitdata 'mob_knight, .@mdatamax;
+				setunitdata 'mob_knight, UMOB_ATKMIN, 'knight_atk * .lvup;
+				setunitdata 'mob_knight, UMOB_ATKMAX, 'knight_atkm * .lvup;
+				setunitdata 'mob_knight, UMOB_MATKMIN, 'knight_matk * .lvup;
+				setunitdata 'mob_knight, UMOB_MATKMAX, 'knight_matkm * .lvup;
+			}
+		goto OnSpawn3;
+		end;
+
+	Onspawn3:
+		areamonster 'challen_map$,15,164,129,21,"Mutated Khalitzburg",20574,12,'leftmob$;
+		for(.@a = 0;.@a <= 11; .@a++){
+				'mob_khalitz = $@mobid[.@a];
+				'khalit_atk = .@datamin[UMOB_ATKMIN];
+				'khalit_atkm = .@datamax[UMOB_ATKMAX];
+				'khalit_matk = .@mdatamin[UMOB_MATKMIN];
+				'khalit_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_khalitz, .@datamin;
+				getunitdata 'mob_khalitz, .@datamax;
+				getunitdata 'mob_khalitz, .@mdatamin;
+				getunitdata 'mob_khalitz, .@mdatamax;
+				setunitdata 'mob_khalitz, UMOB_ATKMIN, 'khalit_atk * .lvup;
+				setunitdata 'mob_khalitz, UMOB_ATKMAX, 'khalit_atkm * .lvup;
+				setunitdata 'mob_khalitz, UMOB_MATKMIN, 'khalit_matk * .lvup;
+				setunitdata 'mob_khalitz, UMOB_MATKMAX, 'khalit_matkm * .lvup;
+			}
+		goto OnSpawn4;
+		end;
+
+	OnSpawn4:
+		areamonster 'challen_map$,15,164,129,21,"Mutated Raydric Archer",20578,10,'leftmob$;
+		for(.@a = 0;.@a <= 9; .@a++){
+				'mob_archer = $@mobid[.@a];
+				'archer_atk = .@datamin[UMOB_ATKMIN];
+				'archer_atkm = .@datamax[UMOB_ATKMAX];
+				'archer_matk = .@mdatamin[UMOB_MATKMIN];
+				'archer_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_archer, .@datamin;
+				getunitdata 'mob_archer, .@datamax;
+				getunitdata 'mob_archer, .@mdatamin;
+				getunitdata 'mob_archer, .@mdatamax;
+				setunitdata 'mob_archer, UMOB_ATKMIN, 'archer_atk * .lvup;
+				setunitdata 'mob_archer, UMOB_ATKMAX, 'archer_atkm * .lvup;
+				setunitdata 'mob_archer, UMOB_MATKMIN, 'archer_matk * .lvup;
+				setunitdata 'mob_archer, UMOB_MATKMAX, 'archer_matkm * .lvup;
+			}
+		end;
+
+	OnMyMobDead:
+		.@mob_dead = mobcount('challen_map$,'leftmob$);
+		if ( .@mob_dead < 1 ) {
+			mapannounce 'challen_map$, "The door flashes to the right side of the map has opened ", bc_map,0xFFFF00,FW_NORMAL,18;
+			enablenpc instance_npcname("#rside");
+			donpcevent instance_npcname("#rightmob") + "::OnStart";
+		}
+		if(.@mob_dead%5 == 0 && .@mob_dead >=5) 
+			mapannounce 'challen_map$, "On the left side, there are monsters "+.@mob_dead+" left", bc_map,0x33FF99,FW_NORMAL,18;
+		if(.@mob_dead < 5 && .@mob_dead > 0)
+			mapannounce 'challen_map$, "On the left side, there are monsters "+.@mob_dead+" left", bc_map, "0x33FF99", FW_NORMAL, 18;
+		end;
+}
+
+2@gl_k2,1,1,0	script	#rightmob	HIDDEN_NPC,{
+	end;
+
+	OnStart:
+		'rightmob$ = instance_npcname("#rightmob") + "::OnMyMobDead";
+		areamonster 'challen_map$,175,163,265,18,"Mutated Raydric",20577,15,'rightmob$;
+			for(.@a = 0;.@a <= 14; .@a++){
+				'mob_raydric = $@mobid[.@a];
+				'raydric_atk = .@datamin[UMOB_ATKMIN];
+				'raydric_atkm = .@datamax[UMOB_ATKMAX];
+				'raydric_matk = .@mdatamin[UMOB_MATKMIN];
+				'raydric_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_raydric, .@datamin;
+				getunitdata 'mob_raydric, .@datamax;
+				getunitdata 'mob_raydric, .@mdatamin;
+				getunitdata 'mob_raydric, .@mdatamax;
+				setunitdata 'mob_raydric, UMOB_ATKMIN, 'raydric_atk * .lvup;
+				setunitdata 'mob_raydric, UMOB_ATKMAX, 'raydric_atkm * .lvup;
+				setunitdata 'mob_raydric, UMOB_MATKMIN, 'raydric_matk * .lvup;
+				setunitdata 'mob_raydric, UMOB_MATKMAX, 'raydric_matkm * .lvup;
+			}
+		goto OnSpawn2;
+		end;
+	OnSpawn2:
+		areamonster 'challen_map$,175,163,265,18,"Mutated White Knight",20576,13,'rightmob$;
+		for(.@a = 0;.@a <= 12; .@a++){
+				'mob_knight = $@mobid[.@a];
+				'knight_atk = .@datamin[UMOB_ATKMIN];
+				'knight_atkm = .@datamax[UMOB_ATKMAX];
+				'knight_matk = .@mdatamin[UMOB_MATKMIN];
+				'knight_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_knight, .@datamin;
+				getunitdata 'mob_knight, .@datamax;
+				getunitdata 'mob_knight, .@mdatamin;
+				getunitdata 'mob_knight, .@mdatamax;
+				setunitdata 'mob_knight, UMOB_ATKMIN, 'knight_atk * .lvup;
+				setunitdata 'mob_knight, UMOB_ATKMAX, 'knight_atkm * .lvup;
+				setunitdata 'mob_knight, UMOB_MATKMIN, 'knight_matk * .lvup;
+				setunitdata 'mob_knight, UMOB_MATKMAX, 'knight_matkm * .lvup;
+			}
+		goto OnSpawn3;
+		end;
+	Onspawn3:
+		areamonster 'challen_map$,175,163,265,18,"Mutated Khalitzburg",20574,12,'rightmob$;
+		for(.@a = 0;.@a <= 11; .@a++){
+				'mob_khalitz = $@mobid[.@a];
+				'khalit_atk = .@datamin[UMOB_ATKMIN];
+				'khalit_atkm = .@datamax[UMOB_ATKMAX];
+				'khalit_matk = .@mdatamin[UMOB_MATKMIN];
+				'khalit_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_khalitz, .@datamin;
+				getunitdata 'mob_khalitz, .@datamax;
+				getunitdata 'mob_khalitz, .@mdatamin;
+				getunitdata 'mob_khalitz, .@mdatamax;
+				setunitdata 'mob_khalitz, UMOB_ATKMIN, 'khalit_atk * .lvup;
+				setunitdata 'mob_khalitz, UMOB_ATKMAX, 'khalit_atkm * .lvup;
+				setunitdata 'mob_khalitz, UMOB_MATKMIN, 'khalit_matk * .lvup;
+				setunitdata 'mob_khalitz, UMOB_MATKMAX, 'khalit_matkm * .lvup;
+			}
+		goto OnSpawn4;
+		end;
+	OnSpawn4:
+		areamonster 'challen_map$,175,163,265,18,"Mutated Raydric Archer",20578,10,'rightmob$;
+		for(.@a = 0;.@a <= 9; .@a++){
+				'mob_archer = $@mobid[.@a];
+				'archer_atk = .@datamin[UMOB_ATKMIN];
+				'archer_atkm = .@datamax[UMOB_ATKMAX];
+				'archer_matk = .@mdatamin[UMOB_MATKMIN];
+				'archer_matkm = .@mdatamax[UMOB_MATKMAX];
+				getunitdata 'mob_archer, .@datamin;
+				getunitdata 'mob_archer, .@datamax;
+				getunitdata 'mob_archer, .@mdatamin;
+				getunitdata 'mob_archer, .@mdatamax;
+				setunitdata 'mob_archer, UMOB_ATKMIN, 'archer_atk * .lvup;
+				setunitdata 'mob_archer, UMOB_ATKMAX, 'archer_atkm * .lvup;
+				setunitdata 'mob_archer, UMOB_MATKMIN, 'archer_matk * .lvup;
+				setunitdata 'mob_archer, UMOB_MATKMAX, 'archer_matkm * .lvup;
+			}
+		end;
+
+	OnMyMobDead:
+		.@mob_dead = mobcount('challen_map$,'rightmob$);
+		if ( .@mob_dead < 1 ) {
+		mapannounce 'challen_map$, "The door flashes towards the main walkway has opened ", bc_map,0xFFFF00,FW_NORMAL,18;
+		enablenpc instance_npcname("#center");
+		enablenpc instance_npcname("Oscar#2");
+		}
+		if(.@mob_dead%5 == 0 && .@mob_dead >=5) 
+			mapannounce 'challen_map$, "On the right side, there are "+.@mob_dead+" monsters left", bc_map,0x33FF99,FW_NORMAL,18;
+		if(.@mob_dead < 5 && .@mob_dead > 0)
+			mapannounce 'challen_map$, "On the right side, there are "+.@mob_dead+" monsters left", bc_map, "0x33FF99", FW_NORMAL, 18;
+		end;
+}
+
+2@gl_k2,150,159,3	script	Oscar#2	10307,{ 
+	if(is_party_leader() == false) end;
+
+	mes "Oscar";
+	mes "If the path is clear...";
+	mes "We will encounter Phantom!!";
+	next;
+	mes "Oscar";
+	mes "But if luck is bad, something might get in our way.";
+	mes "Hopefully, that won�t happen.";
+	next;
+	.@corrup_root = rand(1,10);
+	
+	if (.@corrup_root <= 9 ) {
+		enablenpc instance_npcname("#bossroom");
+		disablenpc instance_npcname("Oscar#2");
+		enablenpc instance_npcname("Oscar#3");
+		end;
+	}
+	else 
+	{
+		'rootspawn$ = instance_npcname("Oscar#2") + "::OnMyMobDead";
+		mes "Oscar";
+		mes "No";
+		mes "We must kill this thing within 30 seconds or it'll curse us to death!";
+		npctalk "Oscar: !!", instance_npcname("Oscar#2");
+		hideonnpc instance_npcname("Oscar#2");
+		monster 'challen_map$,150,161,"Prime Corruption Root",20575,1,'rootspawn$;
+		'mob_root = $@mobid[.@a];
+		'root_atk = .@datamin[UMOB_ATKMIN];
+		'root_atkm = .@datamax[UMOB_ATKMAX];
+		'root_matk = .@mdatamin[UMOB_MATKMIN];
+		'root_matkm = .@mdatamax[UMOB_MATKMAX];
+		getunitdata 'mob_root, .@datamin;
+		getunitdata 'mob_root, .@datamax;
+		getunitdata 'mob_root, .@mdatamin;
+		getunitdata 'mob_root, .@mdatamax;
+		setunitdata 'mob_root, UMOB_ATKMIN, 'root_atk * .lvup;
+		setunitdata 'mob_root, UMOB_ATKMAX, 'root_atkm * .lvup;
+		setunitdata 'mob_root, UMOB_MATKMIN, 'root_matk * .lvup;
+		setunitdata 'mob_root, UMOB_MATKMAX, 'root_matkm * .lvup;
+		initnpctimer;
+		end;
+	}
+
+	OnTimer25000:
+		.@mob_dead = mobcount('challen_map$,'rootspawn$);
+		if (.@mob_dead > 0) areamobuseskill 'challen_map$,150,161,0,20575,"SR_HOWLINGOFLION",1,4900,0,ET_KEK,0;
+		end;
+	OnTimer30000:
+		.@mob_dead = mobcount('challen_map$,'rootspawn$);
+		if (.@mob_dead > 0) {
+			areapercentheal 'challen_map$,146,163,153,146,-100,-100;
+			initnpctimer;
+		}
+		end;
+	OnMyMobDead:
+		.@mob_dead = mobcount('challen_map$,'rootspawn$);
+		if ( .@mob_dead < 1 ) {
+			enablenpc instance_npcname("#bossroom");
+			disablenpc instance_npcname("Oscar#2");
+			enablenpc instance_npcname("Oscar#3");
+		}
+}
+
+2@gl_k2,158,239,3	script	Himer#0	20572,{ end; }
+
+2@gl_k2,158,239,3	script	Phantom Amdarais#0	20573,{ end; }
+
+2@gl_k2,157,228,7	script	Oscar#3	10307,{ 
+	if(is_party_leader() == false) end;
+
+	mes "[Oscar]";
+	mes "No matter what, you'll be fighting Phantom for sure.";
+	mes "And above all else...";
+	next;
+	mes "[Oscar]";
+	mes "Are you ready?";
+	if (select("No, I'm not ready yet.:Yes, I'm ready.") == 1 ) end;
+	hideonnpc instance_npcname("Oscar#3");
+	enablenpc instance_npcname("Oscar#4");
+	'chboss = rand(1,20);
+	if ('chboss == 1) enablenpc instance_npcname("Himer#0");
+	else enablenpc instance_npcname("Phantom Amdarais#0");
+	donpcevent instance_npcname("Oscar#3") + "::OnEnable";
+	end;
+
+	OnEnable:
+		mapannounce 'challen_map$, "There it is, Phantom!!", bc_map,0xFFFFFF,FW_NORMAL,16;
+		initnpctimer;
+		end;
+
+	OnTimer1500:
+		npctalk "It seems it's finally time for judgment.", 'npc_oscarboss$;
+		end;
+
+	OnTimer4500:
+		npctalk "This time, I�m confident you all can do it!", 'npc_oscarboss$;
+		end;
+
+	OnTimer9000:
+		npctalk "We're counting on you, everyone...", 'npc_oscarboss$;
+		end;
+
+	OnTimer12000:
+		specialeffect EF_VIOLENTGALE,AREA,instance_npcname("Phantom Amdarais#0");
+		specialeffect EF_TETRACASTING,AREA,instance_npcname("Phantom Amdarais#0");
+		sleep 500;
+		specialeffect EF_MAGIC_FLOOR,AREA,instance_npcname("Phantom Amdarais#0");
+		sleep 500;
+		enablenpc instance_npcname("Oscar#5");
+		hideonnpc instance_npcname("Oscar#5");
+		enablenpc instance_npcname("#phantom_skill");
+		end;
+
+	OnTimer15000:
+		goto OnBossspawn;
+		end;
+
+	OnBossspawn:
+		hideonnpc instance_npcname("Oscar#4");
+		donpcevent instance_npcname("Oscar#4") + "::OnStart";
+		donpcevent instance_npcname("#phantom_skill") + "::OnStart";
+		donpcevent instance_npcname("#Countstart") + "::OnStart";
+		donpcevent instance_npcname("#Spawn_mob") + "::OnStart";
+		donpcevent instance_npcname("#GHCskills") + "::OnStart";
+		'mvpshow$ = instance_npcname("#phantom_skill") + "::OnMyMobDead";
+		'thornspawn$ = instance_npcname("Oscar#3") + "::OnDarkCross";
+		disablenpc instance_npcname("Phantom Amdarais#0");
+		disablenpc instance_npcname("Himer#0");
+		'phantomalive = 1;
+		'maxpain = 1*.lvup;
+		warpparty 'challen_map$,158,235,'partyId,'challen_map$;
+		if ('chboss == 1 ) monster 'challen_map$,158,240,"Phantom Himmelmez",20572,1,'mvpshow$; 
+		else monster 'challen_map$,158,240,"Amdarais Phantom",20573,1,'mvpshow$;
+		'boss_id = $@mobid[0];
+		setunitdata $@mobid[0], UMOB_MAXHP, 450000000 + 150000000 *.lvup;
+		setcell 'challen_map$,137,218,178,218,cell_walkable,0;
+		setcell 'challen_map$,178,218,178,256,cell_walkable,0;
+		setcell 'challen_map$,178,256,137,256,cell_walkable,0;
+		setcell 'challen_map$,137,256,137,218,cell_walkable,0;
+	end;
+}
+
+2@gl_k2,1,1,0	script	#Spawn_mob	HIDDEN_WARP_NPC,{ 
+	end;
+
+	OnStart:
+		'monsterspawn$ = instance_npcname("#Spawn_mob") + "::OnMyMobDead";
+		initnpctimer;
+		end;
+
+	OnTimer9000:
+		getunitdata 'boss_id, .@data;
+		'Boss_MaxHP = .@data[UMOB_MAXHP];
+		'Boss_HP = .@data[UMOB_HP];
+		if( 'Boss_HP <= (7*'Boss_MaxHP)/10 ) {
+			areamonster 'challen_map$,147,248,169,230,"Mutated Khalitzburg",20583,1,'monsterspawn$;
+			'mob_khalitz = $@mobid[0];
+			'khalit_atk = .@datamin[UMOB_ATKMIN];
+			'khalit_atkm = .@datamax[UMOB_ATKMAX];
+			'khalit_matk = .@mdatamin[UMOB_MATKMIN];
+			'khalit_matkm = .@mdatamax[UMOB_MATKMAX];
+			getunitdata 'mob_khalitz, .@datamin;
+			getunitdata 'mob_khalitz, .@datamax;
+			getunitdata 'mob_khalitz, .@mdatamin;
+			getunitdata 'mob_khalitz, .@mdatamax;
+			setunitdata 'mob_khalitz, UMOB_ATKMIN, 'khalit_atk * .lvup;
+			setunitdata 'mob_khalitz, UMOB_ATKMAX, 'khalit_atkm * .lvup;
+			setunitdata 'mob_khalitz, UMOB_MATKMIN, 'khalit_matk * .lvup;
+			setunitdata 'mob_khalitz, UMOB_MATKMAX, 'khalit_matkm * .lvup;
+		}
+		goto OnSpawn2;
+		end;
+
+	OnSpawn2:
+		getunitdata 'boss_id, .@data;
+		'Boss_MaxHP = .@data[UMOB_MAXHP];
+		'Boss_HP = .@data[UMOB_HP];
+		if( 'Boss_HP <= (5*'Boss_MaxHP)/10 ) {
+			areamonster 'challen_map$,147,248,169,230,"Mutated White Knight",20584,1,'monsterspawn$;
+			'mob_knight = $@mobid[0];
+			'knight_atk = .@datamin[UMOB_ATKMIN];
+			'knight_atkm = .@datamax[UMOB_ATKMAX];
+			'knight_matk = .@mdatamin[UMOB_MATKMIN];
+			'knight_matkm = .@mdatamax[UMOB_MATKMAX];
+			getunitdata 'mob_knight, .@datamin;
+			getunitdata 'mob_knight, .@datamax;
+			getunitdata 'mob_knight, .@mdatamin;
+			getunitdata 'mob_knight, .@mdatamax;
+			setunitdata 'mob_knight, UMOB_ATKMIN, 'knight_atk * .lvup;
+			setunitdata 'mob_knight, UMOB_ATKMAX, 'knight_atkm * .lvup;
+			setunitdata 'mob_knight, UMOB_MATKMIN, 'knight_matk * .lvup;
+			setunitdata 'mob_knight, UMOB_MATKMAX, 'knight_matkm * .lvup;
+		}
+		goto  OnSpawn3;
+		end;
+
+	OnSpawn3:
+		getunitdata 'boss_id, .@data;
+		'Boss_MaxHP = .@data[UMOB_MAXHP];
+		'Boss_HP = .@data[UMOB_HP];
+		if( 'Boss_HP <= (3*'Boss_MaxHP)/10 ) {
+			areamonster 'challen_map$,147,248,169,230,"Mutated Raydric Archer",20585,1,'monsterspawn$;
+			'mob_archer = $@mobid[0];
+			'archer_atk = .@data[UMOB_ATKMIN];
+			'archer_atkm = .@datamax[UMOB_ATKMAX];
+			'archer_matk = .@mdatamin[UMOB_MATKMIN];
+			'archer_matkm = .@mdatamax[UMOB_MATKMAX];
+			getunitdata 'mob_archer, .@datamin;
+			getunitdata 'mob_archer, .@datamax;
+			getunitdata 'mob_archer, .@mdatamin;
+			getunitdata 'mob_archer, .@mdatamax;
+			setunitdata 'mob_archer, UMOB_ATKMIN, 'archer_atk * .lvup;
+			setunitdata 'mob_archer, UMOB_ATKMAX, 'archer_atkm * .lvup;
+			setunitdata 'mob_archer, UMOB_MATKMIN, 'archer_matk * .lvup;
+			setunitdata 'mob_archer, UMOB_MATKMAX, 'archer_matkm * .lvup;
+		}
+		end;
+
+	OnTimer15000:
+		initnpctimer;
+		end;
+
+	OnMyMobDead:
+		end;
+
+	OnBossdead:
+		stopnpctimer;
+		end;
+}
+
+2@gl_k2,1,1,0	script	#Countstart	HIDDEN_WARP_NPC,{ 
+	end;
+
+	OnStart:
+		initnpctimer;
+		end;
+
+	OnTimer1000:
+		getunitdata 'boss_id, .@data;
+		'Boss_MaxHP = .@data[UMOB_MAXHP];
+		'Boss_HP = .@data[UMOB_HP];
+		if( 'Boss_HP <= (9*'Boss_MaxHP)/10 ) {
+			donpcevent instance_npcname("#DarkCross_map") + "::OnStart";
+			stopnpctimer;
+			end;
+		}
+		end;
+
+	OnTimer2000:
+		initnpctimer;
+		end;
+}
+
+2@gl_k2,0,0,0	script	#GHCskills	10307,{ 
+	end;
+
+OnStart:
+	initnpctimer;
+	end;
+OnTimer10000:
+	donpcevent instance_npcname("#GHCskills") + "::OnSkills";
+	donpcevent instance_npcname("#GHCskills") + "::OnSkills2";
+	stopnpctimer;
+	end;
+
+OnSkills2:
+	if('phantomalive == 0){
+	end;
+	}
+	if ('maxpain > 2 ) {
+	//unittalk 'boss_id,"Maxpain !! ",bc_area;
+	getunitdata 'boss_id, .@bossteste;
+	'Boss_MaxHP = .@bossteste[UMOB_MAXHP];
+	'Boss_HP = .@bossteste[UMOB_HP];
+	if( 'Boss_HP <= (70*'Boss_MaxHP)/10 ) {
+		//unittalk 'boss_id,"Maxpain !! ",bc_area;
+		unitskilluseid 'boss_id,716,10,'boss_id,-1;
+	}
+	}
+	sleep 30000;
+	donpcevent instance_npcname("#GHCskills") + "::OnSkills2";
+	end;
+	
+OnSkills:
+	if('phantomalive == 0) end;
+
+
+	set .@qualskill,rand(1,5);
+	set .@Ganbatein,rand(1,3);
+	getunitdata 'boss_id,.@bossteste;
+
+
+	if(.@bossteste[6]>181||.@bossteste[6]<137||.@bossteste[7]>255||.@bossteste[7]<217)
+		unitwarp 'boss_id,'challen_map$,157,238;
+	
+		//Ganbatein
+	sleep 500;
+	if(.@Ganbatein == 1){
+		unittalk 'boss_id,"Ganbatein !! ",bc_area;
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+2,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-2,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+2,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-2,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-3,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-3,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+3,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+3,.@bossteste[7],-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+5,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-5,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-5,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+5,.@bossteste[7],-1000;
+			sleep 5;
+			
+		
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+4,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-4,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-4,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+4,.@bossteste[7],-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+7,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+7,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-7,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-7,.@bossteste[7],-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+9,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-9,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+9,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-9,-1000;
+			sleep 5;
+		
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+8,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-8,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+8,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-8,-1000;
+			sleep 5;	
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+11,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-11,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+11,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-11,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+2,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-2,.@bossteste[7],-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]+2,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6],.@bossteste[7]-2,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+3,.@bossteste[7]+3,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-3,.@bossteste[7]-3,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-3,.@bossteste[7]+3,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+3,.@bossteste[7]-3,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+5,.@bossteste[7]+5,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-5,.@bossteste[7]-5,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-5,.@bossteste[7]+5,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+5,.@bossteste[7]-5,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+7,.@bossteste[7]+7,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+7,.@bossteste[7]-7,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-7,.@bossteste[7]-7,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-7,.@bossteste[7]+7,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+9,.@bossteste[7]+9,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-9,.@bossteste[7]-9,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-9,.@bossteste[7]+9,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+9,.@bossteste[7]-9,-1000;
+			sleep 5;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+11,.@bossteste[7]+11,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-11,.@bossteste[7]-11,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]-11,.@bossteste[7]+11,-1000;
+
+		if(unitexists('boss_id))
+			unitskillusepos 'boss_id,483,1,.@bossteste[6]+11,.@bossteste[7]-11,-1000;
+
+	}
+	if(.@qualskill == 1){
+
+	//Fire wall x
+
+	sleep 500;
+		unittalk 'boss_id,"Fire wall !! ",bc_area;
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6],.@bossteste[7],-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+2,.@bossteste[7],-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-2,.@bossteste[7],-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6],.@bossteste[7]+2,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6],.@bossteste[7]-2,-1000;
+		sleep 300;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+3,.@bossteste[7]+3,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-3,.@bossteste[7]-3,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-3,.@bossteste[7]+3,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+3,.@bossteste[7]-3,-1000;
+		sleep 300;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+5,.@bossteste[7]+5,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-5,.@bossteste[7]-5,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-5,.@bossteste[7]+5,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+5,.@bossteste[7]-5,-1000;
+		sleep 300;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+7,.@bossteste[7]+7,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+7,.@bossteste[7]-7,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-7,.@bossteste[7]-7,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-7,.@bossteste[7]+7,-1000;
+		sleep 300;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+9,.@bossteste[7]+9,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-9,.@bossteste[7]-9,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-9,.@bossteste[7]+9,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+9,.@bossteste[7]-9,-1000;
+		sleep 500;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+11,.@bossteste[7]+11,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-11,.@bossteste[7]-11,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]-11,.@bossteste[7]+11,-1000;
+		
+		if(unitexists('boss_id))
+		unitskillusepos 'boss_id,18,1,.@bossteste[6]+11,.@bossteste[7]-11,-1000;
+		}
+		
+
+	if(.@qualskill == 2){
+	//HeavenDrive +X
+	sleep 500;
+	unittalk 'boss_id,"Ground Drive !! ",bc_area;
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-3,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+3,.@bossteste[7],-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-5,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+5,.@bossteste[7],-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+7,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+7,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-7,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-7,.@bossteste[7],-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-9,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+12,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-12,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+5,.@bossteste[7]+5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-5,.@bossteste[7]-5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-5,.@bossteste[7]+5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+5,.@bossteste[7]-5,-1000;
+	
+	}
+	
+	if(.@qualskill==3){
+	sleep 500; //Heavendrive ++
+	unittalk 'boss_id,"Ground Drive !! ",bc_area;
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+3,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-3,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-3,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+6,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-6,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+6,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-6,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-9,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+12,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-12,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+15,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-15,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+15,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-15,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+18,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-18,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+18,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-18,-1000;
+	sleep 20;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]+21,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6]-21,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]+21,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,770,5,.@bossteste[6],.@bossteste[7]-21,-1000;
+	sleep 20;
+	
+	}
+	
+	if(.@qualskill == 4){
+
+	//rain x
+	sleep 500;
+	unittalk 'boss_id,"Rain of Meteor !! ",bc_area;
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+2,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-2,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+2,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-2,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+3,.@bossteste[7]+3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-3,.@bossteste[7]-3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-3,.@bossteste[7]+3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+3,.@bossteste[7]-3,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+5,.@bossteste[7]+5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-5,.@bossteste[7]-5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-5,.@bossteste[7]+5,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+5,.@bossteste[7]-5,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+7,.@bossteste[7]+7,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+7,.@bossteste[7]-7,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-7,.@bossteste[7]-7,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-7,.@bossteste[7]+7,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+9,.@bossteste[7]+9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-9,.@bossteste[7]-9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-9,.@bossteste[7]+9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+9,.@bossteste[7]-9,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+11,.@bossteste[7]+11,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-11,.@bossteste[7]-11,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-11,.@bossteste[7]+11,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+11,.@bossteste[7]-11,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+13,.@bossteste[7]+13,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-13,.@bossteste[7]-13,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-13,.@bossteste[7]+13,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+13,.@bossteste[7]-13,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+15,.@bossteste[7]+15,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-15,.@bossteste[7]-15,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-15,.@bossteste[7]+15,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+15,.@bossteste[7]-15,-1000;
+	sleep 180;
+	}
+	if(.@qualskill == 5){
+	sleep 500; //rain ++
+	unittalk 'boss_id,"Rain of Meteor !! ",bc_area;
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+3,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-3,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+3,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-3,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+6,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-6,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+6,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-6,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-9,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+9,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-9,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-12,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+12,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-12,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+15,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-15,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+15,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-15,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+18,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-18,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+18,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-18,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+21,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-21,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+21,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-21,-1000;
+	sleep 180;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]+25,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6]-25,.@bossteste[7],-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]+25,-1000;
+	
+	if(unitexists('boss_id))
+	unitskillusepos 'boss_id,769,1,.@bossteste[6],.@bossteste[7]-25,-1000;
+	sleep 180;
+	
+	}
+	
+	
+	sleep 10000;
+	donpcevent instance_npcname("#GHCskills") + "::OnSkills";
+	end;
+}
+
+
+2@gl_k2,1,1,0	script	#DarkCross_map	HIDDEN_WARP_NPC,{ 
+	end;
+
+	OnStart:
+		// Test Set DarkCross
+		'thornspawn1$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross1";
+		'thornspawn2$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross2";
+		'thornspawn3$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross3";
+		'thornspawn4$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross4";
+		'thornspawn5$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross5";
+		'thornspawn6$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross6";
+		'thornspawn7$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross7";
+		'thornspawn8$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross8";
+		'thornspawn9$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross9";
+		'thornspawn10$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross10";
+		'thornspawn11$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross11";
+		'thornspawn12$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross12";
+		'thornspawn13$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross13";
+		'thornspawn14$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross14";
+		'thornspawn15$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross15";
+		'thornspawn16$ = instance_npcname("#DarkCross_map") + "::OnPreDarkCross16";
+		'darkcross1$ = instance_npcname("#DarkCross_map") + "::OnDarkCross1";
+		'darkcross2$ = instance_npcname("#DarkCross_map") + "::OnDarkCross2";
+		'darkcross3$ = instance_npcname("#DarkCross_map") + "::OnDarkCross3";
+		'darkcross4$ = instance_npcname("#DarkCross_map") + "::OnDarkCross4";
+		'darkcross5$ = instance_npcname("#DarkCross_map") + "::OnDarkCross5";
+		'darkcross6$ = instance_npcname("#DarkCross_map") + "::OnDarkCross6";
+		'darkcross7$ = instance_npcname("#DarkCross_map") + "::OnDarkCross7";
+		'darkcross8$ = instance_npcname("#DarkCross_map") + "::OnDarkCross8";
+		'darkcross9$ = instance_npcname("#DarkCross_map") + "::OnDarkCross9";
+		'darkcross10$ = instance_npcname("#DarkCross_map") + "::OnDarkCross10";
+		'darkcross11$ = instance_npcname("#DarkCross_map") + "::OnDarkCross11";
+		'darkcross12$ = instance_npcname("#DarkCross_map") + "::OnDarkCross12";
+		'darkcross13$ = instance_npcname("#DarkCross_map") + "::OnDarkCross13";
+		'darkcross14$ = instance_npcname("#DarkCross_map") + "::OnDarkCross14";
+		'darkcross15$ = instance_npcname("#DarkCross_map") + "::OnDarkCross15";
+		'darkcross16$ = instance_npcname("#DarkCross_map") + "::OnDarkCross16";
+		// Test Set DarkCross
+		initnpctimer;
+		end;
+
+	OnTimer1000:
+		if ('phantomalive == 0) end;
+
+		monster 'challen_map$,144,224,"Mutated Thorn",20581,1,'thornspawn1$;
+		monster 'challen_map$,153,224,"Mutated Thorn",20581,1,'thornspawn2$;
+		monster 'challen_map$,162,224,"Mutated Thorn",20581,1,'thornspawn3$;
+		monster 'challen_map$,171,224,"Mutated Thorn",20581,1,'thornspawn4$;
+		monster 'challen_map$,171,233,"Mutated Thorn",20581,1,'thornspawn5$;
+		monster 'challen_map$,144,233,"Mutated Thorn",20581,1,'thornspawn6$;
+		monster 'challen_map$,153,233,"Mutated Thorn",20581,1,'thornspawn7$;
+		monster 'challen_map$,162,233,"Mutated Thorn",20581,1,'thornspawn8$;
+		monster 'challen_map$,171,242,"Mutated Thorn",20581,1,'thornspawn9$;
+		monster 'challen_map$,144,242,"Mutated Thorn",20581,1,'thornspawn10$;
+		monster 'challen_map$,153,242,"Mutated Thorn",20581,1,'thornspawn11$;
+		monster 'challen_map$,162,242,"Mutated Thorn",20581,1,'thornspawn12$;
+		monster 'challen_map$,171,251,"Mutated Thorn",20581,1,'thornspawn13$;
+		monster 'challen_map$,144,251,"Mutated Thorn",20581,1,'thornspawn14$;
+		monster 'challen_map$,153,251,"Mutated Thorn",20581,1,'thornspawn15$;
+		monster 'challen_map$,162,251,"Mutated Thorn",20581,1,'thornspawn16$;
+		end;
+
+	OnTimer6000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20581,"NPC_INVISIBLE",1,0,0,0,0;
+		end;
+
+	OnTimer6010:	
+		end;
+
+	OnTimer7000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer8000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer9000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer10000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer11000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer12000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer13000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer14000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer15000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer16000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer17000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer18000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		end;
+
+	OnTimer19000:
+		monster 'challen_map$,144,224,"",20562,mobcount('challen_map$,'thornspawn1$),'darkcross1$;
+		monster 'challen_map$,153,224,"",20562,mobcount('challen_map$,'thornspawn2$),'darkcross2$;
+		monster 'challen_map$,162,224,"",20562,mobcount('challen_map$,'thornspawn3$),'darkcross3$;
+		monster 'challen_map$,171,224,"",20562,mobcount('challen_map$,'thornspawn4$),'darkcross4$;
+		monster 'challen_map$,171,233,"",20562,mobcount('challen_map$,'thornspawn5$),'darkcross5$;
+		monster 'challen_map$,144,233,"",20562,mobcount('challen_map$,'thornspawn6$),'darkcross6$;
+		monster 'challen_map$,153,233,"",20562,mobcount('challen_map$,'thornspawn7$),'darkcross7$;
+		monster 'challen_map$,162,233,"",20562,mobcount('challen_map$,'thornspawn8$),'darkcross8$;
+		monster 'challen_map$,171,242,"",20562,mobcount('challen_map$,'thornspawn9$),'darkcross9$;
+		monster 'challen_map$,144,242,"",20562,mobcount('challen_map$,'thornspawn10$),'darkcross10$;
+		monster 'challen_map$,153,242,"",20562,mobcount('challen_map$,'thornspawn11$),'darkcross11$;
+		monster 'challen_map$,162,242,"",20562,mobcount('challen_map$,'thornspawn12$),'darkcross12$;
+		monster 'challen_map$,171,251,"",20562,mobcount('challen_map$,'thornspawn13$),'darkcross13$;
+		monster 'challen_map$,144,251,"",20562,mobcount('challen_map$,'thornspawn14$),'darkcross14$;
+		monster 'challen_map$,153,251,"",20562,mobcount('challen_map$,'thornspawn15$),'darkcross15$;
+		monster 'challen_map$,162,251,"",20562,mobcount('challen_map$,'thornspawn16$),'darkcross16$;
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer20000:	
+		killmonster 'challen_map$,'darkcross1$;
+		killmonster 'challen_map$,'darkcross2$;
+		killmonster 'challen_map$,'darkcross3$;
+		killmonster 'challen_map$,'darkcross4$;
+		killmonster 'challen_map$,'darkcross5$;
+		killmonster 'challen_map$,'darkcross6$;
+		killmonster 'challen_map$,'darkcross7$;
+		killmonster 'challen_map$,'darkcross8$;
+		killmonster 'challen_map$,'darkcross9$;
+		killmonster 'challen_map$,'darkcross10$;
+		killmonster 'challen_map$,'darkcross11$;
+		killmonster 'challen_map$,'darkcross12$;
+		killmonster 'challen_map$,'darkcross13$;
+		killmonster 'challen_map$,'darkcross14$;
+		killmonster 'challen_map$,'darkcross15$;
+		killmonster 'challen_map$,'darkcross16$;
+		killmonster 'challen_map$,'thornspawn1$;
+		killmonster 'challen_map$,'thornspawn2$;
+		killmonster 'challen_map$,'thornspawn3$;
+		killmonster 'challen_map$,'thornspawn4$;
+		killmonster 'challen_map$,'thornspawn5$;
+		killmonster 'challen_map$,'thornspawn6$;
+		killmonster 'challen_map$,'thornspawn7$;
+		killmonster 'challen_map$,'thornspawn8$;
+		killmonster 'challen_map$,'thornspawn9$;
+		killmonster 'challen_map$,'thornspawn10$;
+		killmonster 'challen_map$,'thornspawn11$;
+		killmonster 'challen_map$,'thornspawn12$;
+		killmonster 'challen_map$,'thornspawn13$;
+		killmonster 'challen_map$,'thornspawn14$;
+		killmonster 'challen_map$,'thornspawn15$;
+		killmonster 'challen_map$,'thornspawn16$;
+		end;
+
+	OnTimer21000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer23000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer25000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer27000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer29000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer31000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer33000:
+		areamobuseskill 'challen_map$,158,240,21,20562,"NPC_GRANDDARKNESS",10,0,0,0,0;
+		end;
+
+	OnTimer35000:
+		end;
+
+	OnTimer36000:
+		initnpctimer;
+		end;
+
+	OnBossdead:
+		stopnpctimer;
+		end;
+
+	OnDarkCross:
+		end;
+	OnPreDarkCross1:
+		end;
+	OnPreDarkCross2:
+		end;
+	OnPreDarkCross3:
+		end;
+	OnPreDarkCross4:
+		end;
+	OnPreDarkCross5:
+		end;
+	OnPreDarkCross6:
+		end;
+	OnPreDarkCross7:
+		end;
+	OnPreDarkCross8:
+		end;
+	OnPreDarkCross9:
+		end;
+	OnPreDarkCross10:
+		end;
+	OnPreDarkCross11:
+		end;
+	OnPreDarkCross12:
+		end;
+	OnPreDarkCross13:
+		end;
+	OnPreDarkCross14:
+		end;
+	OnPreDarkCross15:
+		end;
+	OnPreDarkCross16:
+		end;
+	OnDarkCross1:
+		end;
+	OnDarkCross2:
+		end;
+	OnDarkCross3:
+		end;
+	OnDarkCross4:
+		end;
+	OnDarkCross5:
+		end;
+	OnDarkCross6:
+		end;
+	OnDarkCross7:
+		end;
+	OnDarkCross8:
+		end;
+	OnDarkCross9:
+		end;
+	OnDarkCross10:
+		end;
+	OnDarkCross11:
+		end;
+	OnDarkCross12:
+		end;
+	OnDarkCross13:
+		end;
+	OnDarkCross14:
+		end;
+	OnDarkCross15:
+		end;
+	OnDarkCross16:
+		end;
+}
+
+2@gl_k2,1,1,0	script	#phantom_skill	HIDDEN_WARP_NPC,{ 
+	end;
+
+	OnStart:
+		'skillshow$ = instance_npcname("#phantom_skill") + "::OnMobdead";
+		initnpctimer;
+		end;
+
+	OnTimer7000:// X form
+		getunitdata 'boss_id, .@data;
+		'x_boss = .@data[UMOB_X];
+		'y_boss = .@data[UMOB_Y];
+		monster 'challen_map$, ('x_boss+3), ('y_boss+3), "",3038,1, 'skillshow$;// MM_FLAMECROSS
+		monster 'challen_map$, ('x_boss+3), ('y_boss-3), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-3), ('y_boss+3), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-3), ('y_boss-3), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss+6), ('y_boss+6), "",3038,1, 'skillshow$;// MM_FLAMECROSS
+		monster 'challen_map$, ('x_boss+6), ('y_boss-6), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-6), ('y_boss+6), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-6), ('y_boss-6), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss+9), ('y_boss+9), "",3038,1, 'skillshow$;// MM_FLAMECROSS
+		monster 'challen_map$, ('x_boss+9), ('y_boss-9), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-9), ('y_boss+9), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-9), ('y_boss-9), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss+13), ('y_boss+13), "",3038,1, 'skillshow$;// MM_FLAMECROSS
+		monster 'challen_map$, ('x_boss+13), ('y_boss-13), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-13), ('y_boss+13), "",3038,1, 'skillshow$;
+		monster 'challen_map$, ('x_boss-13), ('y_boss-13), "",3038,1, 'skillshow$;
+		end;
+
+	OnTimer11000:
+		killmonster 'challen_map$, 'skillshow$;
+		initnpctimer;
+		end;
+
+	OnBossdead:
+		stopnpctimer;
+		end;
+
+	OnMobdead:
+		end;
+
+	OnMyMobDead:
+		'phantomalive = 0;
+		'rewardbox = 1;
+		stopnpctimer;
+		'x_boss = 'y_boss = 'boss_id = 0;
+		killmonsterall 'challen_map$;
+		donpcevent instance_npcname("#phantom_skill") + "::OnBossdead";
+		donpcevent instance_npcname("#DarkCross_map") + "::OnBossdead";
+		donpcevent instance_npcname("#Spawn_mob") + "::OnBossdead";
+		donpcevent instance_npcname("Oscar#4") + "::OnBossdead";
+		disablenpc instance_npcname("Oscar#3");
+		disablenpc instance_npcname("Oscar#4");
+		hideoffnpc instance_npcname("Oscar#5");
+		enablenpc instance_npcname("Box#forthecircle");
+		mapannounce 'challen_map$, "Thank you, traveler. Now go, don't be a hindrance.", bc_map,0xFFFFFF,FW_NORMAL,16;
+		end;
+}	
+
+2@gl_k2,157,228,7	script	Oscar#4	10307,{ 
+	end; 
+
+	OnStart:
+		initnpctimer;
+		end;
+
+	OnTimer30000:
+		initnpctimer;
+		end;
+
+	OnBossdead:
+		stopnpctimer;
+		end;
+}	
+
+2@gl_k2,158,240,0	script	Box#forthecircle	4_TREASURE_BOX,{	
+	if('rewardbox == 0) end;
+	'rewardbox = 0;
+	specialeffect EF_COIN;
+	disablenpc instance_npcname("Box#forthecircle");
+	
+	if (.lvup == 1 ) {
+		makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 4; .@i++) if(rand(1,5) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 14; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 2 ) {
+		makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 5; .@i++) if(rand(1,5) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 19; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 3 ) {
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 5; .@i++) if(rand(1,5) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 2; .@i++) if(rand(1,4) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 24; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 4 ) {
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 6; .@i++) if(rand(1,5) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 3; .@i++) if(rand(1,4) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 29; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 5 ) {
+		for (.@i = 1; .@i <= 3; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 6; .@i++) if(rand(1,5) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 3; .@i++) if(rand(1,4) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 3; .@i++) if(rand(1,10) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 6 ) {
+		for (.@i = 1; .@i <= 3; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 7; .@i++) if(rand(1,3) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 4; .@i++) if(rand(1,6) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 3; .@i++) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 4; .@i++) if(rand(1,4) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 7 ) {
+		for (.@i = 1; .@i <= 4; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 6; .@i++) if(rand(1,3) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 3; .@i++) if(rand(1,6) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 5; .@i++) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 6; .@i++) if(rand(1,4) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 3; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 8 ) {
+		for (.@i = 1; .@i <= 4; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 6; .@i++) if(rand(1,3) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 4; .@i++) if(rand(1,6) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 8; .@i++) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 8; .@i++) if(rand(1,4) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 3; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup == 9 ) {
+		for (.@i = 1; .@i <= 5; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 5; .@i++) if(rand(1,3) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 4; .@i++) if(rand(1,6) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 11; .@i++) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 11; .@i++) if(rand(1,4) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 4; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+
+	if (.lvup >= 10 ) {
+		for (.@i = 1; .@i <= 5; .@i++) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 5; .@i++) if(rand(1,3) <= 1) makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle
+		for (.@i = 1; .@i <= 2; .@i++) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 5; .@i++) if(rand(1,6) <= 1) makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+		for (.@i = 1; .@i <= 14; .@i++) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 14; .@i++) if(rand(1,4) <= 1) makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+		for (.@i = 1; .@i <= 4; .@i++) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+		for (.@i = 1; .@i <= 28; .@i++) if(rand(1,2) <= 1) makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+	}
+	
+//	makeitem 25864,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Circle	
+//	makeitem 25865,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Gemstone
+//	makeitem 25866,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Spell
+//	makeitem 25867,1, 'challen_map$, (158 + rand(-5,5)), (240 + rand(-5,5));	// Fragment
+
+	end;
+}
+
+2@gl_k2,157,228,7	script	Oscar#5	10307,{ 
+	if('phantomalive == 0) {
+		mes "[Oscar]";
+		mes "You can really win this.";
+		next;
+		if ( select("Leave","Stay") == 1 ) {
+			warp "glast_01",140,288;
+			if(lvcom == 1 && .lvup == 1) { set lvcom,2; end; }
+			if(lvcom == 2 && .lvup == 2) { set lvcom,3; end; }
+			if(lvcom == 3 && .lvup == 3) { set lvcom,4; end; }
+			if(lvcom == 4 && .lvup == 4) { set lvcom,5; end; }
+			if(lvcom == 5 && .lvup == 5) { set lvcom,6; end; }
+			if(lvcom == 6 && .lvup == 6) { set lvcom,7; end; }
+			if(lvcom == 7 && .lvup == 7) { set lvcom,8; end; }
+			if(lvcom == 8 && .lvup == 8) { set lvcom,9; end; }
+			if(lvcom == 9 && .lvup == 9) { set lvcom,10; end; }
+			if(lvcom >= 10 && .lvup == 10) { set lvcom,lvcom+1; end;}
+		}
+		else
+		{
+			mes "Okay";
+			close;
+		}
+	}
+	end;
+	
+OnInstanceInit:
+	setarray .level_challenge[0],1,2,3,4,5,6,7,8,9,10;
+//	set .ChallengerLevel$,"#Challenger_Points";	// ��˹���ҹ����дѺ
+	'challen_map$ = instance_mapname("2@gl_k2");
+	
+	// Array On NPC
+	
+	// Wall Entrance
+	setcell 'challen_map$,144,40,155,40,cell_walkable,0;
+	
+	// Entrance
+	disablenpc instance_npcname("Oscar#0");
+	disablenpc instance_npcname("Oscar#1");
+	disablenpc instance_npcname("Oscar#2");	
+		
+	// Warp
+	disablenpc instance_npcname("#rside");
+	disablenpc instance_npcname("#center");
+	disablenpc instance_npcname("#bossroom");
+	
+	//Boss rooom
+	disablenpc instance_npcname("#Spawn_mob");
+	disablenpc instance_npcname("#DarkCross_map");
+	disablenpc instance_npcname("#phantom_skill");
+	disablenpc instance_npcname("Phantom Amdarais#0");
+	disablenpc instance_npcname("Himer#0");
+	disablenpc instance_npcname("Oscar#3");
+	disablenpc instance_npcname("Oscar#4");
+	disablenpc instance_npcname("Oscar#5");
+	disablenpc instance_npcname("Box#forthecircle");
+	end;
+}
+
+//==========================================================
+// In Instance 
+//==========================================================
+
+2@gl_k2	mapflag	noteleport
+2@gl_k2	mapflag	nomemo
+2@gl_k2	mapflag	nosave
+2@gl_k2	mapflag	hidemobhpbar

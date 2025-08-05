@@ -3166,3 +3166,115 @@ Body:
       IgnoreMelee: true
       IgnoreMisc: true
       IgnoreRanged: true
+  - Id: 20579
+    AegisName: MD_C_ZOMBIE
+    Name: Cursed Butler
+    Level: 180
+    Hp: 2306607
+    BaseExp: 168616
+    JobExp: 118031
+    Attack: 4680
+    Attack2: 2256
+    Defense: 308
+    MagicDefense: 76
+    Str: 208
+    Agi: 221
+    Vit: 90
+    Int: 188
+    Dex: 321
+    Luk: 66
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Undead
+    Element: Undead
+    ElementLevel: 2
+    WalkSpeed: 300
+    AttackDelay: 1846
+    AttackMotion: 912
+    ClientAttackMotion: 384
+    DamageMotion: 504
+    Ai: 04
+    Drops:
+    - Item: Glast_Decayed_Nail
+      Rate: 1000
+    - Item: Glast_Horrendous_Mouth
+      Rate: 1000
+    - Item: Old_White_Cloth
+      Rate: 1000
+    - Item: Fragment_Of_Time
+      Rate: 250
+    - Item: C_Cursed_Butler
+      Rate: 1
+      StealProtected: true
+  - Id: 20580
+    AegisName: MD_C_GHOUL
+    Name: Cursed Servant
+    Level: 184
+    Hp: 2360625
+    BaseExp: 168616
+    JobExp: 118031
+    Attack: 5865
+    Attack2: 2159
+    Defense: 308
+    MagicDefense: 76
+    Str: 255
+    Agi: 267
+    Vit: 108
+    Int: 176
+    Dex: 380
+    Luk: 66
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Undead
+    Element: Undead
+    ElementLevel: 2
+    WalkSpeed: 300
+    AttackDelay: 1456
+    AttackMotion: 812
+    ClientAttackMotion: 384
+    DamageMotion: 504
+    Ai: 04
+    Drops:
+    - Item: Glast_Decayed_Nail
+      Rate: 1000
+    - Item: Glast_Horrendous_Mouth
+      Rate: 1000
+    - Item: Old_White_Cloth
+      Rate: 1000
+    - Item: Fragment_Of_Time
+      Rate: 250
+    - Item: C_Cursed_Butler
+      Rate: 1
+      StealProtected: true
+  - Id: 20581
+    AegisName: MD_C_THORN
+    Name: Thorn
+    Level: 185
+    Hp: 50
+    Attack: 1
+    Attack2: 1
+    Defense: 71
+    MagicDefense: 66
+    Str: 1
+    Agi: 1
+    Vit: 1
+    Int: 1
+    Dex: 1
+    Luk: 1
+    AttackRange: 1
+    SkillRange: 10
+    ChaseRange: 12
+    Size: Medium
+    Race: Formless
+    Element: Fire
+    ElementLevel: 3
+    AttackDelay: 2864
+    AttackMotion: 288
+    ClientAttackMotion: 384
+    DamageMotion: 576
+    Ai: 30
+    Drops: []
