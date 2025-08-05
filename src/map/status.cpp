@@ -9548,17 +9548,6 @@ status_change *status_get_sc(struct block_list *bl)
 	return nullptr;
 }
 
-/**
- * Initiate (memset) the status change data of an object
- * @param bl: Object whose sc data to memset [PC|MOB|HOM|MER|ELEM|NPC]
- */
-void status_change_init(struct block_list *bl)
-{
-	status_change *sc = status_get_sc(bl);
-	nullpo_retv(sc);
-	new (sc) status_change();
-}
-
 /*========================================== [Playtester]
 * Returns the interval for status changes that iterate multiple times
 * through the timer (e.g. those that deal damage in regular intervals)
@@ -11652,8 +11641,14 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val3 = 5*val1; // Def2 reduction
 			break;
 		case SC_PROVOKE:
-			val2 = 2+3*val1; // Atk increase
-			val3 = 5+5*val1; // Def reduction.
+			if (src->type != BL_PC && val1 == 10) {
+				val2 = 0; // 0% Atk increase
+				val3 = 100; // 100% Def reduction
+			}
+			else {
+				val2 = 2 + 3 * val1; // Atk increase
+				val3 = 5 + 5 * val1; // Def reduction
+			}
 			// val4 signals autoprovoke.
 			break;
 		case SC_AVOID:
