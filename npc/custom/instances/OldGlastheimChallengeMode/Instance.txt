@@ -1,3 +1,5 @@
+// https://github.com/korkeng/serverep17/blob/main/npc/re/custom/OGHC/Challenger.txt
+
 //============================================================
 //====== start npc
 //============================================================

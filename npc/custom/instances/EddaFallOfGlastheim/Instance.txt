@@ -1,3 +1,5 @@
+// https://github.com/crazy-arashi/rathena-script-collection/tree/master/Fall%20of%20Glastheim
+
 //===== Crazyarashi Services =====================================|
 //= Edda Glastheim                                               =|
 //===== By: ======================================================|
