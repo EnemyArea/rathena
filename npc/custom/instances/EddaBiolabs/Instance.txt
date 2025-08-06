@@ -4,46 +4,36 @@
 //====== start npc
 //============================================================
 yuno,216,345,3	script	Sierra#yuno	4_F_SCIENCE,{
-	if(checkquest(16400,PLAYTIME) == 2){
-		erasequest 16400;
-	}
 
 	switch(select("create","enter")){
 		case 1:
 			if(is_party_leader() == false){
-				mes "come on you not an alpha..";
+				mes "Come on you not an alpha...";
 				end;
 			}
 			set .@i_inst, instance_create(.instance_name$);
 			end;
-		case 2:
-			switch(checkquest(16400,PLAYTIME)){
-				case 0:
-				case 1:
-					mes "you are on cooldown fella";
-					end;
-			}
-			
+		case 2:	
 			switch(instance_enter(.instance_name$)){
 				case IE_OTHER:
 					mes "An unknown error has occurred.";
 					close;
 				case IE_NOINSTANCE:
-					mes "no instance dumb ass";
+					mes "no instance";
 					end;
 				case IE_OK:
-					setquest 16400;
 					@documents = 0;
 					@weapon = 0;
-					mapannounce "yuno", strcharinfo(0) +" is entering on Edda Biolabs",bc_map,"0x00ff99",FW_NORMAL,12;
-					dispbottom "asdas";
+					mapannounce "yuno", strcharinfo(0) +" is entering the Biotechnology Research Institute",bc_map,"0x00ff99",FW_NORMAL,12;
 			}
 			end;
 	}
-onInit:
-	set .instance_name$, "Edda Bio";
-end;
+
+	onInit:
+		set .instance_name$, "Biotechnology Research Institute";
+	end;
 }
+
 // 
 1@gol1,198,37,3	script	Sierra#1	4_F_SCIENCE,{
 	if('floor1Clear$) {
@@ -52,40 +42,33 @@ end;
 	}
 	
 	if(is_party_leader()){
-		//mes "dialogue bla bla bla";
-		//mes "lore and more lore";
-		//next;
-		//mes "more dialogue bla bla bla";
-		//mes "dialogue yupi";
-		next;
-		
 		'partyId$ = getcharid(1);
 		'floor1Clear$ = 1;
 		warpparty 'map1$,164,187,'partyId$,'map1$;
 	}
 	end;
-OnInstanceInit:
-	'map1$ = instance_mapname("1@gol1");
-	'map2$ = instance_mapname("1@gol2");
-	
-	
-	hideonnpc instance_mapname("Sierra#mvp");
-	hideonnpc instance_npcname("Box#mvp");
-	
-	for (.@i = 1; .@i <= 38; .@i++){
-		hideonnpc instance_npcname("block#"+.@i);
-	}
-	
-	for(.@i = 1; .@i <= 16;.@i++){
-		hideonnpc instance_npcname("block#s1b"+.@i);
-		hideonnpc instance_npcname("block#s3b"+.@i);
-		hideonnpc instance_npcname("block#s7b"+.@i);
-		hideonnpc instance_npcname("block#s9b"+.@i);
-	}
-	
-	
-end;
+
+	OnInstanceInit:
+		'map1$ = instance_mapname("1@gol1");
+		'map2$ = instance_mapname("1@gol2");
+		
+		
+		hideonnpc instance_mapname("Sierra#mvp");
+		hideonnpc instance_npcname("Box#mvp");
+		
+		for (.@i = 1; .@i <= 38; .@i++){
+			hideonnpc instance_npcname("block#"+.@i);
+		}
+		
+		for(.@i = 1; .@i <= 16;.@i++){
+			hideonnpc instance_npcname("block#s1b"+.@i);
+			hideonnpc instance_npcname("block#s3b"+.@i);
+			hideonnpc instance_npcname("block#s7b"+.@i);
+			hideonnpc instance_npcname("block#s9b"+.@i);
+		}	
+	end;
 }
+
 //============================================================
 //====== floor 2
 //============================================================
@@ -99,16 +82,15 @@ end;
 	areamonster 'map1$,172,189,175,192,"Regenschirm Scientist",20543,4,instance_npcname("Floor#2")+"::OnMyMobDead";
 	
 	'mobfloor2 = 14;
-	
-end;
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor2 <= 0) {
-		sleep 1000;
-		'floor2Clear$ = 1;
-		warpparty 'map1$,67,277,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor2 <= 0) {
+			sleep 1000;
+			'floor2Clear$ = 1;
+			warpparty 'map1$,67,277,'partyId$,'map1$;
+		}
+	end;
 }
 
 //============================================================
@@ -129,15 +111,15 @@ end;
 	areamonster 'map1$,8,323,15,316,"Regenschirm Scientist",20543,2,instance_npcname("Floor#3")+"::OnMyMobDead";
 
 	'mobfloor3 = 25;
-end;
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor3 <= 0) {
-		sleep 1000;
-		'floor3Clear$ = 1;
-		warpparty 'map1$,113,191,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor3 <= 0) {
+			sleep 1000;
+			'floor3Clear$ = 1;
+			warpparty 'map1$,113,191,'partyId$,'map1$;
+		}
+	end;
 }
 
 
@@ -156,15 +138,15 @@ end;
 	areamonster 'map1$,85,215,93,208,"Rekenber Guard",20542,5,instance_npcname("Floor#4")+"::OnMyMobDead";
 	
 	'mobfloor4 = 21;
-end;
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor4 <= 0) {
-		sleep 1000;
-		'floor4Clear$ = 1;
-		warpparty 'map1$,80,110,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor4 <= 0) {
+			sleep 1000;
+			'floor4Clear$ = 1;
+			warpparty 'map1$,80,110,'partyId$,'map1$;
+		}
+	end;
 }
 
 //============================================================
@@ -188,16 +170,15 @@ end;
 	areamonster 'map1$,43,139,49,134,"Rekenber Senior Guard",20541,1,instance_npcname("Floor#5")+"::OnMyMobDead";
 	
 	'mobfloor5 = 25;
+	end;
 
-end;
-
-OnMyMobDead:
-	if(--'mobfloor5 <= 0) {
-		sleep 1000;
-		'floor5Clear$ = 1;
-		warpparty 'map1$,117,28,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor5 <= 0) {
+			sleep 1000;
+			'floor5Clear$ = 1;
+			warpparty 'map1$,117,28,'partyId$,'map1$;
+		}
+	end;
 }
 
 //============================================================
@@ -220,19 +201,18 @@ end;
 	hideoffnpc instance_npcname("block#35");
 	hideoffnpc instance_npcname("block#36");
 	
-	setcell 'map1$,127,37,132,37,cell_walkable,0; 
-	
-end;
+	setcell 'map1$,127,37,132,37,cell_walkable,0; 	
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor6 <= 0) {
-		hideonnpc instance_npcname("block#33");
-		hideonnpc instance_npcname("block#34");
-		hideonnpc instance_npcname("block#35");
-		hideonnpc instance_npcname("block#36");
-		setcell 'map1$,127,37,132,37,cell_walkable,1;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor6 <= 0) {
+			hideonnpc instance_npcname("block#33");
+			hideonnpc instance_npcname("block#34");
+			hideonnpc instance_npcname("block#35");
+			hideonnpc instance_npcname("block#36");
+			setcell 'map1$,127,37,132,37,cell_walkable,1;
+		}
+	end;
 }
 
 //============================================================
@@ -259,24 +239,25 @@ end;
 	end;
 	npctalk 'mobspawn1;
 	
-OnMyMobDead:
-	if(--'mobspawn1 == 0) {
-		hideonnpc instance_npcname("block#1");
-		hideonnpc instance_npcname("block#2");
-		hideonnpc instance_npcname("block#3");
-		hideonnpc instance_npcname("block#4");
-		hideonnpc instance_npcname("block#5");
-		hideonnpc instance_npcname("block#6");
-		setcell 'map1$,140,33,151,33,cell_walkable,1;
-		
-		if(++'floorCleaned == 4){
-			sleep 1000;
-			'floor6Clear$ = 1;
-			warpparty 'map1$,168,105,'partyId$,'map1$;
+	OnMyMobDead:
+		if(--'mobspawn1 == 0) {
+			hideonnpc instance_npcname("block#1");
+			hideonnpc instance_npcname("block#2");
+			hideonnpc instance_npcname("block#3");
+			hideonnpc instance_npcname("block#4");
+			hideonnpc instance_npcname("block#5");
+			hideonnpc instance_npcname("block#6");
+			setcell 'map1$,140,33,151,33,cell_walkable,1;
+			
+			if(++'floorCleaned == 4){
+				sleep 1000;
+				'floor6Clear$ = 1;
+				warpparty 'map1$,168,105,'partyId$,'map1$;
+			}
 		}
-	}
-end;	
+	end;	
 }
+
 //============================================================
 //============ spawn 2
 
@@ -302,28 +283,30 @@ end;
 		setcell 'map1$,134,77,134,71,cell_walkable,0;
 	}
 	end;
-OnMyMobDead:
-	if(--'mobspawn2 == 0) {
-		hideonnpc instance_npcname("block#7");
-		hideonnpc instance_npcname("block#8");
-		hideonnpc instance_npcname("block#9");
-		hideonnpc instance_npcname("block#10");
-		hideonnpc instance_npcname("block#11");
-		hideonnpc instance_npcname("block#12");
-		hideonnpc instance_npcname("block#25");
-		hideonnpc instance_npcname("block#26");
-		hideonnpc instance_npcname("block#27");
-		hideonnpc instance_npcname("block#28");
-		setcell 'map1$,147,57,136,57,cell_walkable,1;
-		setcell 'map1$,134,77,134,71,cell_walkable,1;
-		if(++'floorCleaned == 4){
-			sleep 1000;
-			'floor6Clear$ = 1;
-			warpparty 'map1$,168,105,'partyId$,'map1$;
+
+	OnMyMobDead:
+		if(--'mobspawn2 == 0) {
+			hideonnpc instance_npcname("block#7");
+			hideonnpc instance_npcname("block#8");
+			hideonnpc instance_npcname("block#9");
+			hideonnpc instance_npcname("block#10");
+			hideonnpc instance_npcname("block#11");
+			hideonnpc instance_npcname("block#12");
+			hideonnpc instance_npcname("block#25");
+			hideonnpc instance_npcname("block#26");
+			hideonnpc instance_npcname("block#27");
+			hideonnpc instance_npcname("block#28");
+			setcell 'map1$,147,57,136,57,cell_walkable,1;
+			setcell 'map1$,134,77,134,71,cell_walkable,1;
+			if(++'floorCleaned == 4){
+				sleep 1000;
+				'floor6Clear$ = 1;
+				warpparty 'map1$,168,105,'partyId$,'map1$;
+			}
 		}
-	}
-end;
+	end;
 }
+
 //============================================================
 //============ spawn 3
 
@@ -334,8 +317,6 @@ end;
 		areamonster 'map1$,93,70,95,68,"Rekenber Guard",20542,5,instance_npcname("switchSpawn#3")+"::OnMyMobDead";
 		areamonster 'map1$,93,70,95,68,"Nameless Swordsman",20537,5,instance_npcname("switchSpawn#3")+"::OnMyMobDead";
 		areamonster 'map1$,93,70,95,68,"Rekenber Senior Guard",20541,1,instance_npcname("switchSpawn#3")+"::OnMyMobDead";
-		
-		
 		
 		hideoffnpc instance_npcname("block#13");
 		hideoffnpc instance_npcname("block#14");
@@ -352,28 +333,29 @@ end;
 	}
 	end;
 	
-OnMyMobDead:
-	if(--'mobspawn3 == 0) {
-		hideonnpc instance_npcname("block#13");
-		hideonnpc instance_npcname("block#14");
-		hideonnpc instance_npcname("block#15");
-		hideonnpc instance_npcname("block#16");
-		hideonnpc instance_npcname("block#17");
-		hideonnpc instance_npcname("block#18");
-		hideonnpc instance_npcname("block#29");
-		hideonnpc instance_npcname("block#30");
-		hideonnpc instance_npcname("block#31");
-		hideonnpc instance_npcname("block#32");
-		setcell 'map1$,99,55,88,55,cell_walkable,1;
-		setcell 'map1$,101,70,101,77,cell_walkable,1;
-		if(++'floorCleaned == 4){
-			sleep 1000;
-			'floor6Clear$ = 1;
-			warpparty 'map1$,168,105,'partyId$,'map1$;
+	OnMyMobDead:
+		if(--'mobspawn3 == 0) {
+			hideonnpc instance_npcname("block#13");
+			hideonnpc instance_npcname("block#14");
+			hideonnpc instance_npcname("block#15");
+			hideonnpc instance_npcname("block#16");
+			hideonnpc instance_npcname("block#17");
+			hideonnpc instance_npcname("block#18");
+			hideonnpc instance_npcname("block#29");
+			hideonnpc instance_npcname("block#30");
+			hideonnpc instance_npcname("block#31");
+			hideonnpc instance_npcname("block#32");
+			setcell 'map1$,99,55,88,55,cell_walkable,1;
+			setcell 'map1$,101,70,101,77,cell_walkable,1;
+			if(++'floorCleaned == 4){
+				sleep 1000;
+				'floor6Clear$ = 1;
+				warpparty 'map1$,168,105,'partyId$,'map1$;
+			}
 		}
-	}
-end;	
+	end;	
 }
+
 //============================================================
 //============ spawn 4
 
@@ -395,23 +377,24 @@ end;
 	}
 	end;
 	
-OnMyMobDead:
-	if(--'mobspawn4 == 0) {
-		hideonnpc instance_npcname("block#19");
-		hideonnpc instance_npcname("block#20");
-		hideonnpc instance_npcname("block#21");
-		hideonnpc instance_npcname("block#22");
-		hideonnpc instance_npcname("block#23");
-		hideonnpc instance_npcname("block#24");
-		setcell 'map1$,95,32,84,32,cell_walkable,1;
-		if(++'floorCleaned == 4){
-			sleep 1000;
-			'floor6Clear$ = 1;
-			warpparty 'map1$,168,105,'partyId$,'map1$;
+	OnMyMobDead:
+		if(--'mobspawn4 == 0) {
+			hideonnpc instance_npcname("block#19");
+			hideonnpc instance_npcname("block#20");
+			hideonnpc instance_npcname("block#21");
+			hideonnpc instance_npcname("block#22");
+			hideonnpc instance_npcname("block#23");
+			hideonnpc instance_npcname("block#24");
+			setcell 'map1$,95,32,84,32,cell_walkable,1;
+			if(++'floorCleaned == 4){
+				sleep 1000;
+				'floor6Clear$ = 1;
+				warpparty 'map1$,168,105,'partyId$,'map1$;
+			}
 		}
-	}
-end;
+	end;
 }
+
 //============================================================
 //====== floor 7
 //============================================================
@@ -428,19 +411,17 @@ end;
 	areamonster 'map1$,159,140,165,134,"Rekenber Guard",20542,2,instance_npcname("Floor#7")+"::OnMyMobDead";
 	areamonster 'map1$,159,140,165,134,"Regenschirm Scientist",20543,2,instance_npcname("Floor#7")+"::OnMyMobDead";
 	areamonster 'map1$,146,129,151,134,"Nameless Merchant",20539,6,instance_npcname("Floor#7")+"::OnMyMobDead";
-	
-	
+		
 	'mobfloor7 = 33;
-	
-end;
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor7 <= 0) {
-		sleep 1000;
-		'floor7Clear$ = 1;
-		warpparty 'map1$,162,299,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor7 <= 0) {
+			sleep 1000;
+			'floor7Clear$ = 1;
+			warpparty 'map1$,162,299,'partyId$,'map1$;
+		}
+	end;
 }
 
 //============================================================
@@ -455,18 +436,17 @@ end;
 	areamonster 'map1$,148,297,153,294,"Regenschirm Scientist",20543,5,instance_npcname("Floor#8")+"::OnMyMobDead";
 	areamonster 'map1$,171,303,175,298,"Nameless Swordsman",20537,5,instance_npcname("Floor#8")+"::OnMyMobDead";
 	
-	'mobfloor8 = 17;
-	
-end;
+	'mobfloor8 = 17;	
+	end;
 
-OnMyMobDead:
-	if(--'mobfloor8 <= 0) {
-		sleep 1000;
-		'floor8Clear$ = 1;
-		// on nova ur party didnt change to the boss room automatically, thats make sence sin
-		//warpparty 'map2$,49,20,'partyId$,'map1$;
-	}
-end;
+	OnMyMobDead:
+		if(--'mobfloor8 <= 0) {
+			sleep 1000;
+			'floor8Clear$ = 1;
+			// on nova ur party didnt change to the boss room automatically, thats make sence sin
+			//warpparty 'map2$,49,20,'partyId$,'map1$;
+		}
+	end;
 }
 
 //============================================================
@@ -597,6 +577,7 @@ end;
 1@gol2,43,62,5	script	block#s1b14	1309,{}
 1@gol2,45,62,5	script	block#s1b15	1309,{}
 1@gol2,47,62,5	script	block#s1b16	1309,{}
+
 // mob spawn: 44 58
 1@gol2,50,25,3	script	Sierra#premvp	4_F_SCIENCE,{
 	hideonnpc instance_mapname("Sierra#premvp");
@@ -654,15 +635,19 @@ end;
 			hideoffnpc instance_npcname("block#s9b"+.@i);
 			sleep 500;
 		}
+
 		monster 'map2$,55,70,"Rekenber Guard",20542,1,"Sierra#mvp::OnTele";
 		monster 'map2$,44,70,"Rekenber Guard",20541,1,"Sierra#mvp::OnTele";
 		monster 'map2$,55,58,"Rekenber Guard",20543,1,"Sierra#mvp::OnTele";
 		monster 'map2$,44,58,"Rekenber Guard",20537,1,"Sierra#mvp::OnTele";
+		
 		sleep 5000;
+
 		if('mvpAlive$){
 			killmonster 'map2$,"Sierra#mvp::OnTele";
 			warpparty 'map2$,49,65,'partyId$,'map2$;
 		}
+
 		for(.@i = 1; .@i <= 16;.@i++){
 			hideonnpc instance_npcname("block#s1b"+.@i);
 			hideonnpc instance_npcname("block#s3b"+.@i);
@@ -691,16 +676,18 @@ end;
 		}
 		sleep 5000;
 	}
-end;
+	end;
 
-OnMyMobDead:
-	@weapon = 0;
-	'mvpAlive$ = 0;
-	'canLeave$ = 1;
-	hideoffnpc instance_npcname("Sierra#mvp");
-	hideoffnpc instance_npcname("Box#mvp");
-end;
-OnTele:
+	OnMyMobDead:
+		@weapon = 0;
+		'mvpAlive$ = 0;
+		'canLeave$ = 1;
+		hideoffnpc instance_npcname("Sierra#mvp");
+		hideoffnpc instance_npcname("Box#mvp");
+	end;
+
+	OnTele:
+	end;
 }
 
 1@gol2,49,59,3	script	Box#mvp	4_TREASURE_BOX,{
@@ -715,6 +702,7 @@ OnTele:
 		
 	}
 }
+
 // ==============================
 // ===== warpers
 // ==============================
@@ -722,39 +710,45 @@ OnTele:
 	if('floor2Clear$)
 		warp 'map1$,67,277;
 	end;
+
 }
 1@gol1,64,276,3	script	Sierra#f3	4_F_SCIENCE,{
 	if('floor3Clear$)
 		warp 'map1$,113,191;
 	end;
 }
+
 1@gol1,119,197,3	script	Sierra#f4	4_F_SCIENCE,{
 	if('floor4Clear$)
 		warp 'map1$,80,110;
 	end;
 }
+
 1@gol1,74,116,3	script	Sierra#f5	4_F_SCIENCE,{
 	if('floor5Clear$)
 		warp 'map1$,117,28;
 	end;
 }
+
 1@gol1,113,26,3	script	Sierra#f6	4_F_SCIENCE,{
 	if('floor6Clear$)
 		warp 'map1$,168,105;
 	end;
 }
+
 1@gol1,159,112,3	script	Sierra#f7	4_F_SCIENCE,{
 	if('floor7Clear$)
 		warp 'map1$,162,299;
 	end;
 }
+
 1@gol1,170,305,3	script	Sierra#f8	4_F_SCIENCE,{
 	if('floor8Clear$)
 		warp 'map2$,49,20;
 	end;
 }
-// TODO: mimic spawns
 
+// TODO: mimic spawns
 -	script	mimic	-1,{
 	hideonnpc strnpcinfo(3);
 	switch(rand(4)) {

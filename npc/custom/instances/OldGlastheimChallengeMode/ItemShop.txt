@@ -1,0 +1,72 @@
+// https://github.com/korkeng/serverep17/blob/main/npc/re/custom/OGHC/Item_ex.txt
+
+//============================================================
+//====== Ex.NPC
+//============================================================
+
+
+glast_01,141,291,4	script	HUGINN2001#item_ex	564,{
+	if (lvcom <= 1 ) { mes "Please Complete Glast Heim Challenger Frist."; end; }
+	mes "[HUGINN2001]";
+	mes "Choose.";
+	mes "What ever you what ?";
+	mes "We got it.";
+	next;
+	mes "[HUGINN2001]";
+	mes "Anti-Hack System";
+	mes "Please Wait";
+	callshop "temporal_shop",0;
+	end;
+}
+
+glast_01,138,291,4	script	MUNINN2003#Ex_weapon	562,{
+	if (lvcom <= 1 ) { mes "Please Complete Glast Heim Challenger Frist."; end; }
+	mes "[MUNINN2003]";
+	mes "Choose.";
+	mes "What ever you what ?";
+	mes "We got it.";
+	next;
+	switch(select ("Random Royal/Guardian Weapon:Choose your Weapon") ) {
+		case 1:
+			mes "[HUGINN2001]";
+			mes "You will certificate to get Weapon";
+			next;
+			if (select ("I know : Not today") == 2 ) end;
+			mes "[HUGINN2001]";
+			mes "Are you sure about that";
+			next;
+			mes "[HUGINN2001]";
+			mes "In this case you still need 2 thing.";
+			next;
+			mes "[HUGINN2001]";
+			mes "Frist";
+			mes "You Need <ITEM>"+getitemname(25865)+"<INFO>25865</INFO></ITEM> 2 ea";
+			mes "And";
+			mes "<ITEM>"+getitemname(25867)+"<INFO>25867</INFO></ITEM> 20 ea";
+			mes "For random get weapon";
+			next;
+			mes "[HUGINN2001]";
+			mes "Are you still need it ?";
+			next;
+			if (select ("Sure:No Thanks") == 2 ) end;
+			if (countitem (25866) < 2 || countitem(25867) < 20) {
+			mes "[HUGINN2001]";
+			mes "Please,We still need item for do it";
+			end;
+			}
+			delitem 25866,2;
+			delitem 25867,20;
+			specialeffect2 721;
+			setArray .@weapons[0],1336,28141,18191,21055,32353,32027,32403,32111,26165,26172,28774,13347,28046,18198,1870,28776,2060,26166,32401,32304,28636,32402,26216;
+			getitem .@weapons[rand(22)],1;
+			end;
+		case 2:
+			mes "[HUGINN2001]";
+			mes "Anti-Hack System";
+			mes "Please Wait";
+			callshop "royal_guardian_weapon",0;
+			end;
+	}
+	end;
+
+}

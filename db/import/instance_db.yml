@@ -47,18 +47,38 @@ Body:
     Enter:
       Map: 1@gl_prq
       X: 79
-      Y: 22
-      
+      Y: 22     
   - Id: 63000
     Name: Glastheim Purification Hard
     Enter:
       Map: 1@gl_prq
       X: 79
-      Y: 22
-      
+      Y: 22     
   - Id: 64000
     Name: Glastheim Fall
     Enter:
       Map: 1@gl_prq
       X: 299
       Y: 18
+  - Id: 60
+    Name: Biotechnology Research Institute
+    Enter:
+      Map: 1@gol1
+      X: 196
+      Y: 32
+    AdditionalMaps:
+      1@gol2: true
+  - Id: 61
+    Name: Biotechnology Research Institute H
+    Enter:
+      Map: 1@gol1
+      X: 196
+      Y: 32
+    AdditionalMaps:
+      1@gol2: true     
+  - Id: 161
+    Name: Glast Heim Challenge
+    Enter:
+      Map: 2@gl_k2
+      X: 150
+      Y: 33

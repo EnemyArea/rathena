@@ -1,0 +1,529 @@
+// https://github.com/korkeng/serverep17/blob/main/npc/re/custom/OGHC/En_Tem_Hat.txt
+
+//===== Script =======================================
+//= Temporal Circlet Enchantment
+//= By JumBo
+//= ´Ñ´á»Å§ÁÒ¨Ò¡ÍÍ¿ËÁÇ¡áÅ» 5
+//====================================================
+glast_01,135,291,4	script	EnChant.ËÁÇ¡Temporal	2_SLOT_MACHINE,{
+	disable_items;
+	if ((MaxWeight - Weight) < 1000) {
+		mes "à¨éÒáº¡¢Í§ÁÒË¹Ñ¡à¡Ô¹ä». ÅÍ§Å´¹éÓË¹Ñ¡Å§áÅéÇÁÒãËÁè.";
+		close;
+	}
+	if (checkweight(501,1) == 0) {
+		mes "à¨éÒ¾¡¢Í§ÁÒÁÒ¡à¡Ô¹ä». ÅÍ§Å´¢Í§Å§áÅéÇÁÒãËÁè.";
+		close;
+	}
+	//if (lvcom <= 1 ) { mes "Please Complete Glast Heim Challenger Frist."; end; }
+	mes "[OSC0005]";
+	mes "¢éÒÊÒÁÒÃ¶ÍÍ¿ Temporal Circlet ä´é.";
+	mes "à¾ÕÂ§à¨éÒÁÕ Temporal Fragment.";
+	mes "ËÃ×Í Temporal Gemstone.";
+	mes "ËÃ×Í Temporal Spell ÁÒ´éÇÂ.";
+	mes "^FF0000ÍÍ¿µÔ´ 100%^000000 ã¹ªèÍ§·Õè 4 3 áÅÐ 2.";
+	next;
+	switch( select( "ÍÍ¿ Temporal Circlet", "ÅºÍÍ¿ Temporal Circlet", "ÃÒÂÅÐàÍÕÂ´", "ÍÍ¡" ) ) {
+	case 1:
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		switch(.@equip_id) {
+			case 19474:// Temporal Circlet (Rune Knight)
+			case 19475:// Temporal Circlet (Royal Guard)
+			case 19476:// Temporal Circlet (Mechanic)
+			case 19477:// Temporal Circlet (Genetic)
+			case 19478:// Temporal Circlet (Guillotine Cross)
+			case 19479:// Temporal Circlet (Shadow Chaser)
+			case 19480:// Temporal Circlet (Archbishop)
+			case 19481:// Temporal Circlet (Sura)
+			case 19482:// Temporal Circlet (Warlock)
+			case 19483:// Temporal Circlet (Sorcerer)
+			case 19484:// Temporal Circlet (Ranger)
+			case 19485:// Temporal Circlet (Wanderer & Minstrel)
+			case 19486:// Temporal Circlet (Star Emperor)
+			case 19487:// Temporal Circlet (Soul Reaper)
+			case 19488:// Temporal Circlet (Rebellion)
+			case 19489:// Temporal Circlet (Oboro)
+			case 19490:// Temporal Circlet (Kagerou)
+			case 19491:// Temporal Circlet (Super Novice)
+			case 19492:// Temporal Circlet (Summoner)
+				break;
+			default:
+				mes "[OSC0005]";
+				mes "^FF0000à¨éÒäÁèä´éãÊèËÁÇ¡ Temporal Circlet ÁÒ´éÇÂ.^000000";
+				close;
+		}
+		mes "[OSC0005]";
+
+		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
+		.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+	
+		if (.@card[3] == 0) {
+			.@slot = 3;
+			.@reqitem = 25867; // Temporal Fragment
+			.@requirement = 10;
+			mes "ÍÍ¿ªèÍ§·Õè 4 ¨ÐÊØèÁ ^0000cdINT^000000 1-4, ^0000cdSTR^000000 1-4, ^0000cdVIT^000000 1-4, ^0000cdLUK^000000 1-4.";
+		}
+		else if (.@card[2] == 0) {
+			mes "ÍÍ¿ªèÍ§·Õè 3 ÊÒÁÒÃ¶àÅ×Í¡ÅÑ¡É³ÐÍÍ¿ä´é.";
+			mes "^0000cdNormal^000000 -ÊØèÁ INT STR VIT LUK áÅÐ Temporal Jewel.";
+			mes "^0000cdSpecial^000000 -ÊØèÁà©¾ÒÐ Temporal Jewel à·èÒ¹Ñé¹.";
+			switch( select( "-> Normal", "-> Special")) {
+			case 1:
+				.@slot = 2;
+				.@reqitem = 25867; // Temporal Fragment
+				.@requirement = 20;
+				break;
+			case 2:
+				.@slot = 22;
+				.@reqitem = 25865; // Temporal Gemstone
+				.@requirement = 2;
+				break;
+			}
+		}
+		else if (.@card[1] == 0) {
+			.@slot = 1;
+			.@reqitem = 25866; // Temporal Spell
+			.@requirement = 2;
+			mes "ÍÍ¿ªèÍ§·Õè 2 ¨ÐÊØèÁ ^0000cdSharp^000000 1-4, ^0000cdExpert Archer^000000 1-4, ^0000cdASPD^000000 1-4, ^0000cdSpell^000000 1-4.";
+			mes "áÅÐÁÕâÍ¡ÒÊä´é ^0000cdMettle, Affection, Adamantine, Master Archer, Magic Essence, Acute.^000000";
+			mes "«Öè§ÊÒÁÒÃ¶ÍÑ¾à¡Ã´àÅàÇÅËÔ¹ÍÍ¿ä´é.";
+		}
+		else {
+			switch( .@card[1] ) {
+			case 29061:	// Mettle1
+			case 29071:	// MagicEessence1
+			case 29081:	// Acute1
+			case 29091:	// MasterArcher1
+			case 29101:	// Adamatine1
+			case 29111:	// Affection1
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 2.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 4;
+				.@enchant_level = 1;
+				.@enchant_rate = 80;
+				break;
+			case 29062:	// Mettle2
+			case 29072:	// MagicEessence2
+			case 29082:	// Acute2
+			case 29092:	// MasterArcher2
+			case 29102:	// Adamatine2
+			case 29112:	// Affection2
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 3.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 6;
+				.@enchant_level = 2;
+				.@enchant_rate = 70;
+				break;
+			case 29063:	// Mettle3
+			case 29073:	// MagicEessence3
+			case 29083:	// Acute3
+			case 29093:	// MasterArcher3
+			case 29103:	// Adamatine3
+			case 29113:	// Affection3
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 4.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 8;
+				.@enchant_level = 3;
+				.@enchant_rate = 50;
+				break;
+			case 29064:	// Mettle4
+			case 29074:	// MagicEessence4
+			case 29084:	// Acute4
+			case 29094:	// MasterArcher4
+			case 29104:	// Adamatine4
+			case 29114:	// Affection4
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 5.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 10;
+				.@enchant_level = 4;
+				.@enchant_rate = 20;
+				break;
+			case 29065:	// Mettle5
+			case 29075:	// MagicEessence5
+			case 29085:	// Acute5
+			case 29095:	// MasterArcher5
+			case 29105:	// Adamatine5
+			case 29115:	// Affection5
+				mes "^0000cdÑ¾à¡Ã´ËÔ¹àÅÇÅ 6.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 12;
+				.@enchant_level = 5;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29066:	// Mettle6
+			case 29076:	// MagicEessence6
+			case 29086:	// Acute6
+			case 29096:	// MasterArcher6
+			case 29106:	// Adamatine6
+			case 29116:	// Affection6
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 7.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 16;
+				.@enchant_level = 6;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29067:	// Mettle7
+			case 29077:	// MagicEessence7
+			case 29087:	// Acute7
+			case 29097:	// MasterArcher7
+			case 29107:	// Adamatine7
+			case 29117:	// Affection7
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 8.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 20;
+				.@enchant_level = 7;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29068:	// Mettle8
+			case 29078:	// MagicEessence8
+			case 29088:	// Acute8
+			case 29098:	// MasterArcher8
+			case 29108:	// Adamatine8
+			case 29118:	// Affection8
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 9.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 28;
+				.@enchant_level = 8;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29069:	// Mettle9
+			case 29079:	// MagicEessence9
+			case 29089:	// Acute9
+			case 29099:	// MasterArcher9
+			case 29109:	// Adamatine9
+			case 29119:	// Affection9
+				mes "^0000cdÍÑ¾à¡Ã´ËÔ¹àÅÇÅ 10.^000000";
+				mes "¶éÒà¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨ à¨éÒ¨Ðä´é¾ÅÑ§·Õèá¢ç§á¡Ãè§¢Öé¹. áµè¶éÒà¨éÒÍÑ¾à¡Ã´ÅéÁàËÅÇ à¨éÒ¨ÐÊÙ­àÊÕÂ¾ÅÑ§ä»Ë¹Öè§ÃÐ´Ñº.";
+				.@reqitem = 25866; // Temporal Spell
+				.@requirement = 40;
+				.@enchant_level = 9;
+				.@enchant_rate = 20;	// unknown rates
+				break;
+			case 29070:	// Mettle10
+			case 29080:	// MagicEessence10
+			case 29090:	// Acute10
+			case 29100:	// MasterArcher10
+			case 29110:	// Adamatine10
+			case 29120:	// Affection10
+			default:
+				mes "^FF0000à¨éÒÁÒ¶Ö§¨Ø´ÊÙ§ÊØ´¢Í§ËÔ¹ÍÍ¿áÅéÇ.^000000";
+				close;
+			}
+			.@slot = 999;
+		}
+		next;
+		mes "[OSC0005]";
+		mes "ÇÑµ¶Ø´Ôº·ÕèµéÍ§ãªé ^0000cd" +getitemname(.@reqitem) + "^000000 ¨Ó¹Ç¹ ^FF0000" + .@requirement + "^000000 ÍÑ¹.";
+		next;
+		if (select( "µ¡Å§.", "ä»ËÒ¡èÍ¹." ) == 2) {
+			mes "[OSC0005]";
+			mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+			close;
+		}
+		if (countitem(.@reqitem) < .@requirement) {
+			mes "[OSC0005]";
+			mes "à¨éÒÁÕ ^0000cd" +getitemname(.@reqitem) + "^000000 äÁè¶Ö§ ^FF0000" + .@requirement + "^000000 ÍÑ¹.";
+			close;
+		}
+		mes "[OSC0005]";
+		mes "^FF0000ÃÐ´ÑºàÅàÇÅ¡ÒÃµÕºÇ¡, ¡ÒÃì´, ¢Í§ÊÇÁãÊè¨ÐäÁèÊÙ­ËÒÂ ËÒ¡ÍÑ¾à¡Ã´ÅéÁàËÅÇ.^000000";
+		next;
+		if (select( "¾ÃéÍÁ·Õè¨ÐÍÍ¿áÅéÇ.", "¢Í¤Ô´´Ù¡èÍ¹." ) == 2) {
+			mes "[OSC0005]";
+			mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+			close;
+		}
+		progressbar "000000",1;
+		delitem .@reqitem, .@requirement;
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
+			close;
+
+		switch(.@slot) {
+		case 3:
+			setarray .@enchant[0],
+				4700,	// Strength1
+				4701,	// Strength2
+				4702,	// Strength3
+				4703,	// Strength4
+				4710,	// Inteligence1
+				4711,	// Inteligence2
+				4712,	// Inteligence3
+				4713,	// Inteligence4
+				4740,	// Vitality1
+				4741,	// Vitality2
+				4742,	// Vitality3
+				4743,	// Vitality4
+				4750,	// Luck1
+				4751,	// Luck2
+				4752,	// Luck3
+				4753;	// Luck4
+			.@card[.@slot] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+			break;
+		case 2:
+			setarray .@enchant[0],
+				4700,	// Strength1
+				4701,	// Strength2
+				4702,	// Strength3
+				4703,	// Strength4
+				4710,	// Inteligence1
+				4711,	// Inteligence2
+				4712,	// Inteligence3
+				4713,	// Inteligence4
+				4740,	// Vitality1
+				4741,	// Vitality2
+				4742,	// Vitality3
+				4743,	// Vitality4
+				4750,	// Luck1
+				4751,	// Luck2
+				4752,	// Luck3
+				4753,	// Luck4
+				29672,	// Temporal Jewel (Str) lv.1
+				29673,	// Temporal Jewel (Str) lv.2
+				29674,	// Temporal Jewel (Str) lv.3
+				29675,	// Temporal Jewel (Agi) lv.1
+				29676,	// Temporal Jewel (Agi) lv.2
+				29677,	// Temporal Jewel (Agi) lv.3
+				29678,	// Temporal Jewel (Vit) lv.1
+				29679,	// Temporal Jewel (Vit) lv.2
+				29680,	// Temporal Jewel (Vit) lv.3
+				29681,	// Temporal Jewel (Int) lv.1
+				29682,	// Temporal Jewel (Int) lv.2
+				29683,	// Temporal Jewel (Int) lv.3
+				29684,	// Temporal Jewel (Dex) lv.1
+				29685,	// Temporal Jewel (Dex) lv.2
+				29686,	// Temporal Jewel (Dex) lv.3
+				29687,	// Temporal Jewel (Luk) lv.1
+				29688,	// Temporal Jewel (Luk) lv.2
+				29689;	// Temporal Jewel (Luk) lv.3
+			.@card[.@slot] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+			break;
+		case 22:
+			setarray .@enchant[0],
+				29672,	// Temporal Jewel (Str) lv.1
+				29673,	// Temporal Jewel (Str) lv.2
+				29674,	// Temporal Jewel (Str) lv.3
+				29675,	// Temporal Jewel (Agi) lv.1
+				29676,	// Temporal Jewel (Agi) lv.2
+				29677,	// Temporal Jewel (Agi) lv.3
+				29678,	// Temporal Jewel (Vit) lv.1
+				29679,	// Temporal Jewel (Vit) lv.2
+				29680,	// Temporal Jewel (Vit) lv.3
+				29681,	// Temporal Jewel (Int) lv.1
+				29682,	// Temporal Jewel (Int) lv.2
+				29683,	// Temporal Jewel (Int) lv.3
+				29684,	// Temporal Jewel (Dex) lv.1
+				29685,	// Temporal Jewel (Dex) lv.2
+				29686,	// Temporal Jewel (Dex) lv.3
+				29687,	// Temporal Jewel (Luk) lv.1
+				29688,	// Temporal Jewel (Luk) lv.2
+				29689;	// Temporal Jewel (Luk) lv.3
+			.@card[2] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+			break;
+		case 1:
+			setarray .@enchant[0],
+				4818,	// Sharp1
+				4817,	// Sharp2
+				4816,	// Sharp3
+				4843,	// Sharp4
+				4832,	// Expert_Archer1
+				4833,	// Expert_Archer2
+				4834,	// Expert_Archer3
+				4835,	// Expert_Archer4
+				4869,	// Attack_Delay_1
+				4872,	// Attack_Delay_2
+				4873,	// Attack_Delay_3
+				4881,	// Attack_Delay_4
+				4815,	// Spell1
+				4814,	// Spell2
+				4813,	// Spell3
+				4812,	// Spell4
+				29061,	// Mettle1
+				29071,	// MagicEessence1
+				29081,	// Acute1
+				29091,	// MasterArcher1
+				29101,	// Adamatine1
+				29111;	// Affection1
+			.@card[1] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+			break;
+		case 999:
+			if (.@enchant_rate > rand(100))
+				.@level_dt = 1;
+			else
+				.@level_dt = -1;
+			.@enchant_level += .@level_dt;
+			.@card[1] += .@level_dt;
+			if (.@card[1] < 29061 || .@card[1] > 29120) {
+				mes "[Brave]";
+				mes "ÁÕºÒ§ÍÂèÒ§¼Ô´¾ÅÒ´.";
+				close;
+			}
+			if (.@enchant_level < 1 || .@enchant_level > 10) {
+				specialeffect2 EF_SUI_EXPLOSION;
+				mes "[Brave]";
+				mes "âª¤´Õ·ÕèÁÑ¹ÃÐàºÔ´¡èÍ¹¢Í§¨ÐËÒÂ.";
+				close;
+			}
+			break;
+		default:
+			mes "[Brave]";
+			mes "ÁÕºÒ§ÍÂèÒ§¼Ô´¾ÅÒ´.";
+			close;
+		}
+		delequip EQI_HEAD_TOP;
+		getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+		if (.@level_dt == -1) {
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[Brave]";
+			mes "^FF0000¡ÒÃÍÑ¾à¡Ã´ÅéÁàËÅÇ ËÔ¹ÍÍ¿¶Ù¡Å´Ë¹Öè§ÃÐ´Ñº.^000000";
+			close;
+		}
+		specialeffect2 EF_FIREHIT;
+		mes "[Brave]";
+		mes "^0000cdÂÍ´àÂÕèÂÁ à¨éÒÍÑ¾à¡Ã´ÊÓàÃç¨.^000000";
+		close;
+	case 2:
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		switch(.@equip_id) {
+			case 19474:// Temporal Circlet (Rune Knight)
+			case 19475:// Temporal Circlet (Royal Guard)
+			case 19476:// Temporal Circlet (Mechanic)
+			case 19477:// Temporal Circlet (Genetic)
+			case 19478:// Temporal Circlet (Guillotine Cross)
+			case 19479:// Temporal Circlet (Shadow Chaser)
+			case 19480:// Temporal Circlet (Archbishop)
+			case 19481:// Temporal Circlet (Sura)
+			case 19482:// Temporal Circlet (Warlock)
+			case 19483:// Temporal Circlet (Sorcerer)
+			case 19484:// Temporal Circlet (Ranger)
+			case 19485:// Temporal Circlet (Wanderer & Minstrel)
+			case 19486:// Temporal Circlet (Star Emperor)
+			case 19487:// Temporal Circlet (Soul Reaper)
+			case 19488:// Temporal Circlet (Rebellion)
+			case 19489:// Temporal Circlet (Oboro)
+			case 19490:// Temporal Circlet (Kagerou)
+			case 19491:// Temporal Circlet (Super Novice)
+			case 19492:// Temporal Circlet (Summoner)
+				break;
+			default:
+				mes "[Brave]";
+				mes "^FF0000à¨éÒäÁèä´éãÊèËÁÇ¡ Temporal Circlet ÁÒ´éÇÂ.^000000";
+				close;
+		}
+		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
+		.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+
+		if (.@card[3] < 1) {
+			mes "[Brave]";
+			mes "ËÁÇ¡ÂÑ§äÁè¼èÒ¹¡ÒÃÍÍ¿ÁÒ¡èÍ¹.";
+			close;
+		}
+		mes "[Brave]";
+		mes "à¨éÒÊÒÁÒÃ¶àÅ×Í¡»ÃÐàÀ·ÅºÍÍ¿ä´é.";
+		mes "áººáÃ¡ãªéà§Ô¹ÅºÍÍ¿ âÍ¡ÒÊÊÓàÃç¨ 70% ^FF0000¶éÒÅéÁàËÅÇäÍà·çÁ¨Ð¶Ù¡·ÓÅÒÂ.^000000";
+		mes "áºº·ÕèÊÍ§ ãªé Kitten Silvervine Fruits ÊÓàÃç¨ 100%.";
+		next;
+		switch( select( "500,000z", "Kitten Silvervine Fruits 2 ÍÑ¹", "Â¡àÅÔ¡" ) ) {
+		case 1:
+			mes "[Brave]";
+			mes "âÍ¡ÒÊÊÓàÃç¨ 70% ^FF0000¶éÒÅéÁàËÅÇäÍà·çÁ¨Ð¶Ù¡·ÓÅÒÂ.^000000";
+			next;
+			if (select( "µ¡Å§.", "¢Í¤Ô´´Ù¡èÍ¹." ) == 2) {
+				mes "[Brave]";
+				mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+				close;
+			}
+			if (Zeny < 500000) {
+				mes "à§Ô¹ÁÕäÁè¾Í.";
+				close;
+			}
+			next;
+			mes "[Brave]";
+			mes "¨ÐÅºÍÍ¿áÅéÇ¹Ð";
+			next;
+			progressbar "000000",1;
+			
+			if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
+			close;
+			
+			Zeny -= 500000;
+			delequip EQI_HEAD_TOP;
+			if ( rand(100) < 70 ) {
+			specialeffect2 EF_FIREHIT;
+			getitem2 .@equip_id,1,1,.@refine,0,.@card[0],0,0,0;
+			mes "[Brave]";
+			mes "^0000cdÅºÍÍ¿ÊÓàÃç¨.^000000";
+			close;
+			}
+		else
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[Brave]";
+			mes "^FF0000¢Í§áµ¡¨éÒ.^000000";
+			close;
+		case 2:
+			mes "[Brave]";
+			mes "âÍ¡ÒÊÊÓàÃç¨ 100%.";
+			next;
+			if (select( "µ¡Å§.", "¢Í¤Ô´´Ù¡èÍ¹." ) == 2) {
+				mes "[Brave]";
+				mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+				close;
+			}
+			if (countitem(6909) < 2) {
+				mes "Kitten Silvervine Fruits ÁÕäÁè¾Í.";
+				close;
+			}
+			next;
+			mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+			mes "¨ÐÅºÍÍ¿áÅéÇ¹Ð";
+			next;
+			progressbar "000000",1;
+
+			if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
+			close;
+
+			delequip EQI_HEAD_TOP;
+			specialeffect2 EF_FIREHIT;
+			delitem 6909,2; // Kitten Silvervine Fruits
+			getitem2 .@equip_id,1,1,.@refine,0,.@card[0],0,0,0;
+			mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+			mes "^0000cdÅºÍÍ¿ÊÓàÃç¨.^000000";
+			close;
+		case 3:
+			mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+			mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+			close;
+		}
+	case 3:
+		mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+		mes "¡ÒÃÍÍ¿ËÁÇ¡ Temporal Circlet";
+		mes "ÍÍ¿ªèÍ§·Õè 4 ãªé Temporal Fragment 10 ÍÑ¹.";
+		mes "ÍÍ¿ªèÍ§·Õè 3 ãªé Temporal Fragment 20 ÍÑ¹.";
+		mes "ËÃ×Í ãªé Temporal Gemstone 2 ÍÑ¹.";
+		mes "ÍÍ¿ªèÍ§·Õè 2 ãªé Temporal Spell 2 ÍÑ¹.";
+		next;
+		mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+		mes "ËÒ¡ÍÍ¿µÔ´ Mettle, Affection, Adamantine, Master Archer, Magic Essence, Acute";
+		mes "ÊÒÁÒÃ¶ÍÑ¾à¡Ã´ËÔ¹ä´é.";
+		mes "â´Âãªé Temporal Spell ÁÒ¡¢Öé¹µÒÁÃÐ´ÑºàÅàÇÅËÔ¹ÍÍ¿.";
+		next;
+		mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+		mes "¡ÒÃÅºÍÍ¿ ÁÕÊÍ§áºº";
+		mes "áººáÃ¡ãªéà§Ô¹ÅºÍÍ¿ âÍ¡ÒÊÊÓàÃç¨ 70% ^FF0000¶éÒÅéÁàËÅÇäÍà·çÁ¨Ð¶Ù¡·ÓÅÒÂ.^000000";
+		mes "áºº·ÕèÊÍ§ ãªé Kitten Silvervine Fruits ÊÓàÃç¨ 100%.";
+		close;
+	case 4:
+		mes "[ÍÍ¿ËÁÇ¡¨êÐ]";
+		mes "äÁèàµÃÕÂÁ¾ÃéÍÁ«ÐàÅÂ.";
+		close;
+	}
+}

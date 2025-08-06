@@ -80,7 +80,7 @@
 
 Header:
   Type: MOB_DB
-  Version: 3
+  Version: 5
 
 Body:
   - Id: 3901
@@ -3276,7 +3276,7 @@ Body:
     AttackMotion: 288
     ClientAttackMotion: 384
     DamageMotion: 576
-    Ai: 30
+    Ai: 27
     Drops: []
   - Id: 20536
     AegisName: MD_ED_B_YGNIZEM
@@ -3531,50 +3531,6 @@ Body:
     - Item: Yggdrasilberry
       Rate: 50
     - Item: Reken_Guard_Card
-      Rate: 1
-      StealProtected: true
-  - Id: 20543
-    AegisName: MD_ED_M_SCIENCE
-    Name: Regenschirm Scientist
-    Level: 172
-    Hp: 1469107
-    BaseExp: 133555
-    JobExp: 93489
-    Attack: 2408
-    Attack2: 1103
-    Defense: 302
-    MagicDefense: 104
-    Str: 112
-    Agi: 88
-    Vit: 58
-    Int: 141
-    Dex: 140
-    Luk: 67
-    AttackRange: 1
-    SkillRange: 10
-    ChaseRange: 12
-    Size: Medium
-    Race: Demihuman
-    Element: Neutral
-    ElementLevel: 3
-    WalkSpeed: 200
-    AttackDelay: 864
-    AttackMotion: 1268
-    ClientAttackMotion: 384
-    DamageMotion: 480
-    Ai: 04
-    Drops:
-    - Item: Lab_Staff_Record
-      Rate: 500
-    - Item: Bio_Test_Fragment
-      Rate: 10
-    - Item: Bio_Reseearch_Docu
-      Rate: 10
-    - Item: Seed_Of_Yggdrasil
-      Rate: 200
-    - Item: Yggdrasilberry
-      Rate: 100
-    - Item: Regen_Scientist_Card
       Rate: 1
       StealProtected: true
   - Id: 20892

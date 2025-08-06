@@ -16,48 +16,26 @@ glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
 		close;
 	}
 
-	if(checkquest(16900,PLAYTIME) == 2){
-		erasequest 16900;
-	}
-
 	mes "Due to the urgent situation, I want to see the status you've built yourself.","Is it a reasonable fit?","Therefore, there is no Challenger level to choose from.","But if the monster is just right,","I will find a way to bring the level up as quickly as possible.";
 	next;
-	switch(select("create","enter")){
+	switch(select("Create","Enter")){
 		case 1:
 			if(is_party_leader() == false){
 				mes "Plase, Let's me talk with your partyleader.";
 				end;
 			}
-			switch(checkquest(16900,PLAYTIME)){
-				case 0:
-				case 1:
-					mes "you are on cooldown time";
-					end;
-			}
 			set .@i_inst, instance_create(.instance_challenger$);
 			end;
 		case 2:
-			switch( checkquest(16900,PLAYTIME) ) {
-				case -1:
-						switch(instance_enter(.instance_challenger$)){
-							case IE_OTHER:
-								mes "Error, We don't hit your instance.";
-								close;
-							case IE_NOINSTANCE:
-								mes "no instance asshole";
-								end;
-							case IE_OK:
-								setquest 16900;
-								dispbottom "Please god be with you";
-						}
-						end;
-				case 0:
-				case 1:
-					mes "you are on cooldown time";
+			switch(instance_enter(.instance_challenger$)){
+				case IE_OTHER:
+					mes "Error, We don't hit your instance.";
 					close;
-				case 2:
-					erasequest 16900;
-					close;
+				case IE_NOINSTANCE:
+					mes "No instance";
+					end;
+				case IE_OK:
+					dispbottom "Please god be with you";
 			}
 		end;
 	}
@@ -283,7 +261,7 @@ glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
 	cutin "oscar02",2;
 	next;
 
-	if (select ("Not ready") == 1 ) end;
+	if (select ("No:Yes") == 1 ) end;
 
 	donpcevent instance_npcname("#leftmob") + "::OnStart";
 	warpparty 'challen_map$,128,123,'partyId,'challen_map$;
@@ -472,9 +450,9 @@ glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
 	OnMyMobDead:
 		.@mob_dead = mobcount('challen_map$,'rightmob$);
 		if ( .@mob_dead < 1 ) {
-		mapannounce 'challen_map$, "The door flashes towards the main walkway has opened ", bc_map,0xFFFF00,FW_NORMAL,18;
-		enablenpc instance_npcname("#center");
-		enablenpc instance_npcname("Oscar#2");
+			mapannounce 'challen_map$, "The door flashes towards the main walkway has opened ", bc_map,0xFFFF00,FW_NORMAL,18;
+			enablenpc instance_npcname("#center");
+			enablenpc instance_npcname("Oscar#2");
 		}
 		if(.@mob_dead%5 == 0 && .@mob_dead >=5) 
 			mapannounce 'challen_map$, "On the right side, there are "+.@mob_dead+" monsters left", bc_map,0x33FF99,FW_NORMAL,18;
@@ -492,7 +470,7 @@ glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
 	next;
 	mes "Oscar";
 	mes "But if luck is bad, something might get in our way.";
-	mes "Hopefully, that won�t happen.";
+	mes "Hopefully, that won't happen.";
 	next;
 	.@corrup_root = rand(1,10);
 	
@@ -580,7 +558,7 @@ glast_01,143,288,3	script	Oscar#ogh_challenger	10307,{
 		end;
 
 	OnTimer4500:
-		npctalk "This time, I�m confident you all can do it!", 'npc_oscarboss$;
+		npctalk "This time, I'm confident you all can do it!", 'npc_oscarboss$;
 		end;
 
 	OnTimer9000:
@@ -2190,4 +2168,3 @@ OnInstanceInit:
 2@gl_k2	mapflag	noteleport
 2@gl_k2	mapflag	nomemo
 2@gl_k2	mapflag	nosave
-2@gl_k2	mapflag	hidemobhpbar
