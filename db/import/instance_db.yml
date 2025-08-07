@@ -60,22 +60,14 @@ Body:
       Map: 1@gl_prq
       X: 299
       Y: 18
-  - Id: 60
-    Name: Biotechnology Research Institute
+  - Id: 65
+    Name: Journey of Expedition
     Enter:
       Map: 1@gol1
-      X: 196
-      Y: 32
+      X: 198
+      Y: 35
     AdditionalMaps:
-      1@gol2: true
-  - Id: 61
-    Name: Biotechnology Research Institute H
-    Enter:
-      Map: 1@gol1
-      X: 196
-      Y: 32
-    AdditionalMaps:
-      1@gol2: true     
+       1@gol2: true    
   - Id: 161
     Name: Glast Heim Challenge
     Enter:

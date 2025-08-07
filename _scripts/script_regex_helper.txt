@@ -1,0 +1,10 @@
+set_instance_var\("(.*)",(.*)\);
+set '$1 = $2;
+
+
+get_instance_var\("(.*)"\);
+'$1;
+
+
+instance_enable\((.*),false\);
+disablenpc instance_npcname($1);

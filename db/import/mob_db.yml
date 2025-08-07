@@ -3533,6 +3533,90 @@ Body:
     - Item: Reken_Guard_Card
       Rate: 1
       StealProtected: true
+Body:
+- Id: 20540
+  AegisName: MD_ED_EREMES
+  Name: 에레메스 가일
+  Level: 178
+  Hp: 1518427
+  BaseExp: 138039
+  JobExp: 96627
+  Attack: 4116
+  Attack2: 1285
+  Defense: 313
+  MagicDefense: 102
+  Str: 144
+  Agi: 215
+  Vit: 58
+  Int: 95
+  Dex: 230
+  Luk: 107
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demon
+  Element: Poison
+  ElementLevel: 4
+  WalkSpeed: 180
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 1000
+  - Item: Particles_Of_Energy3
+    Rate: 1000
+  - Item: Goast_Chill
+    Rate: 1
+  - Item: Bio_Test_Fragment
+    Rate: 10
+- Id: 20543
+  AegisName: MD_ED_M_SCIENCE
+  Name: Regenschirm Scientist
+  Level: 172
+  Hp: 1469107
+  BaseExp: 133555
+  JobExp: 93489
+  Attack: 2408
+  Attack2: 1103
+  Defense: 302
+  MagicDefense: 104
+  Str: 112
+  Agi: 88
+  Vit: 58
+  Int: 141
+  Dex: 140
+  Luk: 67
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  ElementLevel: 3
+  WalkSpeed: 200
+  AttackDelay: 864
+  AttackMotion: 1268
+  ClientAttackMotion: 384
+  DamageMotion: 480
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Bio_Test_Fragment
+    Rate: 10
+  - Item: Bio_Reseearch_Docu
+    Rate: 10
+  - Item: Seed_Of_Yggdrasil
+    Rate: 200
+  - Item: Yggdrasilberry
+    Rate: 100
+  - Item: Regen_Scientist_Card
+    Rate: 1
+    StealProtected: true
   - Id: 20892
     AegisName: MD_SAKRAY
     Name: Fallen Sakray#rms

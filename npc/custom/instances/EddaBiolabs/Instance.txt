@@ -29,14 +29,14 @@ yuno,214,347,5	script	Nina#somatology_instance	4_DR_F_01,{
 }
 
 yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
-	if(BaseLevel < 170){
-		cutin "3rd_gn_demi01",2;
-		mes "[ Sierra ]";
-		mes "This place is too dangerous for you!";
-		next;
-		mes "^FF0000- You need to be at least level 170 to proceed on this quest. - ^000000";
-		close3;
-	}
+	// if(BaseLevel < 170){
+	// 	cutin "3rd_gn_demi01",2;
+	// 	mes "[ Sierra ]";
+	// 	mes "This place is too dangerous for you!";
+	// 	next;
+	// 	mes "^FF0000- You need to be at least level 170 to proceed on this quest. - ^000000";
+	// 	close3;
+	// }
 	if(isbegin_quest(16388) == 0){
 		if(isbegin_quest(16389) == 1){
 			cutin "3rd_gn_demi01",2;
@@ -261,6 +261,7 @@ yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
 			next;
 			mes "[ Nina ]";
 			mes "Please come back after you recover for ^0000CDone day^000000!";
+			erasequest 16390;
 			end;
 			
 		case 2:
@@ -431,7 +432,7 @@ yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
 	}
 }
 
-yuno,220,353,3	script	Ravian#rgsr_lab_enchant	4_DR_F_02,{
+yuno,212,347,3	script	Ravian#rgsr_lab_enchant	4_DR_F_02,{
 	function weapon_check;
 	.@equip_id = getequipid(EQI_HAND_R);
 	.@bool = weapon_check(.@equip_id);
