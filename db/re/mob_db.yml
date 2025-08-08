@@ -114113,7 +114113,7 @@ Body:
     AegisName: EP18_MD_SCHULANG_R
     Name: Schulang
     Level: 185
-    Hp: 4000000
+    Hp: 23586543
     Sp: 0
     BaseExp: 43494
     JobExp: 27612
@@ -114156,7 +114156,7 @@ Body:
     AegisName: EP18_MD_DEMI_FREYJA_R
     Name: Twisted God Freyja
     Level: 185
-    Hp: 4200000
+    Hp: 23834938
     Sp: 0
     BaseExp: 43494
     JobExp: 27612
@@ -114199,7 +114199,7 @@ Body:
     AegisName: EP18_MD_SANARE_R
     Name: Goddess Guardian
     Level: 170
-    Hp: 300000
+    Hp: 5000000
     Sp: 0
     BaseExp: 43494
     JobExp: 27612
@@ -114236,7 +114236,7 @@ Body:
     AegisName: EP18_MD_HEARTHUNTER_R2
     Name: Cottage Keeper
     Level: 170
-    Hp: 300000
+    Hp: 5000000
     Sp: 0
     BaseExp: 43494
     JobExp: 27612
