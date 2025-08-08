@@ -51,3 +51,7 @@ Footer:
   - Path: npc/re/merchants/barters.yml
     Mode: Renewal
   - Path: npc/custom/barters.yml
+  - Path: npc/custom/instances/Tomb of Remorse/barters.yml
+    Mode: Renewal
+  - Path: npc/custom/instances/Constellation Tower/barters.yml
+    Mode: Renewal
