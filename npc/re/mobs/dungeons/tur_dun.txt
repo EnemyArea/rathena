@@ -68,29 +68,24 @@ tur_d04_i	monster	Ominous Heater	3803,36,5000,0,"illusion_turtle_boss::OnEvent"
 // boss spawn
 -	script	illusion_turtle_boss	-1,{
 	end;
-OnEvent:
-	if (playerattached() && !.boss_spawn && !.cooldown)
-	{
-		.count++;
 
-		if (.count >= 100) {
-			.boss_spawn = true;
-			.count = 0;
-			mapannounce "tur_d04_i", "Ominous Turtle General : Who interferes with my authority!!!", bc_map, "0x70dbdb";
-			getunitdata( killedgid, .@data );
-			monster "tur_d04_i",.@data[UMOB_X],.@data[UMOB_Y],"Ominous Turtle General",3804,1, "illusion_turtle_boss::OnBoss";
+	OnEvent:
+		if (playerattached() && !.boss_spawn)
+		{
+			.count++;
+
+			if (.count >= 100) {
+				.boss_spawn = true;
+				.count = 0;
+				mapannounce "tur_d04_i", "Ominous Turtle General : Who interferes with my authority!!!", bc_map, "0x70dbdb";
+				getunitdata( killedgid, .@data );
+				monster "tur_d04_i",.@data[UMOB_X],.@data[UMOB_Y],"Ominous Turtle General",3804,1, "illusion_turtle_boss::OnBoss";
+			}
 		}
-	}
-	end;
-OnBoss:
-	killmonster "tur_d04_i", "illusion_turtle_boss::OnBoss";
-	.boss_spawn = false;
-	.cooldown = true;
-	initnpctimer;
-	end;
+		end;
 
-OnTimer7200000:
-	.cooldown = false;
-	stopnpctimer;
-	end;
+	OnBoss:
+		killmonster "tur_d04_i", "illusion_turtle_boss::OnBoss";
+		.boss_spawn = false;
+		end;
 }

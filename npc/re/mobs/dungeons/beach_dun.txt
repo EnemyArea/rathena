@@ -57,7 +57,7 @@ S_Mob:
 	if (.@group != .group)
 		end;
 
-	if (playerattached() && !.boss_spawn && !.cooldown)
+	if (playerattached() && !.boss_spawn)
 	{
 		.count++;
 
@@ -86,7 +86,6 @@ S_Boss:
 OnBossDeath:
 	killmonster "com_d02_i", "illusion_luanda::OnBossDeath";
 	.boss_spawn = false;
-	.cooldown = true;
 
 	if (.swap == 0) {	// ILL_TAO_GUNKA
 		mapannounce "com_d02_i", "Ancient Tao Gunka: Megaliths, it's time to crouch and hold your breath.", bc_map, 0x70DBDB;
@@ -118,12 +117,6 @@ OnBossDeath:
 		(20271 + .swap),
 		(20272 + .swap)
 	);
-	initnpctimer;
-	end;
-
-OnTimer300000:
-	.cooldown = false;
-	stopnpctimer;
 	end;
 
 S_SpawnInit:

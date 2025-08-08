@@ -65,32 +65,27 @@ ein_d02_i	monster	Spirit Dwelling Obsidian	 20263,15
 
 -	script	ein_d02_i_boss	-1,{
 	end;
-OnMobDead:
-	if (playerattached() && !.boss_spawn && !.cooldown) 
-	{
-		.count++;
 
-		if (.count >= 100) {
-			.boss_spawn = true;
-			.count = 0;
-			killmonster "ein_d02_i", "ein_d02_i_boss::OnBossDeath";
-			mapannounce "ein_d02_i", "Shining Teddy Bear : I will end you!", bc_map, "0x70dbdb";
-			getunitdata( killedgid, .@data );
-			monster "ein_d02_i", .@data[UMOB_X], .@data[UMOB_Y], "--ja--", 20260,1, "ein_d02_i_boss::OnBossDeath";	// ILL_TEDDY_BEAR_S
-			end;
+	OnMobDead:
+		if (playerattached() && !.boss_spawn) 
+		{
+			.count++;
+
+			if (.count >= 100) {
+				.boss_spawn = true;
+				.count = 0;
+				killmonster "ein_d02_i", "ein_d02_i_boss::OnBossDeath";
+				mapannounce "ein_d02_i", "Shining Teddy Bear : I will end you!", bc_map, "0x70dbdb";
+				getunitdata( killedgid, .@data );
+				monster "ein_d02_i", .@data[UMOB_X], .@data[UMOB_Y], "--ja--", 20260,1, "ein_d02_i_boss::OnBossDeath";	// ILL_TEDDY_BEAR_S
+				end;
+			}
 		}
-	}
-	end;
-OnBossDeath:
-	// (no announce)
-	killmonster "ein_d02_i", "ein_d02_i_boss::OnBossDeath";
-	.boss_spawn = false;
-	.cooldown = true;
-	initnpctimer;
-	end;
-
-OnTimer300000:
-	.cooldown = false;
-	stopnpctimer;
-	end;
+		end;
+		
+	OnBossDeath:
+		// (no announce)
+		killmonster "ein_d02_i", "ein_d02_i_boss::OnBossDeath";
+		.boss_spawn = false;
+		end;
 }
