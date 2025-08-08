@@ -160,7 +160,7 @@ OnBossDeath:
 	initnpctimer;
 	end;
 
-OnTimer7200000:
+OnTimer300000:
 	.cooldown = false;
 	stopnpctimer;
 	end;

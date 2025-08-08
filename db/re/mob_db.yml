@@ -100626,27 +100626,37 @@ Body:
     Size: Large
     Race: Formless
     Element: Holy
+    Class: Boss
     ElementLevel: 4
     WalkSpeed: 150
     AttackDelay: 512
     AttackMotion: 780
-    ClientAttackMotion: 600
+    ClientAttackMotion: 384
     DamageMotion: 504
     Ai: 21
     Drops:
-      - Item: Elunium
-        Rate: 2000
-      - Item: Oridecon
-        Rate: 2000
-      - Item: Clay_Doll
-        Rate: 1500
-      - Item: Counter_Dagger
-        Rate: 300
-      - Item: Screw
-        Rate: 4000
-      - Item: Shining_T_Bear_Card
-        Rate: 1
-        StealProtected: true
+    - Item: Elunium
+      Rate: 2000
+    - Item: Oridecon
+      Rate: 2000
+    - Item: Clay_Doll
+      Rate: 1500
+    - Item: Counter_Dagger
+      Rate: 300
+    - Item: Screw
+      Rate: 4000
+    - Item: Shining_T_Bear_Card
+      Rate: 1
+      StealProtected: true
+    Modes:
+      Mvp: true
+    MvpDrops:
+    - Item: Elunium
+      Rate: 3000
+    - Item: Oridecon
+      Rate: 3000
+    - Item: Gold
+      Rate: 10000
   - Id: 20261
     AegisName: ILL_PITMAN
     Name: Hardworking Pitman

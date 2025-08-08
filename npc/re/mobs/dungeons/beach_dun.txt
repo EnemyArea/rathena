@@ -56,14 +56,17 @@ S_Mob:
 	.@group = getarg(1);
 	if (.@group != .group)
 		end;
-	if (playerattached()) {
-		if (.count < 1500)
-			.count++;
-		if (.count == 1500 && !.boss_spawn && !.cooldown) {
+
+	if (playerattached() && !.boss_spawn && !.cooldown)
+	{
+		.count++;
+
+		if (.count >= 100) {
 			getunitdata( killedgid, .@data );
 			callsub( S_Boss, (20273 + .swap), .@data[UMOB_X], .@data[UMOB_Y] );
 		}
 	}
+	
 	.@mob_id = getarg(0);
 	sleep 5000;
 	if (.@group == .group)
@@ -118,7 +121,7 @@ OnBossDeath:
 	initnpctimer;
 	end;
 
-OnTimer7200000:
+OnTimer300000:
 	.cooldown = false;
 	stopnpctimer;
 	end;
