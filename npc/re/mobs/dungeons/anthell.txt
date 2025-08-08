@@ -137,10 +137,11 @@ ant_d02_i	monster	Diligent Vitata	21394,15,5000,0,"ant_d02_i_boss::OnMobDead"
 -	script	ant_d02_i_boss	-1,{
 	end;
 OnMobDead:
-	if (playerattached()) {
-		if (.count < 3000)	// todo value ?
-			.count++;
-		if (!.boss_spawn && !.cooldown && .count == 3000) {
+	if (playerattached() && !.boss_spawn && !.cooldown) 
+	{
+		.count++;
+
+		if (.count >= 100) {
 			.boss_spawn = true;
 			.count = 0;
 			killmonster "ant_d02_i", "ant_d02_i_boss::OnBossDeath";

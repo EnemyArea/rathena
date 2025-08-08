@@ -109784,7 +109784,7 @@ Body:
       - Item: Crystal_Arrow_Container
         Rate: 50
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: Electric_Eel
         Rate: 25
       - Item: Deepsea_Fish_Tail
@@ -109833,7 +109833,7 @@ Body:
       - Item: Saint_Robe
         Rate: 10
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: Rotten_Deepseafish
         Rate: 1000
       - Item: ILL_Obeaune_Card
@@ -109882,7 +109882,7 @@ Body:
       - Item: Abysmal_Clam
         Rate: 1000
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Deviace_Card
         Rate: 1
         StealProtected: true
@@ -109931,7 +109931,7 @@ Body:
       - Item: Deep_Sea_Starfish
         Rate: 1000
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Marse_Card
         Rate: 1
         StealProtected: true
@@ -109978,7 +109978,7 @@ Body:
       - Item: Zephyrus
         Rate: 5
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Merman_Card
         Rate: 1
         StealProtected: true
@@ -110026,7 +110026,7 @@ Body:
       - Item: Electronic_Guitar
         Rate: 5
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Sedora_Card
         Rate: 1
         StealProtected: true
@@ -110075,7 +110075,7 @@ Body:
       - Item: Elunium_Stone
         Rate: 25
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Sword_Fish_Card
         Rate: 1
         StealProtected: true
@@ -110124,7 +110124,7 @@ Body:
       - Item: Brionac
         Rate: 50
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Strouf_Card
         Rate: 1
         StealProtected: true
@@ -110173,7 +110173,7 @@ Body:
       - Item: Morrigane's_Helm
         Rate: 10
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_Phen_Card
         Rate: 1
         StealProtected: true
@@ -110219,7 +110219,7 @@ Body:
       - Item: Death_Guidance
         Rate: 50
       - Item: E_Abyss1
-        Rate: 250
+        Rate: 2500
       - Item: ILL_King_Dramoh_Card
         Rate: 1
         StealProtected: true
@@ -110276,7 +110276,7 @@ Body:
       - Item: Morrigane's_Manteau
         Rate: 300
       - Item: E_Abyss1
-        Rate: 1000
+        Rate: 2500
       - Item: ILL_Kraken_Card
         Rate: 1
         StealProtected: true
@@ -110487,7 +110487,7 @@ Body:
       - Item: Shadowdecon
         Rate: 2500
       - Item: E_Abyss1
-        Rate: 1000
+        Rate: 2500
       - Item: ILL_Abysmal_Witch_Card
         Rate: 1
         StealProtected: true
