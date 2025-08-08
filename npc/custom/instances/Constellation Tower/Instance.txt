@@ -106,7 +106,8 @@ e_tower,80,110,5	script	OSC0008#ctower	2_SLOT_MACHINE,{
 			.@id = 6 + .@s;
 			break;
 	}
-	enchantui(.@id);
+	// TODO: test
+	item_enchant(.@id);
 	end;
 
 OnInit:
