@@ -104576,7 +104576,7 @@ Body:
 #    AegisName: MD_ED_LGTGUARD
   - Id: 20543
     AegisName: MD_ED_M_SCIENCE
-    Name: MD_ED_M_SCIENCE
+    Name: Regenschirm Scientist
     Level: 172
     Hp: 1469107
     BaseExp: 133555

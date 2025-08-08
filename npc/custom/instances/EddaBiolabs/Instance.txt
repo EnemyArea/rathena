@@ -29,14 +29,15 @@ yuno,214,347,5	script	Nina#somatology_instance	4_DR_F_01,{
 }
 
 yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
-	// if(BaseLevel < 170){
-	// 	cutin "3rd_gn_demi01",2;
-	// 	mes "[ Sierra ]";
-	// 	mes "This place is too dangerous for you!";
-	// 	next;
-	// 	mes "^FF0000- You need to be at least level 170 to proceed on this quest. - ^000000";
-	// 	close3;
-	// }
+	if(BaseLevel < 170){
+		cutin "3rd_gn_demi01",2;
+		mes "[ Sierra ]";
+		mes "This place is too dangerous for you!";
+		next;
+		mes "^FF0000- You need to be at least level 170 to proceed on this quest. - ^000000";
+		close3;
+	}
+	
 	if(isbegin_quest(16388) == 0){
 		if(isbegin_quest(16389) == 1){
 			cutin "3rd_gn_demi01",2;
@@ -242,36 +243,35 @@ yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
 		}
 		end;
 	}
-	switch(checkquest(16390,PLAYTIME)){
-		case -1:
-			break;
+	// switch(checkquest(16390,PLAYTIME)){
+	// 	case -1:
+	// 		break;
 			
-		case 0:
-		case 1:
-			cutin "3rd_gn_demi01",2;
-			mes "[ Sierra ]";
-			mes "You're back. Do you want to a virtual record interpretation again?";
-			next;
-			cutin "",255;
-			mes "[ Nina ]";
-			mes "Oh! Wait a minute! It's been less than a day since you used the virtual record interpretation.";
-			mes "If you try to interpret while you still have the after effects, you'll experience some bad side effects.";
-			npctalk "Nina : Dizziness, nausea, headache, body weakening, death, super thoughtfulness, toothache, depression, and so on...","Nina#somatology_instance",bc_self;
-			npctalk "Sierra : Isn't there something wrong in the middle?","",bc_self;
-			next;
-			mes "[ Nina ]";
-			mes "Please come back after you recover for ^0000CDone day^000000!";
-			erasequest 16390;
-			end;
+	// 	case 0:
+	// 	case 1:
+	// 		cutin "3rd_gn_demi01",2;
+	// 		mes "[ Sierra ]";
+	// 		mes "You're back. Do you want to a virtual record interpretation again?";
+	// 		next;
+	// 		cutin "",255;
+	// 		mes "[ Nina ]";
+	// 		mes "Oh! Wait a minute! It's been less than a day since you used the virtual record interpretation.";
+	// 		mes "If you try to interpret while you still have the after effects, you'll experience some bad side effects.";
+	// 		npctalk "Nina : Dizziness, nausea, headache, body weakening, death, super thoughtfulness, toothache, depression, and so on...","Nina#somatology_instance",bc_self;
+	// 		npctalk "Sierra : Isn't there something wrong in the middle?","",bc_self;
+	// 		next;
+	// 		mes "[ Nina ]";
+	// 		mes "Please come back after you recover for ^0000CDone day^000000!";
+	// 		end;
 			
-		case 2:
-			cutin "3rd_gn_demi01",2;
-			mes "[ Sierra ]";
-			mes "It seems you're good to go!";
-			mes "Talk to me again to start the virtualization.";
-			erasequest 16390;
-			close3;
-	}
+	// 	case 2:
+	// 		cutin "3rd_gn_demi01",2;
+	// 		mes "[ Sierra ]";
+	// 		mes "It seems you're good to go!";
+	// 		mes "Talk to me again to start the virtualization.";
+	// 		erasequest 16390;
+	// 		close3;
+	// }
 	npctalk "Nina : Ugh, I'll take care of you!","Nina#somatology_instance",bc_self;
 	cutin "3rd_gn_demi01",2;
 	mes "[ Sierra ]";
@@ -369,7 +369,7 @@ yuno,216,345,3	script	Sierra#somatology_instance	4_F_SCIENCE,{
 					erasequest 16391;
 				if(isbegin_quest(16392) > 0)
 					erasequest 16392;
-				setquest 16390;
+				// setquest 16390;
 				end;
 		}
 	}
@@ -456,6 +456,7 @@ yuno,212,347,3	script	Ravian#rgsr_lab_enchant	4_DR_F_02,{
 					next;
 				}
 			}
+			end;	
 		} else {
 			mes "[ Ravian ]";
 			mes "I will tell you a story.";
@@ -542,6 +543,7 @@ yuno,212,347,3	script	Ravian#rgsr_lab_enchant	4_DR_F_02,{
 		.@check[.@i] = .@card[.@i];
 	}
 	if(.@card[2] > 0){
+		next;
 		mes "[ Ravian ]";
 		mes "Wow~ You've got the weapon. But...";
 		next;
@@ -550,6 +552,7 @@ yuno,212,347,3	script	Ravian#rgsr_lab_enchant	4_DR_F_02,{
 		end;
 	}
 	.@slot = ((.@card[3] > 0) ? 2 : 3);
+	next;
 	mes "[ Ravian ]";
 	mes "Wow~ You've got the weapon.";
 	mes "Alright, what enchant method will you use to empower it?";
@@ -2332,8 +2335,8 @@ end;
 		next;
 		mes "[ Harword Alt-Eisen ]";
 		mes "Let's go and beat up every single one of those guys that did those to Keyron!";
-		mes "Also, let's find my sister Shecil and your fiancé as well.";
-		npctalk "Harword : Let's go and beat up every single one of those guys that did those to Keyron! Also, let's find my sister Shecil and your fiancé as well.";
+		mes "Also, let's find my sister Shecil and your fiance as well.";
+		npctalk "Harword : Let's go and beat up every single one of those guys that did those to Keyron! Also, let's find my sister Shecil and your fiance as well.";
 		next;
 		mes "[ Harword Alt-Eisen ]";
 		mes "And then we go out and figure out if it's the battle core or something!";
@@ -2438,8 +2441,8 @@ end;
 		cutin "bio_harword01",2;
 		mes "[ Harword Alt-Eisen ]";
 		mes "That's right! Now that we've found Shecil, I feel much safer.";
-		mes "Now let's find your fiancé as well and wait for Eremes to regroup with us, then we can leave this place.";
-		npctalk "Harword : That's right! Now that we've found Shecil, I feel much safer. Now let's find your fiancé as well and wait for Eremes to regroup with us, then we can leave this place.";
+		mes "Now let's find your fiance as well and wait for Eremes to regroup with us, then we can leave this place.";
+		npctalk "Harword : That's right! Now that we've found Shecil, I feel much safer. Now let's find your fiance as well and wait for Eremes to regroup with us, then we can leave this place.";
 		next;
 		cutin "bio_shecil04",2;
 		mes "[ Shecil Damon ]";
@@ -3417,6 +3420,7 @@ end;
 	end;
 }
 
+// TODO: scheint ein bug zu sein, steht wären der Shecil Damon scene einfach doppelt rum
 1@gol1,172,310,7	duplicate(instancedummynpc)	Shecil Damon#edda_shecil_0-1	4_F_MD_SHECIL
 
 
@@ -3465,7 +3469,6 @@ end;
 		next;
 		instance_hide("Shecil Damon#edda_shecil_0-0",true);
 		instance_enable("Shecil Damon#edda_shecil_0-0",false);
-		instance_hide("Shecil Damon#edda_shecil_0-1",false);
 		cutin "bio_shecil02",2;
 		mes "[ Shecil Damon ]";
 		mes "Oh. They did these experiments on us.";
@@ -5428,11 +5431,11 @@ OnBossKill:
 	}
 	setcell .@map$,50,44,52,44,CELL_WALKABLE,true;
 	setcell .@map$,50,44,52,44,CELL_SHOOTABLE,true;
-	if(rand(1,100) >= 75) //= 25% Chance
-		instance_enable("???#edda_combat_reward",true);
+	
+	instance_enable("???#edda_combat_reward",true);
+
 	npctalk "Sierra : The battle data has been interpreted safely.",instance_npcname("Sierra#edda_combat_9");
 	killmonster .@map$,instance_npcname(strnpcinfo(0)) + "::OnSlaveDie";
-	callfunc("instance_points", 10);
 end;
 
 OnSlave:

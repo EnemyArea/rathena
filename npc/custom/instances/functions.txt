@@ -120,15 +120,7 @@ function	script	instance_warning	{
 	return;
 }
 
-//= Instance event control so I don't have to type instance_npcname and concatinate something every single time I have to do an event call.
-function	script	instance_hide	{
-	if(getarg(1))
-		hideonnpc instance_npcname(getarg(0));
-	else
-		hideoffnpc instance_npcname(getarg(0));
-	return;
-}
-
+//= instance_enable(<NPC NAME>);
 function	script	instance_enable	{
 	if(getarg(1))
 		enablenpc instance_npcname(getarg(0));
@@ -137,6 +129,23 @@ function	script	instance_enable	{
 	return;
 }
 
+//= instance_disable(<NPC NAME>);
+function	script	instance_disable	{
+	hideoffnpc instance_npcname(getarg(0));
+	disablenpc instance_npcname(getarg(0));
+	return;
+}
+
+//= instance_hide(<NPC NAME>);
+function	script	instance_hide	{
+	if(getarg(1))
+		hideonnpc instance_npcname(getarg(0));
+	else
+		hideoffnpc instance_npcname(getarg(0));
+	return;
+}
+
+//= instance_event(<NPC NAME>,<EVENT NAME>,<BOOL>);
 function	script	instance_event	{
 	if(getarg(2))
 		doevent instance_npcname(getarg(0)) + "::" + getarg(1);
@@ -145,22 +154,24 @@ function	script	instance_event	{
 	return;
 }
 
-//= Instance variable control because I hate how 'variables breaks my IDE.
+//= get_instance_var(<VAR>);
 function	script	get_instance_var	{
 	return getd("'" + getarg(0));
 }
 
+//= set_instance_var(<VAR>,<VALUE>);
 function	script	set_instance_var	{
 	setd("'" + getarg(0),getarg(1));
 	return;
 }
 
+//= inc_instance_var(<VAR>);
 function	script	inc_instance_var	{
 	setd("'" + getarg(0), getd("'" + getarg(0)) + 1);
 	return;
 }
 
-//= Shortcut Functions
+//= cloaknpc("<NPC NAME>",<BOOL>{,<CHAR ID>});
 function	script	cloaknpc	{
 	if(getargcount() > 2){
 		if(getarg(1))
@@ -266,8 +277,12 @@ function	script	validate_itemid	{
 	return getiteminfo(getarg(0), ITEMINFO_TYPE);
 }
 
-//= DUMMY NPC's
--	script(CLOAKED)	dummynpc	-1,{
+//= Dummy NPC's
+-	script	dummynpc	HIDDEN_WARP_NPC,{
+	end;
+		
+	OnInit:
+		cloakonnpc;
 	end;
 }
 
