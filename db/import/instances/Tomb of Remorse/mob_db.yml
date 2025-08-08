@@ -1,0 +1,387 @@
+# This file is a part of rAthena.
+#   Copyright(C) 2024 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Monster Database
+###########################################################################
+#
+# Monster Settings
+#
+###########################################################################
+# - Id                      Monster ID.
+#   AegisName               Server name to reference the monster in scripts and lookups, should use no spaces.
+#   Name                    Name in English.
+#   JapaneseName            Name in Japanese. (Default: 'Name' value)
+#   Level                   Level. (Default: 1)
+#   Hp                      Total HP. (Default: 1)
+#   Sp                      Total SP. (Default: 1)
+#   BaseExp                 Base experience gained. (Default: 0)
+#   JobExp                  Job experience gained. (Default: 0)
+#   MvpExp                  MVP experience gained. (Default: 0)
+#   Attack                  Minimum attack in pre-renewal and base attack in renewal. (Default: 0)
+#   Attack2                 Maximum attack in pre-renewal and base magic attack in renewal. (Default: 0)
+#   Defense                 Physical defense of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicDefense            Magic defense of the monster, reduces magical skill damage. (Default: 0)
+#   Resistance              Physical resistance of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicResistance         Magic resistance of the monster, reduces magical skill damage. (Default: 0)
+#   Str                     Strength which affects attack. (Default: 1)
+#   Agi                     Agility which affects flee. (Default: 1)
+#   Vit                     Vitality which affects defense. (Default: 1)
+#   Int                     Intelligence which affects magic attack. (Default: 1)
+#   Dex                     Dexterity which affects hit rate. (Default: 1)
+#   Luk                     Luck which affects perfect dodge/lucky flee/perfect flee/lucky dodge rate. (Default: 1)
+#   AttackRange             Attack range. (Default: 0)
+#   SkillRange              Skill cast range. (Default: 0)
+#   ChaseRange              Chase range. (Default: 0)
+#   Size                    Size. (Default: Small)
+#   Race                    Race. (Default: Formless)
+#   RaceGroups:             List of secondary groups the monster may be part of. (Optional)
+#     <group>: <value>      Group to toggle.
+#   Element                 Element. (Default: Neutral)
+#   ElementLevel            Level of element. (Default: 1)
+#   WalkSpeed               Walk speed. (Default: DEFAULT_WALK_SPEED)
+#   AttackDelay             Attack speed. (Default: 0)
+#   AttackMotion            Attack animation speed. (Default: 0)
+#   ClientAttackMotion      Client attack speed. (Default: AttackMotion)
+#   DamageMotion            Damage animation speed. (Default: 0)
+#   DamageTaken             Rate at which the monster will receive incoming damage. (Default: 100)
+#   GroupId                 Monster group ID. (Default: 0)
+#   Title                   Monster title. (Default: None)
+#   Ai                      Aegis monster type AI behavior. (Default: 06)
+#   Class                   Aegis monster class. (Default: Normal)
+#   Modes:                  List of unique behavior not defined by AI, Class, or Attribute. (Optional)
+#     <mode>: <value>       Mode to toggle.
+#   MvpDrops:               List of possible MVP prize items. Max of MAX_MVP_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+#   Drops:                  List of possible normal item drops. Max of MAX_MOB_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       StealProtected      If the item is shielded from TF_STEAL. (Default: false)
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+###########################################################################
+
+Header:
+  Type: MOB_DB
+  Version: 5
+
+Body:
+- Id: 20892
+  AegisName: MD_SAKRAY
+  Name: Fallen Sakray#rms
+  Level: 240
+  Hp: 1835856994
+  BaseExp: 6119523
+  JobExp: 4283666
+  Attack: 10650
+  Attack2: 3840
+  Defense: 862
+  MagicDefense: 92
+  Str: 355
+  Agi: 221
+  Vit: 371
+  Int: 240
+  Dex: 260
+  Luk: 69
+  AttackRange: 3
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  Class: Boss
+  ElementLevel: 4
+  WalkSpeed: 150
+  AttackDelay: 115
+  AttackMotion: 816
+  ClientAttackMotion: 384
+  DamageMotion: 504
+  Ai: 21
+  Drops: []
+  Modes:
+    Mvp: true
+  MvpDrops:
+  - Item: Mine_As
+    Rate: 100
+  - Item: Sakray_Fury2
+    Rate: 500
+  - Item: Sakray_Regret2
+    Rate: 500
+- Id: 20893
+  AegisName: MD_TIARA
+  Name: Princess Tiara#rms
+  Level: 240
+  Hp: 1311066424
+  BaseExp: 4370221
+  JobExp: 3059155
+  Attack: 8340
+  Attack2: 5328
+  Defense: 836
+  MagicDefense: 99
+  Str: 278
+  Agi: 185
+  Vit: 358
+  Int: 333
+  Dex: 244
+  Luk: 75
+  AttackRange: 9
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Undead
+  Element: Undead
+  Class: Boss
+  ElementLevel: 4
+  WalkSpeed: 200
+  AttackDelay: 576
+  AttackMotion: 432
+  ClientAttackMotion: 384
+  DamageMotion: 360
+  Ai: 21
+  Drops: []
+  Modes:
+    Mvp: true
+  MvpDrops:
+  - Item: Mine_As
+    Rate: 10
+- Id: 20894
+  AegisName: MD_UNDEAD_KNIGHT
+  Name: Undead Knight
+  Level: 237
+  Hp: 11634150
+  BaseExp: 387805
+  JobExp: 271464
+  Attack: 10369
+  Attack2: 2338
+  Defense: 633
+  MagicDefense: 83
+  Str: 350
+  Agi: 300
+  Vit: 257
+  Int: 148
+  Dex: 294
+  Luk: 91
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demon
+  Element: Undead
+  ElementLevel: 4
+  WalkSpeed: 200
+  AttackDelay: 528
+  AttackMotion: 1000
+  ClientAttackMotion: 384
+  DamageMotion: 396
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20895
+  AegisName: MD_UNDEAD_SOLDIER
+  Name: Undead Soldier
+  Level: 230
+  Hp: 11282935
+  BaseExp: 376098
+  JobExp: 263268
+  Attack: 9229
+  Attack2: 2377
+  Defense: 541
+  MagicDefense: 83
+  Str: 321
+  Agi: 135
+  Vit: 213
+  Int: 155
+  Dex: 311
+  Luk: 88
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Undead
+  Element: Undead
+  ElementLevel: 4
+  WalkSpeed: 150
+  AttackDelay: 824
+  AttackMotion: 780
+  ClientAttackMotion: 384
+  DamageMotion: 420
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20896
+  AegisName: MD_UNDEAD_ARCHER
+  Name: Undead Archer
+  Level: 233
+  Hp: 11422240
+  BaseExp: 380741
+  JobExp: 266519
+  Attack: 8388
+  Attack2: 2097
+  Defense: 541
+  MagicDefense: 81
+  Str: 238
+  Agi: 310
+  Vit: 168
+  Int: 135
+  Dex: 358
+  Luk: 77
+  AttackRange: 9
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Undead
+  Element: Undead
+  ElementLevel: 4
+  WalkSpeed: 200
+  AttackDelay: 1152
+  AttackMotion: 1152
+  ClientAttackMotion: 384
+  DamageMotion: 480
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20897
+  AegisName: MD_UNDEAD_WIZARD
+  Name: Undead Wizard
+  Level: 238
+  Hp: 11671994
+  BaseExp: 389066
+  JobExp: 272347
+  Attack: 6277
+  Attack2: 6140
+  Defense: 507
+  MagicDefense: 97
+  Str: 211
+  Agi: 193
+  Vit: 194
+  Int: 387
+  Dex: 240
+  Luk: 100
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Demihuman
+  Element: Ghost
+  ElementLevel: 4
+  WalkSpeed: 150
+  AttackDelay: 1056
+  AttackMotion: 1056
+  ClientAttackMotion: 384
+  DamageMotion: 336
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20898
+  AegisName: MD_UNDEAD_MAGICIAN
+  Name: Undead Magician
+  Level: 235
+  Hp: 11520638
+  BaseExp: 384021
+  JobExp: 268815
+  Attack: 6903
+  Attack2: 5029
+  Defense: 458
+  MagicDefense: 94
+  Str: 235
+  Agi: 191
+  Vit: 170
+  Int: 321
+  Dex: 205
+  Luk: 99
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Undead
+  Element: Dark
+  ElementLevel: 4
+  WalkSpeed: 250
+  AttackDelay: 1816
+  AttackMotion: 576
+  ClientAttackMotion: 384
+  DamageMotion: 240
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20899
+  AegisName: MD_UNDEAD_NOBLE
+  Name: Undead Noble
+  Level: 239
+  Hp: 11723545
+  BaseExp: 390785
+  JobExp: 273549
+  Attack: 8544
+  Attack2: 2741
+  Defense: 536
+  MagicDefense: 85
+  Str: 286
+  Agi: 225
+  Vit: 208
+  Int: 172
+  Dex: 215
+  Luk: 83
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Demihuman
+  Element: Ghost
+  ElementLevel: 4
+  WalkSpeed: 150
+  AttackDelay: 1960
+  AttackMotion: 576
+  ClientAttackMotion: 384
+  DamageMotion: 420
+  Ai: 21
+  Drops: []
+  MvpDrops: []
+- Id: 20900
+  AegisName: MD_UNDEAD_SERVANT
+  Name: Undead Servant
+  Level: 234
+  Hp: 11482495
+  BaseExp: 382750
+  JobExp: 267925
+  Attack: 9799
+  Attack2: 1934
+  Defense: 581
+  MagicDefense: 81
+  Str: 335
+  Agi: 228
+  Vit: 232
+  Int: 124
+  Dex: 330
+  Luk: 66
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Small
+  Race: Undead
+  Element: Undead
+  ElementLevel: 4
+  WalkSpeed: 200
+  AttackDelay: 2612
+  AttackMotion: 912
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 21
+  Drops: []
+  MvpDrops: []

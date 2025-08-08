@@ -1,0 +1,396 @@
+# This file is a part of rAthena.
+#   Copyright(C) 2024 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Monster Database
+###########################################################################
+#
+# Monster Settings
+#
+###########################################################################
+# - Id                      Monster ID.
+#   AegisName               Server name to reference the monster in scripts and lookups, should use no spaces.
+#   Name                    Name in English.
+#   JapaneseName            Name in Japanese. (Default: 'Name' value)
+#   Level                   Level. (Default: 1)
+#   Hp                      Total HP. (Default: 1)
+#   Sp                      Total SP. (Default: 1)
+#   BaseExp                 Base experience gained. (Default: 0)
+#   JobExp                  Job experience gained. (Default: 0)
+#   MvpExp                  MVP experience gained. (Default: 0)
+#   Attack                  Minimum attack in pre-renewal and base attack in renewal. (Default: 0)
+#   Attack2                 Maximum attack in pre-renewal and base magic attack in renewal. (Default: 0)
+#   Defense                 Physical defense of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicDefense            Magic defense of the monster, reduces magical skill damage. (Default: 0)
+#   Resistance              Physical resistance of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicResistance         Magic resistance of the monster, reduces magical skill damage. (Default: 0)
+#   Str                     Strength which affects attack. (Default: 1)
+#   Agi                     Agility which affects flee. (Default: 1)
+#   Vit                     Vitality which affects defense. (Default: 1)
+#   Int                     Intelligence which affects magic attack. (Default: 1)
+#   Dex                     Dexterity which affects hit rate. (Default: 1)
+#   Luk                     Luck which affects perfect dodge/lucky flee/perfect flee/lucky dodge rate. (Default: 1)
+#   AttackRange             Attack range. (Default: 0)
+#   SkillRange              Skill cast range. (Default: 0)
+#   ChaseRange              Chase range. (Default: 0)
+#   Size                    Size. (Default: Small)
+#   Race                    Race. (Default: Formless)
+#   RaceGroups:             List of secondary groups the monster may be part of. (Optional)
+#     <group>: <value>      Group to toggle.
+#   Element                 Element. (Default: Neutral)
+#   ElementLevel            Level of element. (Default: 1)
+#   WalkSpeed               Walk speed. (Default: DEFAULT_WALK_SPEED)
+#   AttackDelay             Attack speed. (Default: 0)
+#   AttackMotion            Attack animation speed. (Default: 0)
+#   ClientAttackMotion      Client attack speed. (Default: AttackMotion)
+#   DamageMotion            Damage animation speed. (Default: 0)
+#   DamageTaken             Rate at which the monster will receive incoming damage. (Default: 100)
+#   GroupId                 Monster group ID. (Default: 0)
+#   Title                   Monster title. (Default: None)
+#   Ai                      Aegis monster type AI behavior. (Default: 06)
+#   Class                   Aegis monster class. (Default: Normal)
+#   Modes:                  List of unique behavior not defined by AI, Class, or Attribute. (Optional)
+#     <mode>: <value>       Mode to toggle.
+#   MvpDrops:               List of possible MVP prize items. Max of MAX_MVP_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+#   Drops:                  List of possible normal item drops. Max of MAX_MOB_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       StealProtected      If the item is shielded from TF_STEAL. (Default: false)
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+###########################################################################
+
+Header:
+  Type: MOB_DB
+  Version: 5
+
+Body:
+- Id: 20536
+  AegisName: MD_ED_B_YGNIZEM
+  Name: Unknown Swordsman
+  Level: 180
+  Hp: 75500000
+  BaseExp: 5885540
+  JobExp: 4780000
+  Attack: 5585
+  Attack2: 2532
+  Defense: 585
+  MagicDefense: 235
+  Str: 188
+  Agi: 177
+  Vit: 165
+  Int: 142
+  Dex: 278
+  Luk: 105
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Fire
+  Class: Boss
+  ElementLevel: 2
+  WalkSpeed: 100
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 21
+  Drops:
+  - Item: Bio_Reseearch_Docu
+    Rate: 3500
+  - Item: Bio_Test_Fragment
+    Rate: 3500
+  - Item: Hero_Weapon_Box
+    Rate: 100
+  - Item: Bio_Reactant_Box
+    Rate: 1000
+  - Item: Bio_Docu_Box
+    Rate: 500
+  - Item: Bio_W_Box
+    Rate: 100
+  - Item: Subject_Aura
+    Rate: 50
+  - Item: Unknown_Swordman_Card
+    Rate: 1
+    StealProtected: true
+  Modes:
+    Mvp: true
+  MvpDrops:
+  - Item: Yggdrasilberry
+    Rate: 4500
+  - Item: Old_Card_Album
+    Rate: 3000
+  - Item: Magic_Card_Album
+    Rate: 2500
+- Id: 20537
+  AegisName: MD_ED_YGNIZEM
+  Name: Unknown Swordsman
+  Level: 178
+  Hp: 1519762
+  BaseExp: 138160
+  JobExp: 96712
+  Attack: 4228
+  Attack2: 1283
+  Defense: 340
+  MagicDefense: 109
+  Str: 190
+  Agi: 140
+  Vit: 54
+  Int: 162
+  Dex: 183
+  Luk: 103
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Fire
+  ElementLevel: 2
+  WalkSpeed: 145
+  AttackDelay: 576
+  AttackMotion: 432
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Particles_Of_Energy1
+    Rate: 1000
+  - Item: Particles_Of_Energy2
+    Rate: 250
+  - Item: Goast_Chill
+    Rate: 1
+  - Item: Bio_Test_Fragment
+    Rate: 10
+  MvpDrops: []
+- Id: 20538
+  AegisName: MD_ED_EREND
+  Name: 무명의 복사
+  Level: 176
+  Hp: 1500486
+  BaseExp: 136341
+  JobExp: 95439
+  Attack: 3168
+  Attack2: 1128
+  Defense: 278
+  MagicDefense: 113
+  Str: 144
+  Agi: 102
+  Vit: 34
+  Int: 201
+  Dex: 175
+  Luk: 98
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Holy
+  ElementLevel: 2
+  WalkSpeed: 130
+  AttackDelay: 576
+  AttackMotion: 432
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Particles_Of_Energy1
+    Rate: 1000
+  - Item: Particles_Of_Energy
+    Rate: 250
+  - Item: Goast_Chill
+    Rate: 1
+  - Item: Bio_Test_Fragment
+    Rate: 10
+  MvpDrops: []
+- Id: 20539
+  AegisName: MD_ED_ARMAIA
+  Name: 무명의 상인
+  Level: 175
+  Hp: 1507840
+  BaseExp: 136097
+  JobExp: 95268
+  Attack: 3828
+  Attack2: 1213
+  Defense: 397
+  MagicDefense: 103
+  Str: 175
+  Agi: 132
+  Vit: 74
+  Int: 122
+  Dex: 185
+  Luk: 122
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Fire
+  ElementLevel: 3
+  WalkSpeed: 120
+  AttackDelay: 576
+  AttackMotion: 432
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 04
+  Drops:
+  - Item: Particles_Of_Energy2
+    Rate: 250
+  - Item: Goast_Chill
+    Rate: 1
+  - Item: Bio_Test_Fragment
+    Rate: 10
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Particles_Of_Energy1
+    Rate: 1000
+  MvpDrops: []
+- Id: 20540
+  AegisName: MD_ED_EREMES
+  Name: 에레메스 가일
+  Level: 178
+  Hp: 1518427
+  BaseExp: 138039
+  JobExp: 96627
+  Attack: 4116
+  Attack2: 1285
+  Defense: 313
+  MagicDefense: 102
+  Str: 144
+  Agi: 215
+  Vit: 58
+  Int: 95
+  Dex: 230
+  Luk: 107
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demon
+  Element: Poison
+  ElementLevel: 4
+  WalkSpeed: 180
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 1000
+  - Item: Particles_Of_Energy3
+    Rate: 1000
+  - Item: Goast_Chill
+    Rate: 1
+  - Item: Bio_Test_Fragment
+    Rate: 10
+  MvpDrops: []
+- Id: 20541
+  AegisName: MD_ED_LGTHIGHGUARD
+  Name: Rekenber High Guard
+  Level: 174
+  Hp: 1485755
+  BaseExp: 135069
+  JobExp: 94548
+  Attack: 3589
+  Attack2: 1021
+  Defense: 339
+  MagicDefense: 98
+  Str: 165
+  Agi: 112
+  Vit: 55
+  Int: 88
+  Dex: 220
+  Luk: 84
+  AttackRange: 9
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  ElementLevel: 2
+  WalkSpeed: 175
+  AttackDelay: 864
+  AttackMotion: 1268
+  ClientAttackMotion: 384
+  DamageMotion: 480
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Bio_Reseearch_Docu
+    Rate: 10
+  - Item: Yggdrasilberry
+    Rate: 150
+  - Item: Seed_Of_Yggdrasil
+    Rate: 300
+  - Item: Reken_H_Guard_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20542
+  AegisName: MD_ED_LGTGUARD
+  Name: Rekenber Guard
+  Level: 173
+  Hp: 1475486
+  BaseExp: 134135
+  JobExp: 93895
+  Attack: 3395
+  Attack2: 895
+  Defense: 346
+  MagicDefense: 96
+  Str: 157
+  Agi: 108
+  Vit: 43
+  Int: 75
+  Dex: 164
+  Luk: 65
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  ElementLevel: 2
+  WalkSpeed: 175
+  AttackDelay: 432
+  AttackMotion: 480
+  ClientAttackMotion: 384
+  DamageMotion: 1268
+  Ai: 04
+  Drops:
+  - Item: Lab_Staff_Record
+    Rate: 500
+  - Item: Bio_Reseearch_Docu
+    Rate: 10
+  - Item: Seed_Of_Yggdrasil
+    Rate: 100
+  - Item: Yggdrasilberry
+    Rate: 50
+  - Item: Reken_Guard_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+  

@@ -1,5 +1,5 @@
 # This file is a part of rAthena.
-#   Copyright(C) 2021 rAthena Development Team
+#   Copyright(C) 2024 rAthena Development Team
 #   https://rathena.org - https://github.com/rathena
 #
 # This program is free software: you can redistribute it and/or modify
@@ -67,12 +67,12 @@
 #     <mode>: <value>       Mode to toggle.
 #   MvpDrops:               List of possible MVP prize items. Max of MAX_MVP_DROP. (Optional)
 #     - Item                Item name.
-#       Rate                Drop rate of item. (Default: 1)
+#       Rate                Drop rate of item.
 #       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
 #       Index               Index used for overwriting item. (Optional)
 #   Drops:                  List of possible normal item drops. Max of MAX_MOB_DROP. (Optional)
 #     - Item                Item name.
-#       Rate                Drop rate of item. (Default: 1)
+#       Rate                Drop rate of item.
 #       StealProtected      If the item is shielded from TF_STEAL. (Default: false)
 #       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
 #       Index               Index used for overwriting item. (Optional)
@@ -82,24 +82,238 @@ Header:
   Type: MOB_DB
   Version: 5
 
-Footer:
-  Imports:
-  - Path: db/pre-re/mob_db.yml
-    Mode: Prerenewal
-  - Path: db/re/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/mob_db.yml
+Body:
+- Id: 20583
+  AegisName: MD_C_WHITEKNIGHT_G
+  Name: Mutated White Knight#2
+  Level: 188
+  Hp: 2450483
+  Attack: 8578
+  Attack2: 2206
+  Defense: 802
+  MagicDefense: 77
+  Str: 365
+  Agi: 229
+  Vit: 354
+  Int: 176
+  Dex: 346
+  Luk: 109
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Undead
+  Element: Dark
+  ElementLevel: 3
+  WalkSpeed: 300
+  AttackDelay: 2800
+  AttackMotion: 1750
+  ClientAttackMotion: 384
+  DamageMotion: 1500
+  Ai: 04
+  Drops: []
+  MvpDrops: []
+- Id: 20584
+  AegisName: MD_C_KHALITZBURG_G
+  Name: Mutated Khalitzburg#1
+  Level: 185
+  Hp: 2401358
+  Attack: 9990
+  Attack2: 3453
+  Defense: 671
+  MagicDefense: 85
+  Str: 432
+  Agi: 389
+  Vit: 289
+  Int: 280
+  Dex: 311
+  Luk: 97
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Undead
+  Element: Dark
+  ElementLevel: 3
+  WalkSpeed: 200
+  AttackDelay: 2650
+  AttackMotion: 1550
+  ClientAttackMotion: 384
+  DamageMotion: 584
+  Ai: 04
+  Drops: []
+  MvpDrops: []
+- Id: 20585
+  AegisName: MD_C_RAY_ARCHER_G
+  Name: Cursed Raydric Archer#2
+  Level: 186
+  Hp: 2394654
+  Attack: 7231
+  Attack2: 3559
+  Defense: 417
+  MagicDefense: 86
+  Str: 311
+  Agi: 481
+  Vit: 162
+  Int: 287
+  Dex: 576
+  Luk: 77
+  AttackRange: 9
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Dark
+  ElementLevel: 2
+  WalkSpeed: 200
+  AttackDelay: 1736
+  AttackMotion: 1252
+  ClientAttackMotion: 384
+  DamageMotion: 480
+  Ai: 05
+  Drops: []
+  MvpDrops: []
+- Id: 20581
+  AegisName: MD_C_THORN
+  Name: 가시
+  Level: 185
+  Hp: 50
+  Attack: 1
+  Attack2: 1
+  Defense: 71
+  MagicDefense: 66
+  Str: 1
+  Agi: 1
+  Vit: 1
+  Int: 1
+  Dex: 1
+  Luk: 1
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Formless
+  Element: Fire
+  ElementLevel: 3
+  AttackDelay: 2864
+  AttackMotion: 288
+  ClientAttackMotion: 384
+  DamageMotion: 576
+  Ai: 10
+  Drops: []
+  MvpDrops: []
+- Id: 20562
+  AegisName: HIDDEN_MOB8
+  Name: '#drive01'
+  Level: 170
+  Hp: 100000
+  Attack: 1
+  Attack2: 1
+  Str: 1
+  Agi: 1
+  Vit: 1
+  Int: 1
+  Dex: 1
+  Luk: 1
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Formless
+  Element: Neutral
+  ElementLevel: 1
+  WalkSpeed: 100
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 10
+  Drops: []
+  MvpDrops: []
 
-# Custom instances
-  - Path: db/import/instances/Constellation Tower/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/instances/EDDA Fall of Glastheim/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/instances/EDDA Somatology Laboratory/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/instances/Memory of Thanatos/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/instances/Old Glast Heim (Challenge Mode)/mob_db.yml
-    Mode: Renewal
-  - Path: db/import/instances/Tomb of Remorse/mob_db.yml
-    Mode: Renewal
+- Id: 20579
+  AegisName: MD_C_ZOMBIE
+  Name: Cursed Butler
+  Level: 180
+  Hp: 2306607
+  BaseExp: 168616
+  JobExp: 118031
+  Attack: 4680
+  Attack2: 2256
+  Defense: 308
+  MagicDefense: 76
+  Str: 208
+  Agi: 221
+  Vit: 90
+  Int: 188
+  Dex: 321
+  Luk: 66
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Undead
+  Element: Undead
+  ElementLevel: 2
+  WalkSpeed: 300
+  AttackDelay: 1846
+  AttackMotion: 912
+  ClientAttackMotion: 384
+  DamageMotion: 504
+  Ai: 04
+  Drops:
+  - Item: Glast_Decayed_Nail
+    Rate: 1000
+  - Item: Glast_Horrendous_Mouth
+    Rate: 1000
+  - Item: Old_White_Cloth
+    Rate: 1000
+  - Item: Fragment_Of_Time
+    Rate: 250
+  - Item: C_Cursed_Butler
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20580
+  AegisName: MD_C_GHOUL
+  Name: Cursed Servant
+  Level: 184
+  Hp: 2360625
+  BaseExp: 168616
+  JobExp: 118031
+  Attack: 5865
+  Attack2: 2159
+  Defense: 308
+  MagicDefense: 76
+  Str: 255
+  Agi: 267
+  Vit: 108
+  Int: 176
+  Dex: 380
+  Luk: 66
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Undead
+  Element: Undead
+  ElementLevel: 2
+  WalkSpeed: 300
+  AttackDelay: 1456
+  AttackMotion: 812
+  ClientAttackMotion: 384
+  DamageMotion: 504
+  Ai: 04
+  Drops:
+  - Item: Glast_Decayed_Nail
+    Rate: 1000
+  - Item: Glast_Horrendous_Mouth
+    Rate: 1000
+  - Item: Old_White_Cloth
+    Rate: 1000
+  - Item: Fragment_Of_Time
+    Rate: 250
+  - Item: C_Cursed_Butler
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []

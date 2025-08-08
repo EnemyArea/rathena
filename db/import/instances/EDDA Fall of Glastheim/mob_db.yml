@@ -1,0 +1,481 @@
+# This file is a part of rAthena.
+#   Copyright(C) 2024 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Monster Database
+###########################################################################
+#
+# Monster Settings
+#
+###########################################################################
+# - Id                      Monster ID.
+#   AegisName               Server name to reference the monster in scripts and lookups, should use no spaces.
+#   Name                    Name in English.
+#   JapaneseName            Name in Japanese. (Default: 'Name' value)
+#   Level                   Level. (Default: 1)
+#   Hp                      Total HP. (Default: 1)
+#   Sp                      Total SP. (Default: 1)
+#   BaseExp                 Base experience gained. (Default: 0)
+#   JobExp                  Job experience gained. (Default: 0)
+#   MvpExp                  MVP experience gained. (Default: 0)
+#   Attack                  Minimum attack in pre-renewal and base attack in renewal. (Default: 0)
+#   Attack2                 Maximum attack in pre-renewal and base magic attack in renewal. (Default: 0)
+#   Defense                 Physical defense of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicDefense            Magic defense of the monster, reduces magical skill damage. (Default: 0)
+#   Resistance              Physical resistance of the monster, reduces melee and ranged physical attack/skill damage. (Default: 0)
+#   MagicResistance         Magic resistance of the monster, reduces magical skill damage. (Default: 0)
+#   Str                     Strength which affects attack. (Default: 1)
+#   Agi                     Agility which affects flee. (Default: 1)
+#   Vit                     Vitality which affects defense. (Default: 1)
+#   Int                     Intelligence which affects magic attack. (Default: 1)
+#   Dex                     Dexterity which affects hit rate. (Default: 1)
+#   Luk                     Luck which affects perfect dodge/lucky flee/perfect flee/lucky dodge rate. (Default: 1)
+#   AttackRange             Attack range. (Default: 0)
+#   SkillRange              Skill cast range. (Default: 0)
+#   ChaseRange              Chase range. (Default: 0)
+#   Size                    Size. (Default: Small)
+#   Race                    Race. (Default: Formless)
+#   RaceGroups:             List of secondary groups the monster may be part of. (Optional)
+#     <group>: <value>      Group to toggle.
+#   Element                 Element. (Default: Neutral)
+#   ElementLevel            Level of element. (Default: 1)
+#   WalkSpeed               Walk speed. (Default: DEFAULT_WALK_SPEED)
+#   AttackDelay             Attack speed. (Default: 0)
+#   AttackMotion            Attack animation speed. (Default: 0)
+#   ClientAttackMotion      Client attack speed. (Default: AttackMotion)
+#   DamageMotion            Damage animation speed. (Default: 0)
+#   DamageTaken             Rate at which the monster will receive incoming damage. (Default: 100)
+#   GroupId                 Monster group ID. (Default: 0)
+#   Title                   Monster title. (Default: None)
+#   Ai                      Aegis monster type AI behavior. (Default: 06)
+#   Class                   Aegis monster class. (Default: Normal)
+#   Modes:                  List of unique behavior not defined by AI, Class, or Attribute. (Optional)
+#     <mode>: <value>       Mode to toggle.
+#   MvpDrops:               List of possible MVP prize items. Max of MAX_MVP_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+#   Drops:                  List of possible normal item drops. Max of MAX_MOB_DROP. (Optional)
+#     - Item                Item name.
+#       Rate                Drop rate of item.
+#       StealProtected      If the item is shielded from TF_STEAL. (Default: false)
+#       RandomOptionGroup   Random Option Group applied to item on drop. (Default: None)
+#       Index               Index used for overwriting item. (Optional)
+###########################################################################
+
+Header:
+  Type: MOB_DB
+  Version: 5
+
+Body:
+- Id: 20386
+  AegisName: MD_GH_KING_SCHMIDT_N
+  Name: Curse-swallowed King
+  Level: 110
+  Hp: 9200000
+  BaseExp: 1100000
+  JobExp: 820000
+  Attack: 5100
+  Attack2: 3100
+  Defense: 340
+  MagicDefense: 82
+  Str: 180
+  Agi: 200
+  Vit: 77
+  Int: 200
+  Dex: 282
+  Luk: 154
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  Class: Boss
+  ElementLevel: 4
+  WalkSpeed: 170
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 21
+  Drops:
+  - Item: Yggdrasilberry
+    Rate: 8000
+  - Item: Old_Violet_Box
+    Rate: 10000
+  - Item: Old_Card_Album
+    Rate: 3000
+  - Item: Magic_Card_Album
+    Rate: 500
+  - Item: Temporal_Crystal
+    Rate: 4000
+  - Item: GH_Cursed_Crystal
+    Rate: 5000
+  - Item: GH_Cursed_Crystal
+    Rate: 1500
+  - Item: Schmidt_Card
+    Rate: 1
+    StealProtected: true
+  Modes:
+    Mvp: true
+  MvpDrops:
+  - Item: Yggdrasilberry
+    Rate: 5000
+  - Item: Magic_Card_Album
+    Rate: 2000
+  - Item: Old_Card_Album
+    Rate: 3000
+- Id: 20387
+  AegisName: MD_GH_KING_SCHMIDT_H
+  Name: Curse-swallowed King
+  Level: 175
+  Hp: 45000000
+  BaseExp: 3900000
+  JobExp: 2300000
+  Attack: 9564
+  Attack2: 4235
+  Defense: 680
+  MagicDefense: 90
+  Str: 360
+  Agi: 400
+  Vit: 90
+  Int: 400
+  Dex: 574
+  Luk: 154
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demihuman
+  Element: Neutral
+  Class: Boss
+  ElementLevel: 4
+  WalkSpeed: 170
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 21
+  Drops:
+  - Item: Yggdrasilberry
+    Rate: 8000
+  - Item: Old_Violet_Box
+    Rate: 10000
+  - Item: Old_Card_Album
+    Rate: 6000
+  - Item: Magic_Card_Album
+    Rate: 1000
+  - Item: Temporal_Crystal
+    Rate: 4000
+  - Item: GH_Cursed_Gemstone
+    Rate: 5000
+  - Item: GH_Cursed_Gemstone
+    Rate: 1500
+  - Item: Schmidt_Card
+    Rate: 1
+    StealProtected: true
+  Modes:
+    Mvp: true
+  MvpDrops:
+  - Item: Yggdrasilberry
+    Rate: 5000
+  - Item: Magic_Card_Album
+    Rate: 2000
+  - Item: Old_Card_Album
+    Rate: 3000
+- Id: 20388
+  AegisName: MD_GH_KHALITZBURG
+  Name: Unreasonable Person
+  Level: 110
+  Hp: 46350
+  BaseExp: 2600
+  JobExp: 2500
+  Attack: 1800
+  Attack2: 300
+  Defense: 204
+  MagicDefense: 50
+  Str: 120
+  Agi: 110
+  Vit: 68
+  Int: 80
+  Dex: 130
+  Luk: 45
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Demihuman
+  Element: Fire
+  ElementLevel: 3
+  WalkSpeed: 200
+  AttackDelay: 478
+  AttackMotion: 1000
+  ClientAttackMotion: 384
+  DamageMotion: 396
+  Ai: 04
+  Drops:
+  - Item: Brigan
+    Rate: 5000
+  - Item: Dark_Crystal_Fragment
+    Rate: 2000
+  - Item: Elunium
+    Rate: 100
+  - Item: Patriotism_Marks
+    Rate: 10
+  - Item: GH_Cursed_Crystal
+    Rate: 50
+  - Item: Khaliz_Knightage_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20389
+  AegisName: MD_GH_KHALITZBURG_H
+  Name: Khalitzburg Knight
+  Level: 175
+  Hp: 1140000
+  BaseExp: 30000
+  JobExp: 28000
+  Attack: 4130
+  Attack2: 544
+  Defense: 408
+  MagicDefense: 80
+  Str: 240
+  Agi: 220
+  Vit: 80
+  Int: 160
+  Dex: 260
+  Luk: 90
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Demihuman
+  Element: Fire
+  ElementLevel: 3
+  WalkSpeed: 200
+  AttackDelay: 478
+  AttackMotion: 1000
+  ClientAttackMotion: 384
+  DamageMotion: 396
+  Ai: 04
+  Drops:
+  - Item: Brigan
+    Rate: 5000
+  - Item: Dark_Crystal_Fragment
+    Rate: 2000
+  - Item: Elunium
+    Rate: 100
+  - Item: Patriotism_Marks
+    Rate: 10
+  - Item: GH_Cursed_Crystal
+    Rate: 50
+  - Item: Khaliz_Knightage_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20390
+  AegisName: MD_GH_WHITEKNIGHT
+  Name: White Knight
+  Level: 111
+  Hp: 58650
+  BaseExp: 3014
+  JobExp: 2870
+  Attack: 1200
+  Attack2: 402
+  Defense: 204
+  MagicDefense: 55
+  Str: 120
+  Agi: 100
+  Vit: 55
+  Int: 80
+  Dex: 140
+  Luk: 47
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Demihuman
+  Element: Holy
+  ElementLevel: 2
+  WalkSpeed: 200
+  AttackDelay: 1250
+  AttackMotion: 500
+  ClientAttackMotion: 384
+  DamageMotion: 1000
+  Ai: 04
+  Drops:
+  - Item: Patriotism_Marks
+    Rate: 10
+  - Item: Oridecon
+    Rate: 100
+  - Item: Reins
+    Rate: 5000
+  - Item: White_Jewel
+    Rate: 500
+  - Item: GH_Cursed_Crystal
+    Rate: 50
+  - Item: White_Knightage_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20391
+  AegisName: MD_GH_WHITEKNIGHT_H
+  Name: White Knight
+  Level: 175
+  Hp: 1380000
+  BaseExp: 33100
+  JobExp: 31000
+  Attack: 5247
+  Attack2: 688
+  Defense: 408
+  MagicDefense: 80
+  Str: 280
+  Agi: 200
+  Vit: 70
+  Int: 160
+  Dex: 280
+  Luk: 94
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Demihuman
+  Element: Holy
+  ElementLevel: 2
+  WalkSpeed: 200
+  AttackDelay: 1250
+  AttackMotion: 500
+  ClientAttackMotion: 384
+  DamageMotion: 1000
+  Ai: 04
+  Drops:
+  - Item: Patriotism_Marks
+    Rate: 10
+  - Item: Oridecon
+    Rate: 100
+  - Item: Reins
+    Rate: 5000
+  - Item: White_Jewel
+    Rate: 500
+  - Item: GH_Cursed_Crystal
+    Rate: 50
+  - Item: White_Knightage_Card
+    Rate: 1
+    StealProtected: true
+  MvpDrops: []
+- Id: 20392
+  AegisName: MD_GH_ALICE_G
+  Name: Fallen Maid#14
+  Level: 110
+  Hp: 68145
+  BaseExp: 50
+  JobExp: 50
+  Attack: 800
+  Attack2: 1500
+  Defense: 103
+  MagicDefense: 70
+  Str: 95
+  Agi: 75
+  Vit: 70
+  Int: 100
+  Dex: 152
+  Luk: 80
+  AttackRange: 1
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Demon
+  Element: Dark
+  ElementLevel: 2
+  WalkSpeed: 200
+  AttackDelay: 502
+  AttackMotion: 1999
+  ClientAttackMotion: 384
+  DamageMotion: 480
+  Ai: 04
+  Drops: []
+  MvpDrops: []
+- Id: 20394
+  AegisName: MD_GH_BLOODY_KNIGHT
+  Name: Khalitzburg Knight#3
+  Level: 175
+  Hp: 1152000
+  BaseExp: 21000
+  JobExp: 22000
+  Attack: 2625
+  Attack2: 690
+  Defense: 266
+  MagicDefense: 300
+  Str: 264
+  Agi: 255
+  Vit: 90
+  Int: 302
+  Dex: 274
+  Luk: 95
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Large
+  Race: Undead
+  Element: Dark
+  ElementLevel: 4
+  WalkSpeed: 200
+  AttackDelay: 414
+  AttackMotion: 364
+  ClientAttackMotion: 384
+  DamageMotion: 192
+  Ai: 04
+  Drops:
+  - Item: Brigan
+    Rate: 5000
+  - Item: Broad_Sword
+    Rate: 10
+  - Item: Two_Hand_Sword
+    Rate: 10
+  - Item: GH_Cursed_Crystal
+    Rate: 50
+  MvpDrops: []
+- Id: 20426
+  AegisName: MD_MANHOLE3
+  Name: Cursed flames#2
+  Level: 175
+  Hp: 10000
+  Attack: 1
+  Attack2: 1
+  Str: 1
+  Agi: 1
+  Vit: 1
+  Int: 1
+  Dex: 1
+  Luk: 1
+  AttackRange: 2
+  SkillRange: 10
+  ChaseRange: 12
+  Size: Medium
+  Race: Formless
+  Element: Neutral
+  ElementLevel: 1
+  WalkSpeed: 100
+  AttackDelay: 76
+  AttackMotion: 384
+  ClientAttackMotion: 384
+  DamageMotion: 288
+  Ai: 10
+  Drops: []
+  MvpDrops: []

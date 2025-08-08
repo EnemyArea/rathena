@@ -1,5 +1,5 @@
 set_instance_var\("(.*)",(.*)\);
-set '$1 = $2;
+set '$1, $2;
 
 
 get_instance_var\("(.*)"\);
@@ -8,3 +8,15 @@ get_instance_var\("(.*)"\);
 
 instance_enable\((.*),false\);
 disablenpc instance_npcname($1);
+
+
+instance_enable\((.*),true\);
+enablenpc instance_npcname($1);
+
+
+instance_hide\((.*),true\);
+cloakonnpc instance_npcname($1);
+
+
+instance_hide\((.*),false\);
+cloakoffnpc instance_npcname($1);
