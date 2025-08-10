@@ -36006,7 +36006,7 @@ Body:
       - Item: Drill_Katar
         Rate: 25
       - Item: Assassin_Mask_
-        Rate: 2
+        Rate: 2500
       - Item: Scalpel
         Rate: 75
       - Item: Agi_Dish07
@@ -114734,9 +114734,9 @@ Body:
       - Item: Sticky_Mucus
         Rate: 1000
       - Item: Opaque_Liquid
-        Rate: 2000
+        Rate: 4000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Andre_Card
         Rate: 1
         StealProtected: true
@@ -114786,7 +114786,7 @@ Body:
       - Item: Sticky_Mucus
         Rate: 1000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Andre_soldier_Card
         Rate: 1
         StealProtected: true
@@ -114832,7 +114832,7 @@ Body:
       - Item: Sticky_Mucus
         Rate: 1000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Andre_larva_Card
         Rate: 1
         StealProtected: true
@@ -114880,9 +114880,9 @@ Body:
       - Item: Sticky_Mucus
         Rate: 1000
       - Item: Opaque_Liquid
-        Rate: 2000
+        Rate: 4000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Deniro_Card
         Rate: 1
         StealProtected: true
@@ -114930,7 +114930,7 @@ Body:
       - Item: Sticky_Mucus
         Rate: 1000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Piere_Card
         Rate: 1
         StealProtected: true
@@ -114968,7 +114968,7 @@ Body:
       - Item: Jellopy
         Rate: 2500
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Ant_egg_Card
         Rate: 1
         StealProtected: true
@@ -115016,9 +115016,9 @@ Body:
       - Item: Elder_Pixie's_Beard
         Rate: 4000
       - Item: Dry_Sand
-        Rate: 2000
+        Rate: 8000
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Giearth_Card
         Rate: 1
         StealProtected: true
@@ -115064,7 +115064,7 @@ Body:
       - Item: Red_Herb
         Rate: 700
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Farmiliar_Card
         Rate: 1
         StealProtected: true
@@ -115114,7 +115114,7 @@ Body:
       - Item: Scell
         Rate: 300
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: ILL_Vitata_Card
         Rate: 1
         StealProtected: true
@@ -115171,7 +115171,7 @@ Body:
       - Item: Shadowdecon
         Rate: 2500
       - Item: Shell_Of_Cognition
-        Rate: 2000
+        Rate: 4000
       - Item: Mother's_Nightmare
         Rate: 10
       - Item: ILL_Maya_Card

@@ -46,10 +46,10 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 	}
 
 	// hunting quest checks
-	callsub L_CheckHunting,5161,5162,7,.@type$[0],6623,10; //Rough_Energy_Crystal
-	callsub L_CheckHunting,5169,5170,4,.@type$[1],6624,10; //Purified_Energy_Crystal
-	callsub L_CheckHunting,5174,5175,4,.@type$[2],6625,5;  //High_Purity_Energy_Xtal
-	callsub L_CheckHunting,5174,5179,4,.@type$[3],6625,10; //High_Purity_Energy_Xtal
+	callsub L_CheckHunting,5161,5162,7,.@type$[0],6623,100; //Rough_Energy_Crystal
+	callsub L_CheckHunting,5169,5170,4,.@type$[1],6624,100; //Purified_Energy_Crystal
+	callsub L_CheckHunting,5174,5175,4,.@type$[2],6625,50;  //High_Purity_Energy_Xtal
+	callsub L_CheckHunting,5174,5179,4,.@type$[3],6625,100; //High_Purity_Energy_Xtal
 
 	// buff checks
 	set .@energy_buf00, getstatus(SC_QUEST_BUFF1) + getstatus(SC_QUEST_BUFF2) + getstatus(SC_QUEST_BUFF3);
@@ -103,7 +103,7 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 		close;
 	case 2:
 		mes "[Reno]";
-		mes "The hunting quests are ranked by monster level and difficulty. The ranges are lower, intermediate, high quests and can only be taken once per day.";
+		mes "The hunting quests are ranked by monster level and difficulty.";
 		next;
 
 		setarray .@quest_status[0],
@@ -129,6 +129,7 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			if (.@playtime == 0 || .@playtime == 1) {
 				mes "[Reno]";
 				mes "Currently waiting for the "+.@type$[.@select]+" collection commission. Tasks in each collection can only be completed once per day."; //custom translation
+				erasequest(.@quest_index[.@select]);
 				close;
 			}
 			mes "[Reno]";

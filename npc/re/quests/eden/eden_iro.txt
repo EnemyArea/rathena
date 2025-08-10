@@ -870,7 +870,7 @@ L_Exchange:
 
 // Kafra Stacker
 //============================================================
-moc_para01,41,169,2	script	Kafra Stacker#eden	749,{
+moc_para01,41,166,2	script	Kafra Stacker#eden	749,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
 		mes "- Wait a moment! -";
 		mes "- Currently you're carrying -";

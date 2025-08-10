@@ -6211,7 +6211,7 @@ oz_dun02,143,231,3	script	Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		cutin "ep18_imril_02.png",2;
 		next;
 		mes "[Imril]";
-		mes "As the elder said, I don't think I can go down any further, so let's go back to ^e5555eVillage^00000.";
+		mes "As the elder said, I don't think I can go down any further, so let's go back to ^e5555evillage^000000.";
 		mes "Even now, my skin feels like it's going to burn.";
 		close2;
 		cutin "",255;

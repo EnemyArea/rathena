@@ -63,48 +63,47 @@ lhz_dun03,0,0	monster	Margaretha Sorin	1637,42,5000
 lhz_dun03,0,0	monster	Howard Alt-Eisen	1636,42,5000
 lhz_dun03,0,0	monster	Eremes Guile	1635,42,5000
 lhz_dun03,0,0	monster	Seyren Windsor	1634,42,5000
-lhz_dun03,139,158,20,11	monster	Assassin Cross Eremes	1641,1,2580000,2340000
-lhz_dun03,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000
-lhz_dun03,114,138,12,16	monster	Lord Knight Seyren	1640,1,2700000,2400000
-lhz_dun03,139,117,20,11	monster	Sniper Cecil	1644,1,2700000,2500000
-lhz_dun03,163,138,12,16	monster	Whitesmith Howard	1642,1,3000000,2700000
-lhz_dun03,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,3000000
+lhz_dun03,139,158,20,11	monster	Assassin Cross Eremes	1641,1,2580000,2340000,"mvp_lhz_dun03::OnBossDead"
+lhz_dun03,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000,"mvp_lhz_dun03::OnBossDead"
+lhz_dun03,114,138,12,16	monster	Lord Knight Seyren	1640,1,2700000,2400000,"mvp_lhz_dun03::OnBossDead"
+lhz_dun03,139,117,20,11	monster	Sniper Cecil	1644,1,2700000,2500000,"mvp_lhz_dun03::OnBossDead"
+lhz_dun03,163,138,12,16	monster	Whitesmith Howard	1642,1,3000000,2700000,"mvp_lhz_dun03::OnBossDead"
+lhz_dun03,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,3000000,"mvp_lhz_dun03::OnBossDead"
 
 lhz_dun03,0,0,0	script	mvp_lhz_dun03	-1,{
-OnTimer6000000: // delay1 = 6000000 ms (100 min)
-	stopnpctimer;
-	sleep rand(0,30)*60000; // 0 to 30 minutes
-OnInit:
-	// Select Coordinates to summon a random MVP on
-	switch(rand(1,6)) {
-		case 1:  set .@x,140;  set .@y,232;  break;
-		case 2:  set .@x,75;   set .@y,138;  break;
-		case 3:  set .@x,140;  set .@y,87;   break;
-		case 4:  set .@x,205;  set .@y,140;  break;
-		case 5:  set .@x,123;  set .@y,137;  break;
-		case 6:  set .@x,175;  set .@y,137;  break;
-	}
-	set .@mob,rand(1646,1651);
-	monster "lhz_dun03",.@x,.@y,getmonsterinfo(.@mob, MOB_NAME),.@mob,1,strnpcinfo(3)+"::OnMyMVPDead";
+	OnBossDead:
+		// Select Coordinates to summon a random MVP on
+		switch(rand(1,12)) {
+			case 1:  set .@x,140;  set .@y,232;  break;
+			case 2:  set .@x,75;   set .@y,138;  break;
+			case 3:  set .@x,140;  set .@y,87;   break;
+			case 4:  set .@x,205;  set .@y,140;  break;
+			case 5:  set .@x,123;  set .@y,137;  break;
+			case 6:  set .@x,175;  set .@y,137;  break;
+			case 7:  set .@x,183;  set .@y,97;   break;
+			case 8:  set .@x,97;   set .@y,96;   break;
+			case 9:  set .@x,47;   set .@y,139;  break;
+			case 10:  set .@x,231;  set .@y,140;  break;
+			case 11:  set .@x,139;  set .@y,211;  break;
+			case 12:  set .@x,139;  set .@y,259;  break;
+		}
 
-	// Select Coordinates to summon a random 99 on
-	switch(rand(1,6)) {
-		case 1:  set .@x2,183;  set .@y2,97;   break;
-		case 2:  set .@x2,97;   set .@y2,96;   break;
-		case 3:  set .@x2,47;   set .@y2,139;  break;
-		case 4:  set .@x2,231;  set .@y2,140;  break;
-		case 5:  set .@x2,139;  set .@y2,211;  break;
-		case 6:  set .@x2,139;  set .@y2,259;  break;
-	}
-	set .@mob2,rand(1640,1645);
-	monster "lhz_dun03",.@x2,.@y2,getmonsterinfo(.@mob2, MOB_NAME),.@mob2,1,strnpcinfo(3)+"::OnMy99Dead";
-	end;
+		switch(killedrid){
+			case 1640: set .@mvp, 1646; break;
+			case 1641: set .@mvp, 1647; break;
+			case 1642: set .@mvp, 1648; break;
+			case 1643: set .@mvp, 1649; break;
+			case 1644: set .@mvp, 1650; break;
+			case 1645: set .@mvp, 1651; break;
+		}
 
-OnMyMVPDead:
-	killmonster "lhz_dun03",strnpcinfo(3)+"::OnMy99Dead";
-	initnpctimer;
-OnMy99Dead:
-	end;
+		mapannounce "lhz_dun03", getmonsterinfo(.@mvp, MOB_NAME)+": This pain, I can't endure it any longer. Please, set me free!", bc_map, "0x70dbdb";
+		monster "lhz_dun03",.@x,.@y,getmonsterinfo(.@mvp, MOB_NAME),.@mvp,1,strnpcinfo(3)+"::OnMVPDead";
+		end;
+
+	OnMVPDead:
+		mapannounce "lhz_dun03", getmonsterinfo(killedrid, MOB_NAME)+": Thank you...", bc_map, "0x70dbdb";
+		end;
 }
 
 //========================================================================================
