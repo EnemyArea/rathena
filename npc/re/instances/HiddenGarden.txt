@@ -81,19 +81,6 @@ ba_maison,120,321,5	script(CLOAKED)	#he_admin2	MD_ASSISTANT,{
 		end;
 	if (isbegin_quest(12497) != 2)
 		end;
-	switch( checkquest(12498,PLAYTIME) ) {
-	case -1:
-		break;
-	case 0:
-	case 1:
-		mes "[Flower Garden Manager]";
-		mes "You just entered the security area.";
-		mes "Please rest your body for a day as Sigma ordered.";
-		close;
-	case 2:
-		erasequest 12498;
-		break;
-	}
 	mes "[Flower Garden Manager]";
 	mes "Your identity been identified. You may enter the security area. How may I help you?";
 	next;
@@ -146,7 +133,17 @@ ba_maison,120,321,5	script(CLOAKED)	#he_admin2	MD_ASSISTANT,{
 			mes "You can only move to the place when the party manager has completed all permits. Please re-check your issued access area.";
 			close;
 		}
-		setquest 12498;
+		
+		switch( checkquest(12498,PLAYTIME) ) {
+			case -1:
+				setquest 12498;
+				break;
+			case 0:
+			case 2:
+				erasequest 12498;
+				break;
+		}
+		
 		if (isbegin_quest(.@qid) > 0)
 			erasequest .@qid;
 		if (isbegin_quest(.@qid2) > 0)
