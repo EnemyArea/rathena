@@ -7,15 +7,15 @@
 //= 1.1 Added 300/400/600% Bonus Drops                           =|
 //================================================================|
 
--	script	ctower_init	-1,{
-	end;
-
-OnInit:
-	disablenpc "Captain Janssen";
-	disablenpc "Tower Protection Stone";
-	disablenpc "Huge Vortex";
-end;
-}
+//-	script	ctower_init	-1,{
+//	end;
+//
+//OnInit:
+//	disablenpc "Captain Janssen";
+//	disablenpc "Tower Protection Stone";
+//	disablenpc "Huge Vortex";
+//end;
+//}
 
 alberta,214,77,6	script	Captain Janssen#ctower	709,{
 	if(checkweight(1201,1) == 0){

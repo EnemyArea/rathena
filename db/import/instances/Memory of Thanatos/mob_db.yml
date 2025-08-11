@@ -654,7 +654,7 @@ Body:
   AegisName: MD_THANATOS
   Name: '#thanatos1'
   Level: 210
-  Hp: 442473071
+  Hp: 142473071
   Attack: 7350
   Attack2: 2604
   Defense: 390
@@ -695,7 +695,7 @@ Body:
   AegisName: MD_BROKEN_THANATOS
   Name: Broken Memory
   Level: 210
-  Hp: 441773071
+  Hp: 141773071
   Attack: 6038
   Attack2: 1582
   Defense: 270

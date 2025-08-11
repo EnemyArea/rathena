@@ -80970,11 +80970,8 @@ Body:
       - Item: Magic_Card_Album
         Index: 0
         Rate: 5000
-      - Item: Magic_Card_Album
+      - Item: PureWhite_Marching_Hat
         Index: 1
-        Rate: 5000
-      - Item: Magic_Card_Album
-        Index: 2
         Rate: 5000
     Drops:
       - Item: Closedmind_Box

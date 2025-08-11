@@ -44,6 +44,7 @@ Header:
 Body:
   - Id: 1
     Name: Endless Tower
+    TimeLimit: 86400
     Enter:
       Map: 1@tower
       X: 50
@@ -56,6 +57,7 @@ Body:
       6@tower: true
   - Id: 2
     Name: Sealed Catacomb
+    TimeLimit: 86400
     Enter:
       Map: 1@cata
       X: 100
@@ -64,6 +66,7 @@ Body:
       2@cata: true
   - Id: 3
     Name: Orc's Memory
+    TimeLimit: 86400
     Enter:
       Map: 1@orcs
       X: 179
@@ -72,6 +75,7 @@ Body:
       2@orcs: true
   - Id: 4
     Name: Nidhoggur's Nest
+    TimeLimit: 86400
     Enter:
       Map: 1@nyd
       X: 32
@@ -80,12 +84,14 @@ Body:
       2@nyd: true
   - Id: 5
     Name: Mistwood Maze
+    TimeLimit: 86400
     Enter:
       Map: 1@mist
       X: 89
       Y: 29
   - Id: 6
     Name: Culvert
+    TimeLimit: 86400
     Enter:
       Map: 1@pump
       X: 63
@@ -94,36 +100,42 @@ Body:
       2@pump: true
   - Id: 7
     Name: Octopus Cave
+    TimeLimit: 86400
     Enter:
       Map: 1@cash
       X: 199
       Y: 99
   - Id: 8
     Name: Bangungot Hospital 2F
+    TimeLimit: 86400
     Enter:
       Map: 1@ma_h
       X: 40
       Y: 157
   - Id: 9
     Name: Buwaya Cave
+    TimeLimit: 86400
     Enter:
       Map: 1@ma_c
       X: 35
       Y: 57
   - Id: 10
     Name: Bakonawa Lake
+    TimeLimit: 86400
     Enter:
       Map: 1@ma_b
       X: 64
       Y: 51
   - Id: 11
     Name: Wolfchev's Laboratory
+    TimeLimit: 86400
     Enter:
       Map: 1@lhz
       X: 45
       Y: 148
   - Id: 12
     Name: Old Glast Heim
+    TimeLimit: 86400
     Enter:
       Map: 1@gl_k
       X: 150
@@ -132,18 +144,21 @@ Body:
       2@gl_k: true
   - Id: 13
     Name: Eclage Interior
+    TimeLimit: 86400
     Enter:
       Map: 1@ecl
       X: 60
       Y: 50
   - Id: 14
     Name: Sara's Memories
+    TimeLimit: 86400
     Enter:
       Map: 1@sara
       X: 250
       Y: 155
   - Id: 15
     Name: Geffen Magic Tournament
+    TimeLimit: 86400
     Enter:
       Map: 1@gef
       X: 119
@@ -153,24 +168,28 @@ Body:
       1@ge_st: true
   - Id: 16
     Name: Horror Toy Factory
+    TimeLimit: 86400
     Enter:
       Map: 1@xm_d
       X: 111
       Y: 22
   - Id: 17
     Name: Faceworm's Nest
+    TimeLimit: 86400
     Enter:
       Map: 1@face
       X: 112
       Y: 370
   - Id: 18
     Name: Ghost Palace
+    TimeLimit: 86400
     Enter:
       Map: 1@spa
       X: 42
       Y: 196
   - Id: 19
     Name: Devil's Tower
+    TimeLimit: 86400
     Enter:
       Map: 1@tnm1
       X: 50
@@ -180,6 +199,7 @@ Body:
       1@tnm3: true
   - Id: 20
     Name: Assault on the Airship
+    TimeLimit: 86400
     Enter:
       Map: 1@air1
       X: 244
@@ -188,30 +208,35 @@ Body:
       1@air2: true
   - Id: 21
     Name: Fenrir and Sarah
+    TimeLimit: 86400
     Enter:
       Map: 1@glast
       X: 367
       Y: 304
   - Id: 22
     Name: Wave Mode - Forest
+    TimeLimit: 86400
     Enter:
       Map: 1@def01
       X: 50
       Y: 21
   - Id: 23
     Name: Wave Mode - Sky
+    TimeLimit: 86400
     Enter:
       Map: 1@def02
       X: 29
       Y: 35
   - Id: 24
     Name: Nightmarish Jitterbug
+    TimeLimit: 86400
     Enter:
       Map: 1@jtb
       X: 16
       Y: 17
   - Id: 25
     Name: Isle of Bios
+    TimeLimit: 86400
     Enter:
       Map: 1@dth1
       X: 17
@@ -221,48 +246,56 @@ Body:
       1@dth3: true
   - Id: 26
     Name: Morse's Cave
+    TimeLimit: 86400
     Enter:
       Map: 1@rev
       X: 26
       Y: 181
   - Id: 27
     Name: Temple of the Demon God
+    TimeLimit: 86400
     Enter:
       Map: 1@eom
       X: 101
       Y: 16
   - Id: 28
     Name: Central Laboratory
+    TimeLimit: 86400
     Enter:
       Map: 1@lab
       X: 120
       Y: 30
   - Id: 29
     Name: Last room
+    TimeLimit: 86400
     Enter:
       Map: 1@uns
       X: 145
       Y: 35
   - Id: 30
     Name: Charleston in Distress
+    TimeLimit: 86400
     Enter:
       Map: 1@mcd
       X: 127
       Y: 282
   - Id: 31
     Name: Ritual of Blessing
+    TimeLimit: 86400
     Enter:
       Map: 2@mir
       X: 101
       Y: 12
   - Id: 32
     Name: Room of Consciousness
+    TimeLimit: 86400
     Enter:
       Map: 1@mir
       X: 101
       Y: 10
   - Id: 33
     Name: Sky Fortress Invasion
+    TimeLimit: 86400
     Enter:
       Map: 1@sthb
       X: 54
@@ -272,12 +305,14 @@ Body:
       1@sthd: true
   - Id: 34
     Name: Heart Hunter War Base 1
+    TimeLimit: 86400
     Enter:
       Map: 1@swat
       X: 35
       Y: 65
   - Id: 35
     Name: Heart Hunter War Base 2
+    TimeLimit: 86400
     Enter:
       Map: 1@swat
       X: 73
@@ -285,54 +320,63 @@ Body:
 # There is officially only one (buggy) instance 'Werner Laboratory central room'
   - Id: 36
     Name: Werner Laboratory central room#1
+    TimeLimit: 86400
     Enter:
       Map: 1@slw
       X: 187
       Y: 24
   - Id: 37
     Name: Werner Laboratory central room#2
+    TimeLimit: 86400
     Enter:
       Map: 1@slw
       X: 187
       Y: 24
   - Id: 38
     Name: Infinite Space
+    TimeLimit: 86400
     Enter:
       Map: 1@infi
       X: 30
       Y: 10
   - Id: 39
     Name: Regenschirm
+    TimeLimit: 86400
     Enter:
       Map: 1@rgsr
       X: 127
       Y: 38
   - Id: 40
     Name: Sealed OS
+    TimeLimit: 86400
     Enter:
       Map: 1@os_b
       X: 188
       Y: 41
   - Id: 41
     Name: OS Occupation
+    TimeLimit: 86400
     Enter:
       Map: 1@os_a
       X: 30
       Y: 352
   - Id: 42
     Name: 2nd OS Search
+    TimeLimit: 86400
     Enter:
       Map: 1@os_a
       X: 335
       Y: 34
   - Id: 43
     Name: Cor Memorial
+    TimeLimit: 86400
     Enter:
       Map: 1@cor
       X: 176
       Y: 169
   - Id: 44
     Name: Half Moon In The Daylight
+    TimeLimit: 86400
     Enter:
       Map: 1@pop1
       X: 47
@@ -342,48 +386,56 @@ Body:
       1@pop3: true
   - Id: 45
     Name: Weekend Dungeon
+    TimeLimit: 86400
     Enter:
       Map: 1@md_pay
       X: 240
       Y: 29
   - Id: 46
     Name: Friday Dungeon
+    TimeLimit: 86400
     Enter:
       Map: 1@md_gef
       X: 106
       Y: 129
   - Id: 47
     Name: Poring Village
+    TimeLimit: 86400
     Enter:
       Map: 1@begi
       X: 100
       Y: 22
   - Id: 49
     Name: Old Glast Heim (Challenge Mode)
+    TimeLimit: 86400
     Enter:
       Map: 1@gl_he
       X: 150
       Y: 28
   - Id: 50
     Name: Old Glast Heim (Beginner)
+    TimeLimit: 86400
     Enter:
       Map: 1@gl_k2
       X: 150
       Y: 20
   - Id: 51
     Name: Fall of Glast Heim (Normal)
+    TimeLimit: 86400
     Enter:
       Map: 1@gl_prq
       X: 299
       Y: 19
   - Id: 52
     Name: Fall of Glast Heim (Advanced)
+    TimeLimit: 86400
     Enter:
       Map: 1@gl_prq
       X: 79
       Y: 22
   - Id: 53
     Name: Twilight Garden
+    TimeLimit: 86400
     Enter:
       Map: 1@bamn
       X: 100
@@ -392,6 +444,7 @@ Body:
        1@bamq: true
   - Id: 54
     Name: Hey! Sweety
+    TimeLimit: 86400
     Enter:
       Map: 1@bamq
       X: 16
@@ -400,48 +453,56 @@ Body:
        1@bamn: true
   - Id: 55
     Name: Farm Lost in Time
+    TimeLimit: 86400
     Enter:
       Map: 1@lost
       X: 161
       Y: 42
   - Id: 56
     Name: Water Garden
+    TimeLimit: 86400
     Enter:
       Map: 1@ghg
       X: 64
       Y: 69
   - Id: 57
     Name: Water Garden Hard
+    TimeLimit: 86400
     Enter:
       Map: 1@ghg
       X: 64
       Y: 69
   - Id: 58
     Name: Hidden Flower Garden
+    TimeLimit: 86400
     Enter:
       Map: 1@herbs
       X: 51
       Y: 273
   - Id: 59
     Name: Security Area 1
+    TimeLimit: 86400
     Enter:
       Map: 1@herbs
       X: 45
       Y: 208
   - Id: 60
     Name: Security Area 2
+    TimeLimit: 86400
     Enter:
       Map: 1@herbs
       X: 59
       Y: 214
   - Id: 61
     Name: Sunken Tower
+    TimeLimit: 86400
     Enter:
       Map: 1@ch_u
       X: 13
       Y: 59
   - Id: 62
     Name: Constellation Tower
+    TimeLimit: 86400
     Enter:
       Map: 1@ch_t
       X: 48
@@ -451,18 +512,21 @@ Body:
        3@ch_t: true
   - Id: 63
     Name: Tomb of Remorse
+    TimeLimit: 86400
     Enter:
       Map: 1@spa2
       X: 51
       Y: 197
   - Id: 64
     Name: Geffen Night Arena
+    TimeLimit: 86400
     Enter:
       Map: 1@ge_sn
       X: 89
       Y: 48
   - Id: 65
     Name: Airship Crash
+    TimeLimit: 86400
     Enter:
       Map: 1@mjo1
       X: 219
@@ -471,6 +535,7 @@ Body:
       1@mjo2: true
   - Id: 66
     Name: Thanatos Tower
+    TimeLimit: 86400
     Enter:
       Map: 1@thts
       X: 74
@@ -485,18 +550,21 @@ Body:
       8@thts: true
   - Id: 67
     Name: Oz Labyrinth
+    TimeLimit: 86400
     Enter:
       Map: 1@oz
       X: 284
       Y: 167
   - Id: 68
     Name: Thor Military Base
+    TimeLimit: 86400
     Enter:
       Map: 1@tcamp
       X: 103
       Y: 237
   - Id: 69
     Name: Wolves Gathering Place
+    TimeLimit: 86400
     Enter:
       Map: 1@nyr
       X: 194
@@ -505,6 +573,7 @@ Body:
       2@nyr: true
   - Id: 70
     Name: Sanctuary Purification
+    TimeLimit: 86400
     Enter:
       Map: 1@nyr
       X: 194
@@ -513,54 +582,63 @@ Body:
       2@nyr: true
   - Id: 71
     Name: High Priest's Villa
+    TimeLimit: 86400
     Enter:
       Map: 1@adv
       X: 123
       Y: 17
   - Id: 72
     Name: Villa of Deception
+    TimeLimit: 86400
     Enter:
       Map: 1@advs
       X: 111
       Y: 19
   - Id: 73
     Name: Villa of Deception Advanced
+    TimeLimit: 86400
     Enter:
       Map: 1@advs
       X: 111
       Y: 19
   - Id: 74
     Name: Bagot Laboratory
+    TimeLimit: 86400
     Enter:
       Map: 1@jorlab
       X: 57
       Y: 45
   - Id: 75
     Name: Confused Snake's Nest
+    TimeLimit: 86400
     Enter:
       Map: 1@jorchs
       X: 272
       Y: 20
   - Id: 76
     Name: Iwin Patrol
+    TimeLimit: 86400
     Enter:
       Map: 1@iwp
       X: 380
       Y: 229
   - Id: 77
     Name: Airship Destruction
+    TimeLimit: 86400
     Enter:
       Map: 1@whl
       X: 32
       Y: 53
   - Id: 78
     Name: Simulation Battle
+    TimeLimit: 86400
     Enter:
       Map: 1@jorlab
       X: 57
       Y: 45
   - Id: 79
     Name: Deep Forest
+    TimeLimit: 86400
     Enter:
       Map: 1@exsh
       X: 90
