@@ -174,7 +174,7 @@ prt_in,129,68,3	shop	Advanced Potion Merchant#prt	4_F_ALCHE_A,937:-1,952:-1,939:
 prt_in,117,79,5	shop	Toy Dealer#prt	715,2239:-1,2201:-1,2243:-1,2212:-1,2242:-1,2241:-1
 
 prt_in,129,78,3	shop	Deadly Potion Merchant#prt	4_M_RASWORD,937:-1,952:-1,939:-1,7033:-1,972:-1,657:-1,713:-1
-prt_in,122,78,3	shop	Sroll Merchant#prt	446,523:-1,12114:-1,12115:-1,12116:-1,12117:-1,12217:-1
+prt_in,122,78,3	shop	Scroll Merchant#prt	446,523:-1,12114:-1,12115:-1,12116:-1,12117:-1,12217:-1
 
 //=======================================================
 // Rachel
