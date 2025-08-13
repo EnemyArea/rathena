@@ -23,14 +23,14 @@ xmas,240,291,3	script	Billy The Golden Hands#1	4_F_05,{
 	next;
 
 	setarray .@xm_item[0],
-		22534, 100,		// Closedmind_Box
-		18848, 500,		// Lush_Rose
-		19687, 1000,	// C_Lush_Rose
-		19686, 500,		// C_SantaHairband
-		19701, 500,		// C_Red_Bonnet
-		13442, 1000,	// Old_Parasol
-		11563, 7,		// Hot_Tee
-		11564, 5,		// Sweet_Canape
+		22534, 5,		// Closedmind_Box
+		18848, 30,		// Lush_Rose
+		19687, 30,		// C_Lush_Rose
+		19686, 30,		// C_SantaHairband
+		19701, 30,		// C_Red_Bonnet
+		13442, 30,		// Old_Parasol
+		11563, 1,		// Hot_Tee
+		11564, 1,		// Sweet_Canape
 		523,   1,		// Holy_Water
 		12020, 1;		// Water_Of_Darkness
 

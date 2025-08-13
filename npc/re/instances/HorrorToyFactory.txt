@@ -144,31 +144,16 @@ xmas,237,303,3	script	Catherine Jet Johnson	4_F_SKULL06GIRL,{
 		mes "^0000ffYou need to organize a party having more than one member to get into Horror Toy Factory.^000000";
 		close;
 	}
-	switch( checkquest(12331,PLAYTIME) ) {
-	case -1:
-		if (is_party_leader() == false) {
-			mes "[Catherine Jet Johnson]";
-			mes "Eh.. Give me a second. I am talking to the person in charge. Please wait a little bit.";
-			close;
-		}
-		if (select( "Unlock Horror Toy Factory", "Cancel" ) == 1) {
-			mes "Door will be.. opened soon.. Would you wait for a moment?";
-			instance_create("Horror Toy Factory");
-		}
-		close;
-	case 0:
-	case 1:
+	if (is_party_leader() == false) {
 		mes "[Catherine Jet Johnson]";
-		mes "The smell of preservative from the factory has not gone away. You cannot enter under this state.";
-		next;
-		mes "[Catherine Jet Johnson]";
-		mes "I will keep you from entering until the scent of preservative is completely gone.";
-		close;
-	case 2:
-		mes "^0000ffThe smell of preservative has gone away. You can talk to Catherine Jet Johnson.^000000";
-		erasequest 12331;
+		mes "Eh.. Give me a second. I am talking to the person in charge. Please wait a little bit.";
 		close;
 	}
+	if (select( "Unlock Horror Toy Factory", "Cancel" ) == 1) {
+		mes "Door will be.. opened soon.. Would you wait for a moment?";
+		instance_create("Horror Toy Factory");
+	}
+	close;
 }
 
 xmas,233,305,4	script	Factory Dimension Telep	PORTAL,{

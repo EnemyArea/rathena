@@ -699,3 +699,4 @@ alberta_in,24,63,5	duplicate(Pauline)	Satana	4_M_02
 yuno_in01,164,31,6	duplicate(Pauline)	Dimir	4_M_ORIENT01
 lhz_in02,275,23,5	duplicate(Pauline)	Nemil	4_M_02
 ein_in01,30,88,5	duplicate(Pauline)	Galan	4_M_02
+rgsr_in,129,188,5	duplicate(Pauline)	Nemil	4_M_02
