@@ -38,7 +38,7 @@ prt_in,125,70,4	duplicate(phs)	Poison Herb Merchant#prt	4_F_YUNYANG
 
 // Rune Stone Merchants (Rune Knight) :: rune_3rd_trader
 //============================================================
--	shop	Runes_Seller	HIDDEN_NPC,no,12737:1000,12734:2500,12738:7500,12735:18000,12736:50000,7939:20000,7938:10000
+-	shop	Runes_Seller	HIDDEN_NPC,no,12737:1000,12734:2500,12738:7500,12735:18000,12736:50000,7939:20000,7938:10000, 12725:20000,12726:5000,12727:30000,12728:40000,12729:100000,12730:2000,12731:160000,12732:50000,12733:10000,22540:220000
 
 -	script	::runesale	HIDDEN_NPC,{
 	npctalk "There are several types of runes.", "", bc_self;

@@ -1,0 +1,7 @@
+lighthalzen,140,113,5	script	Bio Laboratory Weapons	795,{
+	mes "[Bio Laboratory Weapon]";
+	mes "Welcome! Here you can trade Advanced Weapons Box for weapons here.";
+	close2;
+
+	callshop "bio_lab_shop",1;
+}

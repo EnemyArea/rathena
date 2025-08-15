@@ -55,3 +55,5 @@ Footer:
     Mode: Renewal
   - Path: npc/custom/instances/Constellation Tower/barters.yml
     Mode: Renewal
+  - Path: npc/custom/biolab_shop/barters.yml
+    Mode: Renewal

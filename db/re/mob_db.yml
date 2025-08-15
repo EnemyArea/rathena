@@ -19148,7 +19148,7 @@ Body:
         Rate: 3
       - Item: Imperial_Cooking_Kits
         Rate: 10
-      - Item: Earth_Scroll_1_5
+      - Item: Karasu_TenguMask_
         Rate: 50
       - Item: Tengu_Card
         Rate: 1
@@ -27767,11 +27767,9 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: Black_Ribbon_
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
-      - Item: Crystal_Jewel__
+      - Item: StormStone
         Rate: 2000
     Drops:
       - Item: Edge
@@ -27828,10 +27826,8 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: Shiver_Katar_K
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
       - Item: Crystal_Jewel__
         Rate: 2000
     Drops:
@@ -27892,8 +27888,6 @@ Body:
     MvpDrops:
       - Item: Old_Violet_Box
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
       - Item: Crystal_Jewel__
         Rate: 2000
     Drops:
@@ -27952,10 +27946,8 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: ScarfOfHero_J
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
       - Item: Crystal_Jewel__
         Rate: 2000
     Drops:
@@ -28014,10 +28006,8 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: Fallen_Angel_Wing
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
       - Item: Luna_Bow
         Rate: 2000
     Drops:
@@ -28076,10 +28066,8 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: Deus_Ex_Machina_JP
         Rate: 5500
-      - Item: Goast_Chill
-        Rate: 5000
       - Item: Crystal_Jewel__
         Rate: 2000
     Drops:
@@ -28452,8 +28440,6 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
-        Rate: 5500
       - Item: Goast_Chill
         Rate: 5000
       - Item: Crystal_Jewel__
@@ -32899,6 +32885,8 @@ Body:
       - Item: Old_Violet_Box
         Rate: 20
       - Item: Valkyrja's_Shield
+        Rate: 50
+      - Item: Ear_OF_Spirit
         Rate: 50
   - Id: 1766
     AegisName: EM_ANGELING
@@ -51881,9 +51869,9 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Royalguard_Necklace
         Rate: 5000
-      - Item: Goast_Chill
+      - Item: Imperial_Feather
         Rate: 5000
     Drops:
       - Item: High_Weapon_Box
@@ -51940,7 +51928,7 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Exiled_Ninja_US
         Rate: 5000
       - Item: Goast_Chill
         Rate: 5000
@@ -52001,7 +51989,7 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Floating_Ball
         Rate: 5000
       - Item: Goast_Chill
         Rate: 5000
@@ -52059,9 +52047,9 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Document_Mage_TH
         Rate: 5000
-      - Item: Goast_Chill
+      - Item: Verus_Core
         Rate: 5000
     Drops:
       - Item: High_Weapon_Box
@@ -52118,9 +52106,9 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Mob_Scarf
         Rate: 5000
-      - Item: Goast_Chill
+      - Item: Clown_Smiling_
         Rate: 5000
     Drops:
       - Item: High_Weapon_Box
@@ -52177,9 +52165,9 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Vassalage_Necklace
         Rate: 5000
-      - Item: Goast_Chill
+      - Item: Chain_Of_Seal_
         Rate: 5000
     Drops:
       - Item: High_Weapon_Box
@@ -52234,9 +52222,9 @@ Body:
     MvpDrops:
       - Item: Magic_Card_Album
         Rate: 5000
-      - Item: Old_Violet_Box
+      - Item: Tengu_Scroll
         Rate: 5000
-      - Item: Goast_Chill
+      - Item: Crow_Tengu_Mask
         Rate: 5000
     Drops:
       - Item: High_Weapon_Box
@@ -56602,7 +56590,7 @@ Body:
         Rate: 400
       - Item: Tablet
         Rate: 10
-      - Item: Yggdrasilberry
+      - Item: Bravery_Bag
         Rate: 3000
       - Item: Shadowdecon
         Rate: 2500
@@ -61537,6 +61525,8 @@ Body:
       - Item: Piece_Of_Egg_Shell
         Rate: 5000
       - Item: Sticky_Mucus
+        Rate: 5000
+      - Item: Blue_Arara_Hat
         Rate: 5000
       - Item: Faceworm_Egg_Card
         Rate: 1
@@ -80972,7 +80962,7 @@ Body:
         Rate: 5000
       - Item: PureWhite_Marching_Hat
         Index: 1
-        Rate: 5000
+        Rate: 10000
     Drops:
       - Item: Closedmind_Box
         Rate: 4000
@@ -83489,6 +83479,8 @@ Body:
         Rate: 5000
       - Item: Seed_Of_Yggdrasil
         Rate: 5000
+      - Item: Diabolus_Wing
+        Rate: 10000
     Drops:
       - Item: DespairGodMorocc_Card
         Rate: 1
@@ -86727,7 +86719,7 @@ Body:
       - Item: Soul_Of_Magicion
         Index: 1
         Rate: 5000
-      - Item: Soul_Of_Magicion
+      - Item: Hero_Favor
         Index: 2
         Rate: 5000
     Drops:
@@ -97577,8 +97569,8 @@ Body:
       IgnoreMisc: true
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
-        Rate: 5000
+      - Item: Red_Bat_US
+        Rate: 10000
       - Item: IllusionStone
         Rate: 500
     Drops:
@@ -102814,7 +102806,7 @@ Body:
         Rate: 6
       - Item: Crystal_Arrow_Container
         Rate: 6
-      - Item: Crystal_Blue
+      - Item: Autumn_Headband
         Rate: 2
       - Item: Zelunium_Ore
         Rate: 120
