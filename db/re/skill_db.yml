@@ -37102,27 +37102,7 @@ Body:
       NoDamage: true
     Hit: Single
     HitCount: 1
-    Duration1:
-      - Level: 1
-        Time: 75000
-      - Level: 2
-        Time: 100000
-      - Level: 3
-        Time: 125000
-      - Level: 4
-        Time: 150000
-      - Level: 5
-        Time: 175000
-      - Level: 6
-        Time: 200000
-      - Level: 7
-        Time: 225000
-      - Level: 8
-        Time: 250000
-      - Level: 9
-        Time: 275000
-      - Level: 10
-        Time: 300000
+    Duration1: -1
     Cooldown: 3000
     Requires:
       SpCost:
@@ -37240,19 +37220,9 @@ Body:
     Hit: Single
     HitCount: 1
     AfterCastActDelay: 1000
-    Duration1: 180000
+    Duration1: -1
     Duration2: 15000
-    Cooldown:
-      - Level: 1
-        Time: 30000
-      - Level: 2
-        Time: 60000
-      - Level: 3
-        Time: 90000
-      - Level: 4
-        Time: 120000
-      - Level: 5
-        Time: 150000
+    Cooldown: 30000
     FixedCastTime: 1500
     Requires:
       SpCost:

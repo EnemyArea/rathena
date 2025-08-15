@@ -824,7 +824,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 50
@@ -853,7 +853,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 50
@@ -882,7 +882,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 50
@@ -911,7 +911,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 50
@@ -974,7 +974,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 150
@@ -1008,7 +1008,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Sword
             Rate: 150
@@ -1044,7 +1044,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Grenade
             Rate: 50
@@ -1079,7 +1079,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Grenade
             Rate: 50
@@ -1114,7 +1114,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Grenade
             Rate: 50
@@ -1149,7 +1149,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Grenade
             Rate: 50
@@ -1184,7 +1184,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Grenade
             Rate: 50
@@ -1259,7 +1259,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 150
@@ -1279,7 +1279,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 150
@@ -1299,7 +1299,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 150
@@ -1319,7 +1319,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 150
@@ -1341,7 +1341,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 50
@@ -1370,7 +1370,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 50
@@ -1399,7 +1399,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 50
@@ -1428,7 +1428,7 @@ Body:
         Drops:
           - Index: 0
             Item: Etel_Dust
-            Rate: 875
+            Rate: 25000
           - Index: 1
             Item: Fourth_Bh_Axe
             Rate: 50
@@ -2297,7 +2297,7 @@ Body:
             Rate: 750
           - Index: 2
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 3
             Item: Precision_Pistol
             Rate: 30
@@ -2346,7 +2346,7 @@ Body:
             Rate: 750
           - Index: 2
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 3
             Item: Solid_Rod
             Rate: 30
@@ -2389,7 +2389,7 @@ Body:
             Rate: 750
           - Index: 2
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 3
             Item: Precision_Shotgun
             Rate: 30
@@ -2415,7 +2415,7 @@ Body:
             Rate: 750
           - Index: 2
             Item: Etel_Dust
-            Rate: 750
+            Rate: 25000
           - Index: 3
             Item: Precision_Grenade
             Rate: 30
