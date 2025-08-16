@@ -561,29 +561,39 @@ G8: Restrict("RE");
 	Instances:
 // --------------------------------------------------
 menu	
-	"Bakonawa Lake",I1, 
-	"Bangungot Hospital 2F",I2, 
-	"Buwaya Cave",I3,
-	"Devil Tower",I4, 
-	"Eclage Interior",I5, 
-	"Endless Tower",I6,
-	"Faceworms Nest",I7,
-	"Geffen Magic Tournament",I8, 
-	"Ghost Palace",I9,
-	"Hazy Forest",I10, 
+	"Bakonawa Lake (140)",I1, 
+	"Bangungot Hospital 2F (100)",I2, 
+	"Buwaya Cave (130)",I3,
+	"Devil's Tower (130)",I4, 
+	"Eclage Interior (80)",I5, 
+	"Endless Tower (50)",I6,
+	"Faceworms Nest (140)",I7,
+	"Geffen Magic Tournament (90)",I8, 
+	"Ghost Palace (120)",I9,
+	"Hazy Forest (100)",I10, 
 	"Horror Toy Factory (140)",I11, 
-	"Malangdo Culvert",I12,
-	"Nidhoggur's Nest",I13, 
-	"Octopus Cave",I14, 
-	"Old Glast Heim",I15,
-	"Orc's Memory",I16,
-	"Sarah and Fenrir",I17,
-	"Sara Memory",I18,
-	"Sealed Shrine",I19, 
+	"Malangdo Culvert (140)",I12,
+	"Nidhoggur's Nest (70)",I13, 
+	"Octopus Cave (60)",I14, 
+	"Old Glast Heim (130)",I15,
+	"Orc's Memory (80)",I16,
+	"Sarah and Fenrir (145)",I17,
+	"Sara Memory (100)",I18,
+	"Sealed Shrine (100)",I19, 
 	"Wolfchev's Laboratory (145)",I20, 
 	"Sky Fortress (145)",I21, 
 	"Villa of Deception (170)",I22, 
-	"Memories of Thanatos (180)",I23;
+	"Memories of Thanatos (180)",I23,
+	"Last Room (150)",I24,
+	"Isle of Bios (160)",I25,
+	"Morse Cave (160)",I26,
+	"Temple of Demon God (160)",I27,
+	"Airship Assault (125)",I28,
+	"Friday Dungeon (99)",I29,
+	"Weekend Dungeon (50)",I30,
+	"EDDA Half Moon Dungeon (130)",I31,
+	"EDDA Somatology Laboratory (170)",I32,
+	"EDDA Fall of Glastheim (130)",I33;
 
 I1: Restrict("RE");
 	Go("ma_scene01",172,175);
@@ -627,6 +637,26 @@ I22: Restrict("RE");
 	Go("wolfvill",77,257);
 I23: Restrict("RE");
 	Go("thana_step",152,367);
+I24: Restrict("RE");
+	Go("verus01",124,184);
+I25: Restrict("RE");
+	Go("moro_cav",45,57);
+I26: Restrict("RE");
+	Go("moro_cav",61,66);
+I27: Restrict("RE");
+	Go("moro_vol",104,91);
+I28: Restrict("RE");
+	Go("dali",64,125);
+I29: Restrict("RE");
+	Go("gef_tower",55,170);
+I30: Restrict("RE");
+	Go("pay_arche",46,124);
+I31: Restrict("RE");
+	Go("rachel",177,132);
+I32: Restrict("RE");
+	Go("yuno",213,345);
+I33: Restrict("RE");
+	Go("glast_01",243,290);
 
 // --------------------------------------------------
 	Special:
