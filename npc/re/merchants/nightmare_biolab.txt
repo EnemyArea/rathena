@@ -510,7 +510,7 @@ lighthalzen,312,296,4	script	Bully#JCv2	4_M_LGTPOOR,{
 		( countitem(25130) < 500 ? "^777777" : "^000000" ) + "1 Energy Fragment (500 Sinister E Particles)",
 		( countitem(25131) < 50 ? "^777777" : "^000000" ) + "1 Energy Fragment (50 Fallen E Particles)",
 		( countitem(6820) < 50 ? "^777777" : "^000000" ) + "1 Sentimental Fragment (50 Energy Fragments)",
-		( countitem(6820) < 666 ? "^777777" : "^000000" ) + "1 Cursed Fragment (666 Energy Fragments)"
+		( countitem(6820) < 666 ? "^777777" : "^000000" ) + "1 Grudge Fragment (666 Energy Fragments)"
 	) - 2;
 	if (.@s == -1) {
 		emotion ET_THINK;
@@ -623,7 +623,7 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 		npctalk "Hand over... grudge... grudge...", "", bc_self;
 		mes "[Wandering Mind]";
 		mes "Krrr... hehe... hand over... grudge's... grudge's... strong power... I'll enchant... a special power... into the helmet...";
-		mes "^FF0000*If you bring Cursed Fragment, you can enchant it into the Old Helmet.*^000000";
+		mes "^FF0000*If you bring Grudge Fragment, you can enchant it into the Old Helmet.*^000000";
 		next;
 		.@equip_id = getequipid(EQI_HEAD_TOP);
 		switch(.@equip_id) {
@@ -646,12 +646,12 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 				npctalk "Destroy it... Destroy it...", "", bc_self;
 				mes "[Wandering Mind]";
 				mes "This is... interesting... In that helmet... there is no fragrance... filled with a special power... Do you want... destruction...? kkk...";
-				mes "^FF0000*Enchantment using Cursed Fragment is only possible in the Old Helmet.*^000000";
+				mes "^FF0000*Enchantment using Grudge Fragment is only possible in the Old Helmet.*^000000";
 				close;
 		}
 		mes "[Wandering Mind]";
 	
-		.@requirement = 10;	// 10 Cursed Fragments by default
+		.@requirement = 10;	// 10 Grudge Fragments by default
 		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
 		.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
 	
@@ -682,9 +682,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29111:	// Mercy1Lv
 			case 29706:	// Tenacity1Lv
 				mes "Kr... he... he... You are... lucky... I wish... you all the success!... Only then... will you come and visit me... with more grudges... I suppose...";
-				.@requirement = 20;
+				.@requirement = 10;
 				.@enchant_level = 1;
-				.@enchant_rate = 70;
+				.@enchant_rate = 100;
 				break;
 			case 29062:	// Ambition2Lv
 			case 29072:	// Tab2Lv
@@ -694,9 +694,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29112:	// Mercy2Lv
 			case 29707:	// Tenacity2Lv
 				mes "3rd... level... reinforcement?... If you succeed... you will... gain... much stronger powers... but if you fail... you'll lose the powers... that you've gathered... so far...";
-				.@requirement = 40;
+				.@requirement = 15;
 				.@enchant_level = 2;
-				.@enchant_rate = 50;
+				.@enchant_rate = 100;
 				break;
 			case 29063:	// Ambition3Lv
 			case 29073:	// Tab3Lv
@@ -706,9 +706,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29113:	// Mercy3Lv
 			case 29708:	// Tenacity3Lv
 				mes "4th... level... reinforcement?... If you succeed... you will... gain... much stronger powers... but if you fail... you'll lose the powers... that you've gathered... so far...";
-				.@requirement = 50;
+				.@requirement = 20;
 				.@enchant_level = 3;
-				.@enchant_rate = 35;
+				.@enchant_rate = 100;
 				break;
 			case 29064:	// Ambition4Lv
 			case 29074:	// Tab4Lv
@@ -718,9 +718,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29114:	// Mercy4Lv
 			case 29709:	// Tenacity4Lv
 				mes "5th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 70;
+				.@requirement = 25;
 				.@enchant_level = 4;
-				.@enchant_rate = 25;
+				.@enchant_rate = 100;
 				break;
 			case 29065:	// Ambition5Lv
 			case 29075:	// Tab5Lv
@@ -730,9 +730,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29115:	// Mercy5Lv
 			case 29710:	// Tenacity5Lv
 				mes "6th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 100;
+				.@requirement = 35;
 				.@enchant_level = 5;
-				.@enchant_rate = 18;
+				.@enchant_rate = 100;
 				break;
 			case 29066:	// Ambition6Lv
 			case 29076:	// Tab6Lv
@@ -743,9 +743,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29711:	// Tenacity6Lv
 				// custom text
 				mes "7th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 150;
+				.@requirement = 45;
 				.@enchant_level = 6;
-				.@enchant_rate = 13;
+				.@enchant_rate = 100;
 				break;
 			case 29067:	// Ambition7Lv
 			case 29077:	// Tab7Lv
@@ -756,9 +756,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29712:	// Tenacity7Lv
 				// custom text
 				mes "8th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 250;
+				.@requirement = 55;
 				.@enchant_level = 7;
-				.@enchant_rate = 9;
+				.@enchant_rate = 100;
 				break;
 			case 29068:	// Ambition8Lv
 			case 29078:	// Tab8Lv
@@ -769,9 +769,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29713:	// Tenacity8Lv
 				// custom text
 				mes "9th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 500;
+				.@requirement = 70;
 				.@enchant_level = 8;
-				.@enchant_rate = 6;
+				.@enchant_rate = 100;
 				break;
 			case 29069:	// Ambition9Lv
 			case 29079:	// Tab9Lv
@@ -782,9 +782,9 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			case 29714:	// Tenacity9Lv
 				// custom text
 				mes "10th... level... reinforcement?... Are you... ready... to control... such huge... powers?... but if you fail... the result will be... worth... seeing...";
-				.@requirement = 1000;
+				.@requirement = 100;
 				.@enchant_level = 9;
-				.@enchant_rate = 4;
+				.@enchant_rate = 100;
 				break;
 			case 29070:	// Ambition10Lv
 			case 29080:	// Tab10Lv
@@ -804,22 +804,22 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 		}
 		next;
 		mes "[Wandering Mind]";
-		mes "However...before that happens... I need to check... whether or not you have... sufficient Cursed Fragments... ";
+		mes "However...before that happens... I need to check... whether or not you have... sufficient Grudge Fragments... ";
 		next;
 		mes "[Wandering Mind]";
-		mes "Cursed... Fragments..." + .@requirement + " are... needed... I wonder... whether... you can afford... them?... kk... kk...";
-		mes "^FF0000*In enchantment, " + .@requirement + " Cursed Fragment(s) is(are) required.*^000000";
+		mes "Grudge... Fragments..." + .@requirement + " are... needed... I wonder... whether... you can afford... them?... kk... kk...";
+		mes "^FF0000*In enchantment, " + .@requirement + " Grudge Fragment(s) is(are) required.*^000000";
 		next;
 		if (select( "Pay fee.", "Do not pay fee." ) == 2) {
 			mes "[Wandering Mind]";
 			mes "K...kk... It seems... you're not... ready to accept... such a huge power... yet...";
 			close;
 		}
-		if (countitem(23016) < .@requirement) {// Cursed Fragment
+		if (countitem(23016) < .@requirement) {// Grudge Fragment
 			mes "[Wandering Mind]";
 			mes "K...kk... are you... kidding... me?... How come... you... crave for... the power... with such a trivial grudge?...";
-			mes "^FF0000*In enchantment, Cursed Fragment(s) 10 item(s) is(are) required.";
-			mes "Check the amount of Cursed Fragments you possess.*^000000";
+			mes "^FF0000*In enchantment, Grudge Fragment(s) 10 item(s) is(are) required.";
+			mes "Check the amount of Grudge Fragments you possess.*^000000";
 			close;
 		}
 		mes "[Wandering Mind]";
@@ -832,7 +832,7 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 			close;
 		}
 		progressbar "000000",1;
-		delitem 23016, .@requirement;// Cursed Fragment
+		delitem 23016, .@requirement;// Grudge Fragment
 
 		// anti-hack
 		if (callfunc("F_IsEquipIDHack", EQI_HEAD_TOP, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HEAD_TOP, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", EQI_HEAD_TOP, .@refine))
@@ -959,7 +959,7 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 				npctalk "Destroy it... Destroy it...", "", bc_self;
 				mes "[Wandering Mind]";
 				mes "This is... interesting... In that helmet... there is no fragrance... filled with a special power... Do you want... destruction...? kkk...";
-				mes "^FF0000*Enchantment using Cursed Fragments is only possible in the Old Helmet.*^000000";
+				mes "^FF0000*Enchantment using Grudge Fragments is only possible in the Old Helmet.*^000000";
 				close;
 		}
 		setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
@@ -1024,16 +1024,16 @@ lhz_dun_n,134,265,2	script	Wandering Mind#JCv2	4_CENERE,{
 		next;
 		mes "[Wandering Mind]";
 		mes "If you... bring grudge's... power... I'll... give you... great power...";
-		mes "^FF0000*You need Cursed Fragments in order to enchant it.*^000000";
+		mes "^FF0000*You need Grudge Fragments in order to enchant it.*^000000";
 		next;
 		mes "[Wandering Mind]";
 		mes "Kkk... Of course... in order to obtain... great power... you may need... a countless amount of... grudge's... power...";
-		mes "^FF0000*Enchantment is proceeded in the order of 4, 3, 2 slots. You need 10 Cursed Fragments when you enchant each slot for the first time.*^000000";
+		mes "^FF0000*Enchantment is proceeded in the order of 4, 3, 2 slots. You need 10 Grudge Fragments when you enchant each slot for the first time.*^000000";
 		next;
 		mes "[Wandering Mind]";
 		mes "If you have... the opportunity... you might be... able to upgrade... the enchantment level... ";
-		mes "^FF0000*When reinforcing the enchant level, 50, 70, 100, 150, 250, 500, 1000 Cursed Fragments are consumed, depending on the enchant level";
-		mes "increase after 20 Cursed Fragments in the 2nd step, and 40 Cursed Fragments in the 3rd step.*^000000";
+		mes "^FF0000*When reinforcing the enchant level, 20, 25, 35, 45, 55, 70, 100 Grudge Fragments are consumed, depending on the enchant level";
+		mes "increase after 10 Grudge Fragments in the 2nd step, and 15 Grudge Fragments in the 3rd step.*^000000";
 		close;
 	}
 }

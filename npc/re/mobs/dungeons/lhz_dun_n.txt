@@ -43,9 +43,9 @@ OnRegularDead3232: callsub( S_Regular, 3232 );
 
 S_Regular:
 	.@mob_id = getarg(0);
-	if (.lhz_dun_n[.@mob_id] < 110 && .lhz_dun_n_boss == 0) {
+	if (.lhz_dun_n[.@mob_id] < 20 && .lhz_dun_n_boss == 0) {
 		.lhz_dun_n[.@mob_id]++;
-		if (.lhz_dun_n[.@mob_id] == 110) {
+		if (.lhz_dun_n[.@mob_id] == 20) {
 			.@mini_boss = .@mob_id + 6 + (.@mob_id > 3219);	// mini boss version ID: regular ID +6 for non-transcendent, +7 for others
 			monster "lhz_dun_n",0,0,"--en--",.@mini_boss,1, "lhz_dun_n::OnMiniDead" + .@mini_boss;
 		}
@@ -96,7 +96,7 @@ OnMyMVPDead:
 	end;
 OnTimer60000:
 	.lhz_dun_n_delay++;
-	if (.lhz_dun_n_delay < 100) // unknown delay (currently 100 mins)
+	if (.lhz_dun_n_delay < 10) // unknown delay (currently 100 mins)
 		initnpctimer;
 	else {
 		stopnpctimer;

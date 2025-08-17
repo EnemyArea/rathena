@@ -745,11 +745,11 @@ lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 				mes "And just so you know, please do not touch random things out of curiosity. I don't want you to get hurt.";
 				close;
 			case 2:
-				if (.@quest_time == 0) {
-					mes "[Wolfchev]";
-					mes "I'm sorry, but it seems you still cannot enter to the laboratory yet. Will you come back later? The system is kind of tricky you know.";
-					close;
-				} else {
+				// if (.@quest_time == 0) {
+				// 	mes "[Wolfchev]";
+				// 	mes "I'm sorry, but it seems you still cannot enter to the laboratory yet. Will you come back later? The system is kind of tricky you know.";
+				// 	close;
+				// } else {
 					//if (.@quest_time == 2)
 						//recall_completequest 5112;
 					if (isbegin_quest(5112))
@@ -817,7 +817,7 @@ lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 							}
 						}
 					}
-				}
+				// }
 				if (is_party_leader() == true) {
 					if (instance_create("Wolfchev's Laboratory") < 0) {
 						mes "[Wolfchev]";
@@ -894,13 +894,24 @@ lhz_dun04,147,279,0	script	Laboratory Entrance#memo	CLEAR_NPC,{
 		//warp "1@lhz", 45, 148;
 		close;
 	} else if (.@lhz_time == 0) {
-		mes "Di Rit- Di- Di- Dit-";
+		mes "This is an entrance towards Wolfchev's laboratory. Something is howling over the entrance.";
 		next;
-		mes ""+ strcharinfo(0) +". . .";
-		mes "^FF0000Forbidden personnel^000000";
-		next;
-		mes "The system denied your entrance.";
-		close;
+		if (select("Go inside", "Think one more time") == 2) {
+			mes "You have stopped entering to Wolfchev's laboratory.";
+			close;
+		}
+		if (instance_enter("Wolfchev's Laboratory") != IE_OK) {  // probably missing failure cases
+			mes "^FF0000Warning^000000";
+			mes ""+ strcharinfo(0) +". . .";
+			mes "^FF0000Unregistered personnel^000000";
+			next;
+			pushpc 0, 10;
+			percentheal -5,0;
+			specialeffect EF_AUTOCOUNTER;
+			specialeffect2 EF_BASH;
+			mes "You have been wounded by laboratory entrance system attack.";
+			close;
+		}
 	} else if (.@lhz_time >= 1) {
 		mes "Di Rit- Di- Di- Dit-";
 		next;
