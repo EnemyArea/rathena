@@ -47,7 +47,10 @@ S_Regular:
 		.lhz_dun_n[.@mob_id]++;
 		if (.lhz_dun_n[.@mob_id] == 20) {
 			.@mini_boss = .@mob_id + 6 + (.@mob_id > 3219);	// mini boss version ID: regular ID +6 for non-transcendent, +7 for others
-			monster "lhz_dun_n",0,0,"--en--",.@mini_boss,1, "lhz_dun_n::OnMiniDead" + .@mini_boss;
+			
+			debugmes getmonsterinfo(.@mini_boss, MOB_NAME);
+			mapannounce "lhz_dun_n", "You feel that an evil presence is appeared somewhere...", bc_map, "0x70dbdb";
+			monster "lhz_dun_n",139,133,"--en--",.@mini_boss,1, "lhz_dun_n::OnMiniDead" + .@mini_boss;
 		}
 	}
 	end;
@@ -69,24 +72,55 @@ OnMiniDead3239: callsub( S_Mini, 3239 );
 
 S_Mini:
 	.@mob_id = getarg(0);
-	if (.lhz_dun_n[.@mob_id] < 4 && .lhz_dun_n_boss == 0) {
-		.lhz_dun_n[.@mob_id]++;
-		.@regular = .@mob_id - 6 - (.@mob_id > 3219);
-		if (.lhz_dun_n[.@mob_id] < 4)
-			.lhz_dun_n[.@regular] = 0;	// note: mini boss version can re-spawn when the count of mini boss dead is reached? (currently they don't)
-		else {
-			setarray .@mini_boss_list[0], 3214,3215,3216,3217,3218,3219,3233,3234,3235,3236,3237,3238,3239;
-			for ( .@i = 0; .@i < 13; ++.@i ) {	
-				if (.lhz_dun_n[.@mini_boss_list[.@i]] < 4)
-					end;
-			}
-			// MvP monster seems to only spawn at 12 o'clock
-			monster "lhz_dun_n",140,230,"--en--", F_Rand(3220,3221,3222,3223,3224,3225,3240,3241,3242,3243,3244,3245,3246),1, "lhz_dun_n::OnMyMVPDead";
-			mapannounce "lhz_dun_n", "Voice of Reaper: It's been a while.", bc_map;	// unknown message
-			.lhz_dun_n_boss = 1;
-			deletearray .lhz_dun_n;
+	
+	if(.lhz_dun_n_boss == 0) {
+
+		switch(killedrid){
+			case 3214: set .@mvp, 3220; break;
+			case 3215: set .@mvp, 3221; break;
+			case 3216: set .@mvp, 3222; break;
+			case 3217: set .@mvp, 3223; break;
+			case 3218: set .@mvp, 3224; break;
+			case 3219: set .@mvp, 3225; break;
+
+			case 3233: set .@mvp, 3240; break;
+			case 3234: set .@mvp, 3241; break;
+			case 3235: set .@mvp, 3242; break;
+			case 3236: set .@mvp, 3243; break;
+			case 3237: set .@mvp, 3244; break;
+			case 3238: set .@mvp, 3245; break;
+			case 3239: set .@mvp, 3246; break;
 		}
+
+		// MvP monster seems to only spawn at 12 o'clock
+		debugmes getmonsterinfo(.@mvp, MOB_NAME);
+		monster "lhz_dun_n",140,230,"--en--", .@mvp,1, "lhz_dun_n::OnMyMVPDead";
+		mapannounce "lhz_dun_n", getmonsterinfo(.@mvp, MOB_NAME)+": Feel my vengeance!", bc_map;	// unknown message
+		.lhz_dun_n_boss = 1;
 	}
+
+	// if (.lhz_dun_n[.@mob_id] < 4 && .lhz_dun_n_boss == 0) {
+	// 	.lhz_dun_n[.@mob_id]++;
+	// 	.@regular = .@mob_id - 6 - (.@mob_id > 3219);
+		
+	// 	if (.lhz_dun_n[.@mob_id] < 4)
+	// 	{
+	// 		.lhz_dun_n[.@regular] = 0;	// note: mini boss version can re-spawn when the count of mini boss dead is reached? (currently they don't)
+	// 	}
+	// 	else 
+	// 	{
+	// 		setarray .@mini_boss_list[0], 3214,3215,3216,3217,3218,3219,3233,3234,3235,3236,3237,3238,3239;
+	// 		for ( .@i = 0; .@i < 13; ++.@i ) {	
+	// 			if (.lhz_dun_n[.@mini_boss_list[.@i]] < 4)
+	// 				end;
+	// 		}
+	// 		// MvP monster seems to only spawn at 12 o'clock
+	// 		monster "lhz_dun_n",140,230,"--en--", F_Rand(3220,3221,3222,3223,3224,3225,3240,3241,3242,3243,3244,3245,3246),1, "lhz_dun_n::OnMyMVPDead";
+	// 		mapannounce "lhz_dun_n", "Voice of Reaper: It's been a while.", bc_map;	// unknown message
+	// 		.lhz_dun_n_boss = 1;
+	// 		deletearray .lhz_dun_n;
+	// 	}
+	// }
 	end;
 OnMyMVPDead:
 	initnpctimer;
