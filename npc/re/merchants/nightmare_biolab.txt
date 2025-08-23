@@ -1696,7 +1696,7 @@ S_Make:
 	}
 	else {
 		setarray .@string$[0], "soul", "hat";
-		setarray .@material[0],10,10;	// soul, energy
+		setarray .@material[0],20,10;	// soul, energy
 	}
 	next;
 	mes "[Sorrowful Soul's Mind]";

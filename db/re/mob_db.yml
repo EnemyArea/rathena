@@ -5514,7 +5514,7 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: White_Potion
+      - Item: Drake_Coat
         Rate: 5000
       - Item: Violet_Jewel
         Rate: 500
@@ -31170,11 +31170,11 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
-        Rate: 5500
+      - Item: EvilDragon_Armor
+        Rate: 2000
       - Item: Bs_Making_S
         Rate: 5000
-      - Item: Crystal_Jewel__
+      - Item: Armor_Of_Flamedragon
         Rate: 2000
     Drops:
       - Item: Morpheus's_Armlet
@@ -37455,7 +37455,7 @@ Body:
     Modes:
       Mvp: true
     MvpDrops:
-      - Item: Old_Violet_Box
+      - Item: Abyss_Dress
         Rate: 5500
       - Item: Bs_Making_S
         Rate: 5000
@@ -86428,7 +86428,7 @@ Body:
       - Item: Soul_Of_Thief
         Index: 1
         Rate: 5000
-      - Item: Soul_Of_Thief
+      - Item: Arabian_Manteau
         Index: 2
         Rate: 5000
     Drops:
