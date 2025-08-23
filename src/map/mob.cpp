@@ -2813,9 +2813,11 @@ void mob_damage(struct mob_data *md, struct block_list *src, int32 damage)
  * @param mob: Monster data
  * @param base_rate: Base drop rate
  * @param drop_modifier: RENEWAL_DROP level modifier
+ * @param md: the actual monster killed
+ * @param factor: factor which is applied to all multiplicative bonuses and upper bound caps
  * @return Modified drop rate
  */
-int32 mob_getdroprate(struct block_list *src, std::shared_ptr<s_mob_db> mob, int32 base_rate, int32 drop_modifier, mob_data* md)
+int32 mob_getdroprate(struct block_list *src, std::shared_ptr<s_mob_db> mob, int32 base_rate, int32 drop_modifier, mob_data* md, int32 factor)
 {
 	int32 drop_rate = base_rate;
 
@@ -2829,9 +2831,9 @@ int32 mob_getdroprate(struct block_list *src, std::shared_ptr<s_mob_db> mob, int
 
 	if (src) {
 		if (battle_config.drops_by_luk) // Drops affected by luk as a fixed increase [Valaris]
-			drop_rate += status_get_luk(src) * battle_config.drops_by_luk / 100;
+			drop_rate += (status_get_luk(src) * battle_config.drops_by_luk / 100) * factor;
 		if (battle_config.drops_by_luk2) // Drops affected by luk as a % increase [Skotlex]
-			drop_rate += (int32)(0.5 + drop_rate * status_get_luk(src) * battle_config.drops_by_luk2 / 10000.);
+			drop_rate += (int32)(0.5 + drop_rate * status_get_luk(src) * battle_config.drops_by_luk2 / 10000.) * factor;
 
 		if (src->type == BL_PC) { // Player specific drop rate adjustments
 			map_session_data *sd = (map_session_data*)src;
@@ -2860,6 +2862,8 @@ int32 mob_getdroprate(struct block_list *src, std::shared_ptr<s_mob_db> mob, int
 			} else
 				cap = battle_config.drop_rate_cap;
 
+			cap *= factor;
+
 			drop_rate = (int32)( 0.5 + drop_rate * drop_rate_bonus / 100. );
 
 			// Now limit the drop rate to never be exceed the cap (default: 90%), unless it is originally above it already.
@@ -2874,13 +2878,13 @@ int32 mob_getdroprate(struct block_list *src, std::shared_ptr<s_mob_db> mob, int
 #endif
 
 	// Cap it to 100%
-	drop_rate = min( drop_rate, 10000 );
+	drop_rate = min( drop_rate, 10000 * factor );
 
 	// If the monster's drop rate can become 0
 	if( battle_config.drop_rate0item ){
 		drop_rate = max( drop_rate, 0 );
 	}else{
-		// If not - cap to 0.01% drop rate - as on official servers
+		// If not - cap to 0.01% or 0.001% drop rate - as on official servers
 		drop_rate = max( drop_rate, 1 );
 	}
 
@@ -3380,52 +3384,17 @@ int32 mob_dead(struct mob_data *md, struct block_list *src, int32 type)
 		if( mapdrops != nullptr ){
 			// Process map wide drops
 			for( const auto& it : mapdrops->globals ){
+				uint32 final_rate;
 
-				uint16 ratemin, ratemax;
-				int32 rate_adjust;
-				item_data* id = itemdb_search( it.second->nameid );
-
-				bool is_mvp = md->get_bosstype() == BOSSTYPE_MVP;
-				bool is_boss = md->get_bosstype() == BOSSTYPE_MINIBOSS;
-
-				// Added suport to restrict normal drops of MVP's [Reddozen]
-				switch( id->type ){
-				case IT_HEALING:
-					rate_adjust = is_mvp ? battle_config.item_rate_heal_mvp : (is_boss ? battle_config.item_rate_heal_boss : battle_config.item_rate_heal);
-					ratemin = battle_config.item_drop_heal_min;
-					ratemax = battle_config.item_drop_heal_max;
-					break;
-				case IT_USABLE:
-				case IT_CASH:
-					rate_adjust = is_mvp ? battle_config.item_rate_use_mvp : (is_boss ? battle_config.item_rate_use_boss : battle_config.item_rate_use);
-					ratemin = battle_config.item_drop_use_min;
-					ratemax = battle_config.item_drop_use_max;
-					break;
-				case IT_WEAPON:
-				case IT_ARMOR:
-				case IT_PETARMOR:
-					rate_adjust = is_mvp ? battle_config.item_rate_equip_mvp : (is_boss ? battle_config.item_rate_equip_boss : battle_config.item_rate_equip);
-					ratemin = battle_config.item_drop_equip_min;
-					ratemax = battle_config.item_drop_equip_max;
-					break;
-				case IT_CARD:
-					rate_adjust = is_mvp ? battle_config.item_rate_card_mvp : (is_boss ? battle_config.item_rate_card_boss : battle_config.item_rate_card);
-					ratemin = battle_config.item_drop_card_min;
-					ratemax = battle_config.item_drop_card_max;
-					break;
-				default:
-					rate_adjust = is_mvp ? battle_config.item_rate_common_mvp : (is_boss ? battle_config.item_rate_common_boss : battle_config.item_rate_common);
-					ratemin = battle_config.item_drop_common_min;
-					ratemax = battle_config.item_drop_common_max;
-					break;
+				if ( battle_config.enable_bonus_map_drops ) {
+					final_rate = mob_getdroprate(first_sd, md->db, it.second->rate, drop_modifier, md, 10);
+				} else {
+					final_rate = it.second->rate;
 				}
 
-				item_dropratio_adjust( it.second->nameid, md->id, &rate_adjust );
-				int32 rate = mob_drop_adjust( it.second->rate, rate_adjust, ratemin, ratemax );
-
-				if( rnd_chance( rate, 100000 ) ){
+				if( rnd_chance( final_rate, 100000u ) ){
 					// 'Cheat' for autoloot command: rate is changed from n/100000 to n/10000
-					int32 map_drops_rate = max(1, (rate / 10));
+					int32 map_drops_rate = max(1, (final_rate / 10));
 					std::shared_ptr<s_item_drop> ditem = mob_setdropitem( it.second, 1, md->mob_id );
 					mob_item_drop( md, dlist, ditem, 0, map_drops_rate, homkillonly || merckillonly );
 				}
@@ -3436,52 +3405,17 @@ int32 mob_dead(struct mob_data *md, struct block_list *src, int32 type)
 
 			if( specific != mapdrops->specific.end() ){
 				for( const auto& it : specific->second ){
+					uint32 final_rate;
 
-					uint16 ratemin, ratemax;
-					int32 rate_adjust;
-					item_data* id = itemdb_search( it.second->nameid );
-
-					bool is_mvp = md->get_bosstype() == BOSSTYPE_MVP;
-					bool is_boss = md->get_bosstype() == BOSSTYPE_MINIBOSS;
-
-					// Added suport to restrict normal drops of MVP's [Reddozen]
-					switch( id->type ){
-						case IT_HEALING:
-							rate_adjust = is_mvp ? battle_config.item_rate_heal_mvp : (is_boss ? battle_config.item_rate_heal_boss : battle_config.item_rate_heal);
-							ratemin = battle_config.item_drop_heal_min;
-							ratemax = battle_config.item_drop_heal_max;
-							break;
-						case IT_USABLE:
-						case IT_CASH:
-							rate_adjust = is_mvp ? battle_config.item_rate_use_mvp : (is_boss ? battle_config.item_rate_use_boss : battle_config.item_rate_use);
-							ratemin = battle_config.item_drop_use_min;
-							ratemax = battle_config.item_drop_use_max;
-							break;
-						case IT_WEAPON:
-						case IT_ARMOR:
-						case IT_PETARMOR:
-							rate_adjust = is_mvp ? battle_config.item_rate_equip_mvp : (is_boss ? battle_config.item_rate_equip_boss : battle_config.item_rate_equip);
-							ratemin = battle_config.item_drop_equip_min;
-							ratemax = battle_config.item_drop_equip_max;
-							break;
-						case IT_CARD:
-							rate_adjust = is_mvp ? battle_config.item_rate_card_mvp : (is_boss ? battle_config.item_rate_card_boss : battle_config.item_rate_card);
-							ratemin = battle_config.item_drop_card_min;
-							ratemax = battle_config.item_drop_card_max;
-							break;
-						default:
-							rate_adjust = is_mvp ? battle_config.item_rate_common_mvp : (is_boss ? battle_config.item_rate_common_boss : battle_config.item_rate_common);
-							ratemin = battle_config.item_drop_common_min;
-							ratemax = battle_config.item_drop_common_max;
-							break;
+					if ( battle_config.enable_bonus_map_drops ) {
+						final_rate = mob_getdroprate(first_sd, md->db, it.second->rate, drop_modifier, md, 10);
+					} else {
+						final_rate = it.second->rate;
 					}
 
-					item_dropratio_adjust( it.second->nameid, md->id, &rate_adjust );
-					int32 rate = mob_drop_adjust( it.second->rate, rate_adjust, ratemin, ratemax );
-
-					if( rnd_chance( rate, 100000 ) ){
+					if( rnd_chance( final_rate, 100000u ) ){
 						// 'Cheat' for autoloot command: rate is changed from n/100000 to n/10000
-						int32 map_drops_rate = max(1, (rate / 10));
+						int32 map_drops_rate = max(1, (final_rate / 10));
 						std::shared_ptr<s_item_drop> ditem = mob_setdropitem( it.second, 1, md->mob_id );
 						mob_item_drop( md, dlist, ditem, 0, map_drops_rate, homkillonly || merckillonly );
 					}
@@ -5754,6 +5688,10 @@ static bool mob_read_sqldb_sub(std::vector<std::string> str) {
 		node["DamageMotion"] << str[index];
 	if (!str[++index].empty())
 		node["DamageTaken"] << str[index];
+	if (!str[++index].empty())
+		node["GroupId"] << str[index];
+	if (!str[++index].empty())
+		node["Title"] << str[index];	
 	if (!str[++index].empty() && strcmp(str[index].c_str(), "06") != 0)
 		node["Ai"] << str[index];
 	if (!str[++index].empty() && strcmp(str[index].c_str(), "Normal") != 0)
@@ -6565,8 +6503,7 @@ static bool mob_parse_row_mobskilldb( char** str, size_t columns, size_t current
 
 	//Skill ID
 	j = atoi(str[3]);
-	if (j <= 0 || j > MAX_SKILL_ID || !skill_get_index(j)) //fixed Lupus
-	{
+	if ( !skill_db.exists( j ) ){
 		if (mob_id < 0)
 			ShowError("mob_parse_row_mobskilldb: Invalid Skill ID (%d) for all mobs\n", j);
 		else
