@@ -15671,7 +15671,7 @@ int32 skill_castend_pos2(struct block_list* src, int32 x, int32 y, uint16 skill_
 			else if (sd->status.weapon == W_GRENADE)
 				splash += 2;
 		}
-		map_foreachinallarea(skill_area_sub,src->m, x - splash, y - splash, x + splash, y + splash, BL_CHAR,src, skill_id, skill_lv, tick, flag | BCT_ENEMY | 1,skill_castend_damage_id);
+		map_foreachinallarea(skill_area_sub, src->m, x - splash, y - splash, x + splash, y + splash, BL_CHAR, src, skill_id, skill_lv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
 		} break;
 
 	case SOA_TALISMAN_OF_BLACK_TORTOISE:
@@ -19974,6 +19974,7 @@ void skill_consume_requirement(map_session_data *sd, uint16 skill_id, uint16 ski
 		switch( skill_id ) {
 			case CG_TAROTCARD: // TarotCard will consume sp in skill_cast_nodamage_id [Inkfish]
 			case MC_IDENTIFY:
+			case SM_AUTOBERSERK:
 			case BD_ADAPTATION:
 			case BD_ENCORE:
 				require.sp = 0;
