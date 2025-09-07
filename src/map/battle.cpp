@@ -6512,7 +6512,17 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list
 			if (sc != nullptr && sc->getSCE(SC_CHASING) != nullptr)
 				skillratio += 250 * skill_lv;
 			break;
-
+		case NW_WILD_SHOT:
+			skillratio += -100 + 870 + 180 * skill_lv;
+			if (sd != nullptr && sc != nullptr && sc->hasSCE(SC_HIDDEN_CARD)) {
+				if (sd->weapontype1 == W_REVOLVER)
+					skillratio += 60 * skill_lv;
+				else if (sd->weapontype1 == W_RIFLE)
+					skillratio += 100 * skill_lv;
+			}
+			skillratio += 5 * sstatus->con; //!TODO: check con ratio
+			RE_LVL_DMOD(100);
+			break;
 		case NW_MIDNIGHT_FALLEN:
 			skillratio += -100 + 2400 + 800 * skill_lv;
 			if (sd != nullptr && sc != nullptr && sc->hasSCE(SC_HIDDEN_CARD)) {

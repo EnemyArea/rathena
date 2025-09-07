@@ -15664,15 +15664,15 @@ int32 skill_castend_pos2(struct block_list* src, int32 x, int32 y, uint16 skill_
 		}
 		break;
 	case NW_MIDNIGHT_FALLEN: {
-		int32 splash = skill_get_splash(skill_id, skill_lv);
-		if (sd != nullptr) {
-			if (sd->status.weapon == W_GATLING)
-				splash += 1;
-			else if (sd->status.weapon == W_GRENADE)
-				splash += 2;
-		}
-		map_foreachinallarea(skill_area_sub, src->m, x - splash, y - splash, x + splash, y + splash, BL_CHAR, src, skill_id, skill_lv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
-		} break;
+			int32 splash = skill_get_splash(skill_id, skill_lv);
+			if (sd != nullptr) {
+				if (sd->status.weapon == W_GATLING)
+					splash += 1;
+				else if (sd->status.weapon == W_GRENADE)
+					splash += 2;
+			}
+			map_foreachinallarea(skill_area_sub, src->m, x - splash, y - splash, x + splash, y + splash, BL_CHAR, src, skill_id, skill_lv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
+	} break;
 
 	case SOA_TALISMAN_OF_BLACK_TORTOISE:
 		if (sc != nullptr && sc->getSCE(SC_T_THIRD_GOD) != nullptr){
