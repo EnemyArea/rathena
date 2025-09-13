@@ -4723,11 +4723,9 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list
 		case HT_POWER:
 			skillratio += -50 + 8 * sstatus->str;
 			break;
-		case AC_DOUBLE:
 		case MA_DOUBLE:
 			skillratio += 10 * (skill_lv - 1);
 			break;
-		case AC_SHOWER:
 		case MA_SHOWER:
 #ifdef RENEWAL
 			skillratio += 50 + 10 * skill_lv;
@@ -4735,7 +4733,6 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list
 			skillratio += -25 + 5 * skill_lv;
 #endif
 			break;
-		case AC_CHARGEARROW:
 		case MA_CHARGEARROW:
 			skillratio += 50;
 			break;
@@ -11815,7 +11812,7 @@ static const struct _battle_data {
 	{ "basic_skill_check",                  &battle_config.basic_skill_check,               1,      0,      1,              },
 	{ "guild_emperium_check",               &battle_config.guild_emperium_check,            1,      0,      1,              },
 	{ "guild_exp_limit",                    &battle_config.guild_exp_limit,                 50,     0,      99,             },
-	{ "player_invincible_time",             &battle_config.pc_invincible_time,              5000,   0,      INT_MAX,        },
+	{ "player_invincible_time",             &battle_config.pc_invincible_time,              3000,   0,      INT_MAX,        },
 	{ "pet_catch_rate",                     &battle_config.pet_catch_rate,                  100,    0,      INT_MAX,        },
 	{ "pet_rename",                         &battle_config.pet_rename,                      0,      0,      1,              },
 	{ "pet_friendly_rate",                  &battle_config.pet_friendly_rate,               100,    0,      INT_MAX,        },
