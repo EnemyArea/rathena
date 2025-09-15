@@ -7511,13 +7511,6 @@ Body:
             Level: 3
           - Name: ABC_DAGGER_AND_BOW_M
             Level: 5
-      - Name: ABC_ABYSS_FLAME
-        MaxLevel: 5
-        Requires:
-          - Name: ABC_MAGIC_SWORD_M
-            Level: 5
-          - Name: ABC_FROM_THE_ABYSS
-            Level: 3
       - Name: ABC_HIT_AND_SLIDING
         MaxLevel: 5
         Requires:
@@ -7532,6 +7525,13 @@ Body:
         MaxLevel: 5
         Requires:
           - Name: ABC_HIT_AND_SLIDING
+            Level: 3
+      - Name: ABC_ABYSS_FLAME
+        MaxLevel: 5
+        Requires:
+          - Name: ABC_MAGIC_SWORD_M
+            Level: 5
+          - Name: ABC_FROM_THE_ABYSS
             Level: 3
   - Job: Elemental_Master
     Inherit:
