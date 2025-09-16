@@ -54,7 +54,7 @@ void SkillHeal::castendNoDamageId(block_list *src, block_list *bl, uint16 skill_
 		heal_get_jobexp = heal_get_jobexp * battle_config.heal_exp / 100;
 		if (heal_get_jobexp <= 0)
 			heal_get_jobexp = 1;
-		pc_gainexp(sd, bl, 0, heal_get_jobexp, 0);
+		pc_gainexp(sd, bl, 0, heal_get_jobexp, 0, 100);
 	}
 }
 

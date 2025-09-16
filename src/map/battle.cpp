@@ -6479,24 +6479,6 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list
 			skillratio += 5 * sstatus->con;
 			RE_LVL_DMOD(100);
 			break;
-		case ABC_HIT_AND_SLIDING:
-			skillratio += -100 + 3500 * skill_lv;
-			skillratio += 5 * sstatus->pow;
-			RE_LVL_DMOD(100);
-			break;
-		case ABC_CHASING_BREAK:
-			skillratio += -100 + 1550 + 450 * skill_lv;
-			skillratio += 5 * sstatus->pow;
-			if (sc != nullptr && sc->getSCE(SC_CHASING) != nullptr)
-				skillratio += 200 + 50 * skill_lv;
-			RE_LVL_DMOD(100);
-			break;
-		case ABC_CHASING_SHOT:
-			skillratio += -100 + 1500 + 700 * skill_lv;
-			skillratio += 5 * sstatus->con;
-			if (sc != nullptr && sc->getSCE(SC_CHASING) != nullptr)
-				skillratio += 250 * skill_lv;
-			break;
 		case NW_WILD_SHOT:
 			skillratio += -100 + 870 + 180 * skill_lv;
 			if (sd != nullptr && sc != nullptr && sc->hasSCE(SC_HIDDEN_CARD)) {
